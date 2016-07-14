@@ -1,0 +1,33 @@
+html,body{
+    margin:0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+}
+body{
+    width: 100%;
+}
+.slidebar{
+    width: 170px;
+    background: olive;
+}
+.hero{
+    flex-basis: 100px;
+    background: pink;
+    flex-grow: 1;
+}
+.content{
+    flex-basis: 300px;
+    background: teal;
+    flex-grow: 3;
+}
+@media (max-width:1000px) {
+    .slidebar{
+        width:45px;
+    }
+}
+@media (max-width: 768px) {
+    .slidebar,.content{
+        display: none;
+    }
+}
