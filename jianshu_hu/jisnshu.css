@@ -1,0 +1,227 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    /* background-color: #abc; */
+
+    box-sizing: border-box;
+}
+html *,
+body *,
+html *::before,
+body *::before,
+html *::after,
+body *::after {
+    box-sizing: inherit;
+}
+.jianshu {
+    display: flex;
+    height: 100%;
+    /* background-color: pink; */
+
+}
+.jianshu > * {
+    flex-shrink: 0;
+}
+.jianshu aside {
+    width: 170px;
+    /* width: 45px; */
+
+    background-color: #2a2a2a;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.jianshu aside ul.top-menu li:first-child {
+    display: none;
+}
+.jianshu aside ul.top-menu,
+.jianshu aside ul.bottom-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.jianshu aside ul.top-menu li,
+.jianshu aside ul.bottom-menu li {
+    position: relative;
+}
+.jianshu aside ul.top-menu li:hover[data-tooltip]::before,
+.jianshu aside ul.bottom-menu li:hover[data-tooltip]::before {
+    position: absolute;
+    left: 100%;
+    margin: 2px;
+    top: 50%;
+    transform: translate(0, -50%);
+    content: '';
+    border: 5px solid transparent;
+    border-left-width: 0;
+    border-right-color: rgba(0, 0, 0, 0.5);
+    z-index: 5;
+}
+.jianshu aside ul.top-menu li:hover[data-tooltip]::after,
+.jianshu aside ul.bottom-menu li:hover[data-tooltip]::after {
+    position: absolute;
+    content: attr(data-tooltip);
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 8px 10px;
+    border-radius: 5px;
+    left: 100%;
+    margin-left: 7px;
+    top: 50%;
+    transform: translate(0, -50%);
+    /* width: 90px; */
+
+    white-space: nowrap;
+    /* width: -webkit-max-content;
+                box-sizing: content-box; */
+
+    z-index: 5;
+}
+.jianshu aside ul.top-menu li a,
+.jianshu aside ul.bottom-menu li a {
+    color: #999;
+    text-decoration: none;
+    height: 44px;
+    display: inline-block;
+    line-height: 44px;
+    width: 170px;
+    padding-left: 12px;
+}
+.jianshu aside ul.top-menu li a:hover,
+.jianshu aside ul.bottom-menu li a:hover {
+    color: white;
+    background-color: #f49484;
+}
+.jianshu aside ul.top-menu li a .fa,
+.jianshu aside ul.bottom-menu li a .fa {
+    margin-right: 12px;
+}
+.jianshu .hero {
+    flex-basis: 100px;
+    flex-grow: 1;
+    background-color: purple;
+    background-image: url(http://upload.jianshu.io/daily_images/images/8JwPCZwJgzVdmf1ya9jC.jpg);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+.jianshu .hero .copywrite-info {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+.jianshu .hero .copywrite-info .author {
+    /* display: none; */
+
+    opacity: 0;
+    position: absolute;
+    width: 150px;
+    top: 0;
+    right: 0;
+    transition: right 1s linear, opacity 1s linear;
+}
+.jianshu .hero .copywrite-info:hover .author {
+    display: inline-block;
+    right: 20px;
+    opacity: 1;
+}
+.jianshu .content {
+    flex-basis: 400px;
+    flex-grow: 3;
+    overflow: scroll;
+    /* background-color: teal; */
+
+    display: flex;
+}
+.jianshu .content main {
+    flex-grow: 7;
+    /* background-color: tan; */
+
+}
+.jianshu .content main header ul {
+    list-style: none;
+    box-shadow: 0 2px grey;
+    padding-left: 25px;
+    font-size: 0;
+}
+.jianshu .content main header ul li {
+    font-size: 14px;
+    display: inline-block;
+    cursor: pointer;
+    padding: 10px;
+}
+.jianshu .content main header ul li.cog:hover,
+.jianshu .content main header ul li.search:hover {
+    box-shadow: none;
+    background-color: transparent;
+}
+.jianshu .content main header ul li.search {
+    float: right;
+    position: relative;
+    top: -5px;
+}
+.jianshu .content main header ul li.search div {
+    border: 1px solid;
+    border-radius: 1000px;
+    padding: 5px;
+    padding-left: 10px;
+}
+.jianshu .content main header ul li.search div input {
+    border: none;
+    outline: none;
+}
+.jianshu .content main header ul li.search div button {
+    border: none;
+    background-color: transparent;
+}
+.jianshu .content main header ul li:hover,
+.jianshu .content main header ul li.active {
+    box-shadow: 0 2px black;
+    background-color: #eee;
+}
+.jianshu .content main .post-list ul {
+    list-style: none;
+    padding: 0;
+}
+.jianshu .content main .post-list ul li {
+    border-bottom: 1px dotted grey;
+    padding: 20px;
+    padding-right: 120px;
+}
+.jianshu .content main .post-list ul li .title {
+    font-size: 18px;
+    line-height: 1.5;
+}
+.jianshu .content main .post-list ul li img {
+    float: right;
+    width: 100px;
+    height: 100px;
+    position: relative;
+    top: -94px;
+}
+.jianshu .content div {
+    flex-grow: 2;
+}
+@media (max-width: 1000px) {
+    .jianshu aside {
+        width: 45px;
+    }
+    .jianshu aside ul.top-menu li:first-child {
+        display: block;
+    }
+    .jianshu aside ul.top-menu li:first-child + li {
+        display: none;
+    }
+
+}
+@media (max-width: 768px) {
+    .jianshu aside {
+        display: none;
+    }
+    .jianshu .hero {
+        display: none;
+    }
+
+}

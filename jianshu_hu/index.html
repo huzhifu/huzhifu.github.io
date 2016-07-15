@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html ng-app>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.2/normalize.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="jisnshu.css"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>简书仿写</title>
+</head>
+<body>
+<section class="jianshu">
+    <aside>
+        <ul class="top-menu">
+            <!-- <li><a href=""><i class="fa fa-fw">简</i><span></span></a></li> -->
+            <li><a href=""><i class="fa fa-fw">简</i><i class="fa fa-fw fa-home"></i><span>首页</span></a></li>
+            <li data-tooltip="专题"><a href=""><i class="fa fa-fw fa-th"></i><span>专题</span></a></li>
+            <li data-tooltip="简友圈"><a href=""><i class="fa fa-fw fa-user"></i><span>003</span></a></li>
+            <li data-tooltip="简友圈圈圈"><a href=""><i class="fa fa-fw fa-pencil"></i><span>004</span></a></li>
+            <li><a href=""><i class="fa fa-fw fa-mobile"></i><span>005</span></a></li>
+        </ul>
+
+
+        <ul class="bottom-menu">
+            <li><a href=""><i class="fa fa-fw fa-star"></i><span>001</span></a></li>
+            <li><a href=""><i class="fa fa-fw fa-star"></i><span>002</span></a></li>
+            <li><a href=""><i class="fa fa-fw fa-star"></i><span>003</span></a></li>
+            <li><a href=""><i class="fa fa-fw fa-star"></i><span>004</span></a></li>
+            <li><a href=""><i class="fa fa-fw fa-star"></i><span>005</span></a></li>
+        </ul>
+    </aside>
+    <div class="hero">
+        <a class="copywrite-info">
+            <span>i</span>
+            <span class="author">Photo by unsplash</span>
+        </a>
+    </div>
+    <div class="content">
+        <main>
+            <header>
+                <ul>
+                    <li class="active">发现</li>
+                    <li>关注</li>
+                    <li>时光机</li>
+                    <li>2015 精选</li>
+                    <li class="cog"><i class="fa fa-cog"></i></li>
+                    <li class="search">
+                        <div>
+                            <form action="https://www.baidu.com/s" target="bds">
+                                <input type="text" name="wd">
+                                <button>
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </li>
+                </ul>
+            </header>
+            <div class="tags"></div>
+            <div class="post-list">
+                <ul>
+                    <li ng-repeat="x in [1,2,3,4,5]">
+                        <div class="auth-info">
+                            <a href="" class="author">我我我</a> · <span>大约在冬季</span>
+                        </div>
+                        <h1 class="title">那些年，我做过的奇葩兼职——绝不放过一点小钱</h1>
+                        <div class="meta">
+                            <span>阅读 555</span> · <span>评论 98</span> · <span>喜欢 68</span>
+                        </div>
+                        <img src="http://upload-images.jianshu.io/upload_images/2388825-865d77807731512d.JPG?imageMogr2/auto-orient/strip%7CimageView2/1/w/300/h/300" alt="">
+                    </li>
+                </ul>
+            </div>
+            <footer></footer>
+        </main>
+        <div></div>
+    </div>
+</section>
+</body>
+</html>
