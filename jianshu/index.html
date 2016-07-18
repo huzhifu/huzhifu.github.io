@@ -5,10 +5,170 @@
     <meta name="viewport" content="width=device-width;init-scale=1"/>
     <title></title>
     <link rel="stylesheet" href="jianshu.css"/>
+    <style>
+        /*样式重置*/
+        ul{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        .slidebar{
+            position: relative;
+        }
+        .slidebar ul{
+            overflow: hidden;
+            width: 45px;
+
+        }
+        .slidebar ul a{
+            color: #999;
+        }
+        .slidebar ul i{
+            display: block;
+            width:45px;
+            height: 45px;
+            text-align: center;
+            line-height: 45px;
+        }
+        .slidebar ul .first{
+            background: #E78170;
+            color: #fff;
+        }
+        .slidebar ul .end1,.slidebar ul .end2{
+            position: absolute;
+            bottom: 0;
+        }
+        .slidebar ul .end1 i:hover,.slidebar ul .end2 i:hover{
+            background: none;
+        }
+        .slidebar ul .end1{
+            bottom: 45px;
+        }
+        .slidebar ul i:hover{
+            color: #fff;
+            background: #E7382C;
+        }
+        @font-face {font-family: 'iconfont';
+            src: url('../icon/iconfont.eot'); /* IE9*/
+            src: url('../icon/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+            url('../icon/iconfont.woff') format('woff'), /* chrome、firefox */
+            url('../icon/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+            url('../icon/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+        }
+        .iconfont{
+            font-family:"iconfont" !important;
+            font-size:16px;font-style:normal;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-stroke-width: 0.2px;
+            -moz-osx-font-smoothing: grayscale;}
+        .hero{
+            position: relative;
+        }
+       #message{
+           position: absolute;
+           left:20px;
+           bottom: 25px;
+           color:white;
+       }
+       #message p{
+           font: 40px '微软雅黑' ;
+           font-weight: bold;
+       }
+        #message p:last-of-type{
+            font-size: 13px;
+            font-weight:normal;
+        }
+       #message span{
+           font-size:25px;
+           font-weight: bold;
+       }
+       #message a{
+           width: 135px;
+           height: 40px;
+           display: block;
+           background: #49BE38;
+           color:white;
+           text-align: center;
+           line-height: 40px;
+           font-size: 14px;
+       }
+        #message a:hover{
+            background: #71BE6A;
+        }
+        .content ul{
+            margin-left:20px;
+            font-size:15px;
+        }
+        .content ul li{
+            float:left;
+        }
+        .content ul li a{
+            display: block;
+            padding: 15px 13px;
+            color: #999;
+        }
+        .content ul li a:hover{
+            color:black;
+            background:#E7F0D7;
+            border-bottom: solid #000 1px ;
+        }
+        .line{
+            width:755px;
+            height: 1px;
+            background-color: #999;
+            margin-top:47px;
+        }
+        #search{
+            width:165px;
+            height:30px;
+            border:solid 1px grey;
+            border-radius: 3px;
+            float:right;
+            margin:7px 235px 0 0;
+            line-height: 30px;
+        }
+        #search input{
+            width:140px;
+        }
+        #search a{
+            width:15px;
+            height: 15px;
+            background: #ff0;
+            background: url("img/search.png");
+        }
+    </style>
 </head>
 <body>
-<div class="slidebar"></div>
-<div class="hero">1</div>
-<div class="content">2</div>
+<div class="slidebar">
+    <ul>
+        <li><a href=""><i class="iconfont first">&#xe68a;</i></a></li>
+        <li><a href=""><i class="iconfont">&#xf000b;</i></a></li>
+        <li><a href=""><i class="iconfont" style="font-size: 25px">&#xe737;</i></a></li>
+        <li class="end1"><a href=""><i class="iconfont" style="font-size: 23px">&#xe72f;</i></a></li>
+        <li class="end2"><a href=""><i class="iconfont">&#xe845;</i></a></li>
+    </ul>
+</div>
+<div class="hero">
+    <div id="message">
+        <p>简书</p><span>交流故事，沟通想法</span>
+
+        <p>一个基于内容分享的社区</p><a href=""> 提笔写篇文章 </a>
+    </div>
+</div>
+<div class="content">
+    <ul>
+        <li><a href="#">发现</a></li>
+        <li><a href="#">时光机</a></li>
+        <li><a href="#">2015精选</a></li>
+    </ul>
+    <div id="search">
+        <input type="text"/>
+        <a href=""> </a>
+    </div>
+    <div class="line"></div>
+</div>
 </body>
 </html>

@@ -9,19 +9,20 @@ body{
 }
 .slidebar{
     width: 170px;
-    background: olive;
+    background:#2A2A2A;
 }
 .hero{
     flex-basis: 100px;
-    background: pink;
     flex-grow: 1;
+    background: url("img/jianshu.jpg") no-repeat 0px -95px;
+    background-size: 100%;
 }
+
 .content{
     flex-basis: 300px;
-    background: teal;
     flex-grow: 3;
 }
-@media (max-width:1000px) {
+@media (max-width:1500px) {
     .slidebar{
         width:45px;
     }
