@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+	<h2>测试cros解决跨域</h2>
+
+	用户名：<input type="text" name="username" id="name"/>
+	<span id="resultSpan"></span>
+	<br>
+	密码: <input type='password' name='pwd'>
+	<pre><code>
+		//服务器端代码
+		router.post('/cross',function(req,res,next){
+		var username=req.body.username;
+		var result=null;
+		if('admin'===username){
+		result='不可用';
+		}else{
+		result='可用';
+		}
+		res.set('Access-Control-Allow-Origin','*');
+		res.send(result);
+		});
+	</code></pre>
+</body>
+<script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$('#name').blur(function(){
+			$.ajax({
+				type:'POST',
+				url:'http://localhost:3000/cross',
+				data:{username:this.value},
+				success:function(result){
+					alert(result);
+				},
+				error: function(jqXHR){
+					alert("发生错误：" + jqXHR.status);
+				}
+			});
+		});
+	});
+</script>
+</html>

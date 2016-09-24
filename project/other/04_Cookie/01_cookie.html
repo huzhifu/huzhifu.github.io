@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	
+	<script type="text/javascript">
+/*
+读取
+	var cookie = document.cookie
+	返回的是所有cookie数据的字符串
+	格式: "key1=value1;  key2=value2"
+	如果没有, 返回''
+保存/更新/删除
+	编码
+		1. document.cookie="key1=value1"
+		2. document.cookie="key2=value2;expires=有效时间"
+	保存
+		会话cookie
+			不指定失效时间
+			数据保存在浏览器的运行时内存中
+			浏览器关闭, 数据丢失, 重启浏览器得不到保存的数据
+		持久化cookie
+			指定失效时间, 且时间大于当前时间
+			数据保存在浏览器端的本地特定文件中
+			浏览器关闭, 数据不会丢失, 重启浏览器还可以得到保存的数据
+			一旦过了有效时间, cookie数据就会被浏览器自动删除, 再也得不到
+	更新
+		如果指定的key与已有的某个cookie的key相同
+	删除
+		如果指定的key与被删除的那个cookie的key相同
+		指定的失效时间小于当前时间
+ */
+
+//删除cookie数据
+		date = new Date();
+		date.setTime(date.getTime()-1);//比当前时间早1ms
+		document.cookie = 'color=;expires='+date.toUTCString();
+		
+		
+//读取cookie数据
+		var cookie = document.cookie;
+		console.log(cookie+"-----"); //username=tom; age=13
+
+//遍历cookie数据并显示
+		if(cookie!='') {
+			var cs = cookie.split("; ");
+			for(var i=0;i<cs.length;i++) {
+				var nameValue = cs[i].split("=");
+				console.log(nameValue[0]+"="+nameValue[1])
+			}
+		}
+		
+		
+		
+//保存cookie数据(会话cookie)
+		document.cookie = 'username=tom';
+		document.cookie = 'age=12';
+//更新cookie
+		document.cookie = 'age=13';
+//保存cookie数据(持久化cookie)
+		var date = new Date();
+		date.setTime(date.getTime()+1000*20);//一天的有效期
+		document.cookie = 'color=black;expires='+date.toUTCString();
+		
+
+
+	</script>
+</html>

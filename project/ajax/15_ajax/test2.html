@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        table, th, td {
+            border: 1px solid grey;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+
+        table tr:nth-child(odd) {
+            background-color: #f1f1f1;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+<div ng-app="myApp" ng-controller="MyController">
+
+    <table>
+        <tr ng-repeat="info in employees">
+            <td>{{ info.name }}</td>
+            <td>{{ info.age }}</td>
+            <td>{{ info.salary }}</td>
+        </tr>
+    </table>
+</div>
+<h2>服务器端代码</h2>
+<code>
+        <pre>
+    router.post('/angular_post', function (req, res, next) {
+    console.log('angular_post '+ req.body);
+
+    var arr = [
+        {name : 'Jack', age : 18, salary : 9000},
+        {name : 'Jack2', age : 19, salary : 10000},
+        {name : 'Jack3', age : 22, salary : 12000}
+    ];
+
+    res.set('Access-Control-Allow-Origin', '*');//这里直接使用了另一种跨域方法
+    res.send(arr);
+});
+        </pre>
+</code>
+</body>
+<script src="../../js/angular/angular.js"></script>
+<script>
+    angular.module('myApp',[])
+            .controller('MyController', function($scope, $http){
+/*
+
+                $http({
+                 method : 'POST',
+                     url : 'http://localhost:3000/angular_post',
+                     data : {username:'bbb', age:22},
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+                 })
+                 .success(function (data) {
+                     $scope.employees = data;
+                 })
+                 .error(function (data) {
+                    alert(data);
+                 });
+*/
+
+               $http.post('http://localhost:3000/angular_post', {username:'ttt', age:12}, {headers: {
+                           'Content-Type': 'application/x-www-form-urlencoded'
+                       }})
+                        .success(function (data) {
+                            $scope.employees = data;
+                        })
+                        .error(function (data) {
+                            alert(data);
+                        });
+            });
+</script>
+</html>

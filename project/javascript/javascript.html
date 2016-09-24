@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        p{
+            color:green;
+        }
+    </style>
+</head>
+<body>
+<h1>基本知识</h1>
+<li>基本数据类型：Undefined、Null、Boolean、Number（NaN,Infinity）、String</li>
+<li>引用数据类型：Object、Array、Function</li>
+<p>JavaScript的基本规范？</p>
+<li>1.不要在同一行声明多个变量。</li>
+<li>2.请使用 ===/!==来比较true/false或者数值</li>
+<li>3.使用对象字面量替代new Array这种形式</li>
+<li>4.不要使用全局函数。</li>
+<li>5.Switch语句必须带有default分支</li>
+<li>6.函数不应该有时候有返回值，有时候没有返回值。</li>
+<li>7.For循环必须使用大括号</li>
+<li>8.If语句必须使用大括号</li>
+<li>9.for-in循环中的变量 应该使用var关键字明确限定作用域，从而避免作用域污染。</li>
+<p>谈谈This对象的理解</p>
+
+<li>this总是指向函数的直接调用者（而非间接调用者）；</li>
+<li>如果有new关键字，this指向new出来的那个对象；</li>
+<li>在事件中，this指向触发这个事件的对象，特殊的是，IE中的attachEvent中的this总是指向全局对象Window；</li>
+<p>eval是做什么的？</p>
+<li>它的功能是把对应的字符串解析成JS代码并运行；</li>
+<li>应该避免使用eval，不安全，非常耗性能（2次，一次解析成js语句，一次执行）。</li>
+<li>由JSON字符串转换为JSON对象的时候可以用eval，var obj =eval('('+ str +')');</li>
+<p>javascript 代码中使用严格模式的方法：</p>
+<li>在js代码的开头加上"use strict";</li>
+<li>在某个函数内部的第一句加上"use strict";</li>
+<p>使用严格模式的作用：</p>
+<li>使JS编码更加规范化的模式,消除Javascript语法的一些不合理、不严谨之处，减少一些怪异行为。</li>
+<li>消除代码运行的一些不安全之处，保证代码运行的安全</li>
+<li>提高编译器效率，增加运行速度</li>
+<p>new操作符具体干了什么呢?</p>
+<li>1、创建一个空对象，并且 this 变量引用该对象，同时还继承了该函数的原型。var obj  = {};</li>
+<li>2、属性和方法被加入到 this 引用的对象中。obj.__proto__ = Base.prototype;</li>
+<li>3、新创建的对象由 this 所引用，并且最后隐式的返回 this 。Base.call(obj);</li>
+<p>DOM操作——怎样添加、移除、移动、复制、创建和查找节点?</p>
+<li>（1）创建新节点
+    createDocumentFragment()    <span style="color:red">//创建一个DOM片段 </span>
+    createElement()   <span style="color:red">//创建一个具体的元素 </span>
+    createTextNode()   <span style="color:red">//创建一个文本节点 </span></li>
+<li>（2）添加、移除、替换、插入
+    appendChild()
+    removeChild()
+    replaceChild()
+    insertBefore() <span style="color:red">//在已有的子节点前插入一个新的子节点 </span></li>
+<li>（3）查找
+    getElementsByTagName()    <span style="color:red">//通过标签名称 </span>
+    getElementsByName()
+    getElementById()    <span style="color:red">//通过元素Id，唯一性 </span></li>
+<p>.call() 和 .apply() 的区别？</p>
+
+<li>var arr=[3,1];add.call(sub,3,1) == add.apply(sub,arr)</li>
+<p>那些操作会造成内存泄漏？</p>
+<li>setTimeout 的第一个参数使用字符串而非函数的话，会引发内存泄漏。</li>
+<li>闭包、控制台日志、循环（在两个对象彼此引用且彼此保留时，就会产生一个循环）</li>
+<p>用js实现千位分隔符?(来源：前端农民工，提示：正则+replace)</p>
+<pre><code>
+    function commafy(num) {
+    num = num + '';
+    var reg = /(-?d+)(d{3})/;
+
+    if(reg.test(num)){
+    num = num.replace(reg, '$1,$2');
+    }
+    return num;
+    }
+</code></pre>
+<h1 style="color:red">事件</h1>
+<p>添加事件</p>
+<pre><code style="font-size: 18px">addEvent : function(element, type, handler) {
+    if (element.addEventListener) {
+    //事件类型、需要执行的函数、是否捕捉
+    element.addEventListener(type, handler, false);
+    } else if (element.attachEvent) {
+    element.attachEvent('on' + type, function() {
+    handler.call(element);
+    });
+    } else {
+    element['on' + type] = handler;
+    }
+}
+</code></pre>
+<p>移除事件</p>
+<pre><code style="font-size: 18px">removeEvent : function(element, type, handler) {
+    if (element.removeEventListener) {
+    element.removeEventListener(type, handler, false);
+    } else if (element.datachEvent) {
+    element.detachEvent('on' + type, handler);
+    } else {
+    element['on' + type] = null;
+    }
+}
+</code></pre>
+<p>阻止事件 (主要是事件冒泡，因为IE不支持事件捕获)</p>
+<pre><code style="font-size: 18px">stopPropagation : function(ev) {
+    if (ev.stopPropagation) {
+    ev.stopPropagation();
+    } else {
+    ev.cancelBubble = true;
+    }
+}
+</code></pre>
+<p>取消事件的默认行为</p>
+<pre><code style="font-size: 18px">preventDefault : function(event) {
+    if (event.preventDefault) {
+    event.preventDefault();
+    } else {
+    event.returnValue = false;
+    }
+}
+</code></pre>
+<p> 获取event对象的引用，取到事件的所有信息，确保随时能使用event</p>
+<pre><code style="font-size: 18px">getEvent : function(e) {
+    var ev = e || window.event;
+    if (!ev) {
+    var c = this.getEvent.caller;
+    while (c) {
+    ev = c.arguments[0];
+    if (ev && Event == ev.constructor) {
+    break;
+    }
+    c = c.caller;
+    }
+    }
+    return ev;
+}
+</code></pre>
+<p>获取事件目标</p>
+<pre><code style="font-size: 18px">getTarget : function(event) {
+    return event.target || event.srcElement;
+}
+</code></pre>
+<h1 style="color:red">JS的常用类型及方法</h1>
+<p>Array</p>
+<img src="../img/array.jpg" alt=""/>
+<p>map:映射</p>
+<img src="../img/map.jpg" alt=""/>
+<p>reduce:可以作累加或累乘</p>
+<img src="../img/reduce.jpg" alt=""/>
+<p>String</p>
+<img src="../img/string.jpg" alt=""/><br/>
+<p>Date</p>
+<img src="../img/date.jpg" alt=""/>
+<h1 style="color:red">JS的模块化</h1>
+<p>原生模块化（未使用模块加载器之前）</p>
+<pre><code>
+var module1 = (function(){
+　　　　var _count = 0;
+　　　　var m1 = function(){
+　　　　　　//...
+　　　　};
+　　　　var m2 = function(){
+　　　　　　//...
+　　　　};
+　　　　return {
+　　　　　　m1 : m1,
+　　　　　　m2 : m2
+　　　　};
+　　})();
+</code></pre>
+<img src="../img/amd_cmd.jpg" alt=""/>
+</body>
+</html>

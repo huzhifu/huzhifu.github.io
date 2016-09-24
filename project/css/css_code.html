@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+        /*通配选择器，可以匹配到页面中的所有元素*/
+        /**{
+            background-color:green ;
+        }*/
+
+        /*后代选择器，选择祖先元素中指定的后代元素*/
+        p strong {
+            color: red;
+
+        }
+
+        p span strong{
+            font-size: 12px;
+        }
+
+        /*子元素选择器，选择父元素下的指定子元素*/
+        p > strong{
+            font-size: 30px;
+        }
+
+        /*相邻兄弟选择器*/
+        strong+em{
+            color: yellow;
+        }
+
+        /*属性选择器*/
+        [title*="te"]{
+            font-size: 140px;
+        }
+
+        /*多个条件的选择器*/
+        button.hello{
+            background-color: orange ;
+        }
+        /*      ///////////////////////////////////////////////////////////       */
+        /*
+			 	:link表示未访问的连接
+			 * */
+        a:link{
+            color: orange;
+        }
+
+        /*
+             :visited表示访问过的连接
+         * */
+        a:visited {
+            color: green;
+        }
+
+
+        /*
+              为鼠标以上的连接来设置样式
+         * */
+        a:hover{
+            color: salmon;
+        }
+
+        /*
+             设置当超链接被鼠标点击时的样式
+         * */
+        a:active{
+            color: black;
+        }
+        input:focus{
+            background-color: red;
+        }
+        button:enabled{
+            color:blue;
+        }
+    </style>
+
+</head>
+<body>
+<p>
+    在我的后园，可以看见墙外有两株树，
+    <span><strong>一株是苹果树</strong></span>
+    <strong>一株是枣树</strong>
+    <em>还有一株也是枣树。</em>
+    <em>还有一株也是枣树。</em>
+</p>
+
+<p><strong>HELLO</strong><em>还有一株也是枣树。</em></p>
+
+<em>还有一株也是枣树。</em>
+
+<button title="" class="hello">我是一个按钮</button>
+<button title="" >我是一个按钮</button>
+
+<p title="aaatebbbb">我是一个段落</p>
+<p>我是一个段落</p>
+<p title="te">我是一个段落</p>
+<p class="hello">我是一个段落</p>
+<p class="hello">我是一个段落</p>
+<!-- /////////////////////////////////////////////////////////////// -->
+<a href="http://www.baidu.com">访问过的连接</a> <br /><br />
+<a href="#">没访问过的连接</a>
+<a href="###">没访问过的连接</a>
+<input type="text" />
+<button>点wo</button>
+</body>
+</html>

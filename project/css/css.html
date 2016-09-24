@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        th,td{
+            text-align: center;
+        }
+        span{
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+<h1>选择器</h1>
+<table border="1" cellpadding="4">
+    <thead>
+        <tr>
+            <th>选择器</th>
+            <th>!important;</th>
+            <th>内联样式</th>
+            <th>id选择器</th>
+            <th>类、伪类、属性选择器</th>
+            <th>元素选择器</th>
+            <th>通配符（*）选择器</th>
+            <th>继承的样式</th>
+            <th>描述</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>权重</td>
+            <td>权重最高</td>
+            <td>1000</td>
+            <td>100</td>
+            <td>10</td>
+            <td>1</td>
+            <td>0</td>
+            <td>没有权重</td>
+            <td>权重高的优先显示，权重相同时后面的覆盖前面的,选择器混合使用，权重为它们之和</td>
+        </tr>
+    </tbody>
+</table>
+<h3 style="color: red">注意：a标签的几个伪类选择器需要一定的顺序，否则某些效果出不来</h3>
+<p>顺序为L-V-H-A,即按照a:link>a:visited>a:hover>a:active这样的顺序使用</p>
+<h3 style="color: green">颜色的表示方法：</h3>
+<li>color:rgb(0,233,78)</li>
+<li>color:rgb(10%,37%,100%)</li>
+<li>color:#ff00ff</li>
+<li>color:#f0f</li>
+<h3 style="color: green">字体的设置：</h3>
+<li><span>字体样式</span>font-family:微软雅黑,宋体,...;</li>
+<li><span>字体加粗</span>font-weight:bold;</li>
+<li><span>字体大小</span>font-size:18px;</li>
+<li><span>字体风格(此处设置为斜体)</span>font-style:italic</li>
+<li><span>设置字母大小写</span>font-variant:small-caps</li>
+<li><span style="background: red;color: blue">font样式简写</span>font:italic bold 60px "微软雅黑"//以上样式顺序不分前后</li>
+<li><span>文字缩进</span>text-indent:2em;//相对于当前标签的字体大小，若当前大小为16px,则2em=32px<span>文本水平对齐方式</span>text-align:center;
+    <span>行高</span>line-height:30px;<span>单词间隔</span>word-spacing;<span>字母间隔</span>letter-spacing;
+    <span>字母大小写转换</span>text-transform: uppercase;<span>文本装饰</span>text-decoration: none;
+    <span>处理元素空白</span>white-space:nowrap;//设置文本不换行，直到br标签为止
+    <span>书写方向</span>direction:rtl
+</li>
+<li><span>font:20px/30px;//设置字体的同时设置行高（字体大小/行高）</span></li>
+<h3 style="color: green">引用网络字体：</h3>
+<img src="../img/font.jpg" alt="引用网络字体截图" title="引用网络字体截图"/>
+<h2><a href="css_code.html">选择器相关代码</a></h2>
+<hr width="80%" color="red" align="left"/>
+<h1>盒模型</h1>
+<img src="../img/box-model.jpg"/>
+<h3 style="color: red">注意：IE6的content指的是除了margin之外的都是</h3>
+<li>盒子默认有一个1px的边框，但是需要 border-style: dotted;把它显示出来</li>
+<li>盒子的宽度默认和父元素一致，高度根据内容撑开</li>
+<li>当为父元素设置常和宽时，子元素的padding设置之后，就会将父元素撑大；
+    当父元素的常和宽没有具体设定时，子元素的padding设置没有将父元素撑大</li>
+<li>margin:0 auto;设置居中</li>
+<li>两个盒子同时设置左右边距的时候，他们的距离是margin之和；两个盒子同时设置上下边距的时候
+    ，他们的距离是较大的那个margin</li>
+<li></li>
+<h3 style="color: green">
+    <span>边框样式</span>border-style:dashed;
+    <span>边框宽度</span>border-width:2px;
+    <span>边框颜色</span>border-color:red;
+    <span>合体</span>border:1px solid green;//ridge垄状边框
+</h3>
+<h3 style="color: green">border-style:solid double dashed ridge <span>同时指定四个方向的样式，width和color类同</span>
+    如果指定四个值：<span>上 右 下 左 </span>
+    如果指定三个值：<span>上  左右  下</span>
+    如果指定两个值：<span>上下  左右</span>
+    如果指定一个值：<span>上下左右全部使用该值</span>
+</h3>
+<h2>浮动</h2>
+<h3 style="color: green">内联元素设置为float之后就变成了块级元素</h3>
+清除浮动的方式
+<li>在浮动的父元素加上overflow：hidden；</li>
+<li>::after{
+    content："";display:block;clear:both;}</li>
+<li>clear:both;</li>
+<li>/以下这种方式兼容性最好/
+    .clearfix:after{content:"\200B";display:block;height:0;clear:both;}
+    .clearfix{*zoom:1;}/*IE/7/6*/</li>
+<h3 style="color: green">
+    <span>内联元素</span>display：inline
+    <span>块级元素</span>display：block
+    <span>内联-块级元素</span>display：inline-block
+</h3>
+<h2>定位</h2>
+<li>position:relative<span>相对定位指的是相对于元素本身的位置，不脱离文本流，不改变元素的性质，使元素上升一层</span></li>
+<li>position:absolute<span>绝对定位指的是相对于设置了position属性最近的祖先元素，如果没有，就相对于浏览器窗口。绝对定位会脱离文本流，元素设置这个属性后就变成了块元素</span></li>
+<li>position:fixed<span>固定定位相对于浏览器窗口，但是这个属性在ie6中不支持</span></li>
+<li>position属性设置后，即可使用top,right,bottom,left和z-index属性，否则这些属性无效</li>
+<h2>居中</h2>
+<li>行内元素居中text-align:center,vertical-align: middle</li>
+<li>块级元素居中margin:0 auto;line-height:该元素的行高</li>
+<li>居中一个浮动元素：
+    <pre><code>
+    .div {
+    width:500px ; height:300px;//高度可以不设
+    margin: -150px 0 0 -250px;
+    position:relative;         //相对定位
+    background-color:pink;     //方便看效果
+    left:50%;
+    top:50%;
+    }
+    </code></pre>
+</li>
+<li>让绝对定位的div居中
+    <pre><code>
+    position: absolute;
+    width: 1200px;
+    background: none;
+    margin: 0 auto;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    </code></pre></li>
+<a href="center.html">更多居中方法</a>
+<h2>背景</h2>
+<h3 style="color: green">
+    <span>背景颜色</span>background-color:red;
+    <span>背景图片</span>background-image:url(1.jpg);//背景图片小的话会默认平铺
+    <span>背景重复</span>background-repeat:no-repeat;
+    <span>背景位置</span>background-position:center//还可以设置具体的x方向和y方向上的数值
+    <span>背景固定</span>background-attachment:fixed;//滑动滚动条时，背景固定在可视窗口的固定位置
+    <span>组合</span>background:yellow url(2.jpg) no-repeat 200px 300px fixed;
+</h3>
+<h3 style="color: red">注意：希望搜索引擎抓取的内容，能设img的尽量用，不希望抓取的用background-img替代</h3>
+<h2>图片整合(雪碧图)</h2>
+<li>好处：节省图片的空间大小，提高浏览器加载图片的速度</li>
+<li>使用步骤：1.设置一个大的宽和高，background-size设置为200px，background-position随便设2.在浏览器先对
+    position进行微调到左上角3.掉宽高调整到合适的大小</li>
+<hr width="80%" color="red" align="left"/>
+<h1 style="color:mediumvioletred;">Photoshop</h1>
+<ol type="A">
+    <h2 style="color: darkviolet">操作快捷键</h2>
+    <li>用四条网格线拖成一个矩形框之后，用虚线框选中，按F8即可查看矩形的宽和高</li>
+    <li>要选择psd文件中的文字，需要先点击ps左边的T选择项。字体的颜色大小样式都在正上方的菜单栏中</li>
+    <li>测量前注意要在右边导航栏右键>首选项>单位和标尺中设置单位为像素</li>
+    <li>裁剪图片时，需要将其选中，然后点击图像>裁剪>存储为web和设备所用格式>点击存储。点击右边的历史记录可以返回到原来的状态</li>
+    <li>裁图的时候，如果图片有多个图层，需要点击左边的鼠标菜单>选择自动选择>选中图层>点一下图片，然后在右边的图层菜单中，去掉不想要的背景图层</li>
+    <li>制作雪碧图（作为背景图片使用）的步骤：用ps打开某一个png图片，选择画布，填写宽高，选择定位来调整方向，然后将别的图片裁剪到当前画布，调整一下位置>存储为web格式png图片</li>
+    <li>在另存为web图片的时候，如果图片不是透明背景的，就应该选用空间大小最少的格式保存（通常gif格式比较小）</li>
+    <li>选择框选择区域时，如果大一点或者小一点，需要点击左侧选择框，选择上方的修补菜单栏进行填补或裁撤图片</li>
+    <li>常用快捷键: <span>全屏</span>tab键 <span>画布调整到100%</span>Ctrl+1 <span>调整到适应窗口大小</span>Ctrl+0
+    <span>在选择图片的时候</span>点左侧尖角菜单>点击相应图片>右侧图层栏中按ctrl去点相应图层就选中图片>按Alt把左边小眼睛
+        去掉，背景图层就出来了，然后再点裁剪 <span>如果想直接裁切出多个图层的时候</span>点击图片，在右侧图层中选择多项图层
+        按Alt现在几乎所有的图层都消失了，再次点击小眼睛选中需要的图层，点击上侧裁切菜单>选择透明像素>点击确定>另存为web...
+        <span>如果想精准测量宽和高，就选中右侧所有图层，然后拖网格线，在图边缘松开，网格线就会吸附到准确的位置</span>
+        Ctrl+H <span>可以隐藏网格线</span>
+    </li>
+    <li><span>切图时</span>要选择左侧的切图工具，给所要选择的图片加上网格线，用切图工具一个一个划出范围，另存为web格式...</li>
+    <li><span>编辑-自由变换</span>（ctrl+t）<span>怎样图片去水印</span> 仿制图章工具（alt键选取）<span>怎样填充颜色选区</span>-shift+backspace <span>选择上方菜单栏可以对图片进行液化操作
+    </span> </li>
+    <li><span>钢笔工具</span>钢笔工具快捷键：ctrl,alt(分别用来操作锚点和手柄)可以抠图和画logo</li>
+    <li><span>动画制作</span>自制动画：
+        窗口-动画
+        复制帧，删除帧
+        播放动画，步进
+        移动位置动画，透明度动画
+        循环次数
+        过渡动画帧
+        动画调板
+    <span>另外可以导入视频制作动画</span>文件>导入视频帧>导入之后按shift按进行帧区间的选取>另存为web格式..</li>
+<li><span>配色神器ColorCube</span>导入自然风景图片>右下角生成>上方导出快照>几种适合的颜色就出来了</li>
+</ol>
+<hr width="80%" color="red" align="left"/>
+<h1 style="color:mediumvioletred;">Hacker技术</h1>
+<ol type="I">
+    <li>条件hacker <br/>
+        <img src="../img/hacker1.jpg" alt=""/>
+    </li>
+    <li>属性hacker <br/>
+        <img src="../img/hacker2.jpg" alt=""/>
+    </li>
+    <li>选择符级hacker <br/>
+        <img src="../img/hacker3.jpg" alt=""/>
+    </li>
+</ol>
+<hr width="80%" color="red" align="left"/>
+<h1>样式初始化</h1>
+<ul>
+    原因
+    <li>- 因为浏览器的兼容问题，不同浏览器对有些标签的默认值是不同的，如果没对CSS初始化往往会出现浏览器之间的页面显示差异。
+        </li>
+    <li>- 当然，初始化样式会对SEO有一定的影响，但鱼和熊掌不可兼得，但力求影响最小的情况下初始化。</li>
+</ul>
+<ul>
+    方法
+    <li>1.最简单的初始化方法： * {padding: 0; margin: 0;} （强烈不建议）</li>
+    <li>2.
+        <pre><code>
+    淘宝的样式初始化代码：
+    body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td { margin:0; padding:0; }
+    body, button, input, select, textarea { font:12px/1.5tahoma, arial, \5b8b\4f53; }
+    h1, h2, h3, h4, h5, h6{ font-size:100%; }
+    address, cite, dfn, em, var { font-style:normal; }
+    code, kbd, pre, samp { font-family:couriernew, courier, monospace; }
+    small{ font-size:12px; }
+    ul, ol { list-style:none; }
+    a { text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    sup { vertical-align:text-top; }
+    sub{ vertical-align:text-bottom; }
+    legend { color:#000; }
+    fieldset, img { border:0; }
+    button, input, select, textarea { font-size:100%; }
+    table { border-collapse:collapse; border-spacing:0; }
+        </code></pre></li>
+</ul>
+<h2><a href="css_code2/index.html">结业小网站相关代码</a></h2>
+</body>
+</html>

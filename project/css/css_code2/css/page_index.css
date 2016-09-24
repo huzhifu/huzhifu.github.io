@@ -1,0 +1,85 @@
+/*设置body的背景*/
+body{background: url(../img/bd_bg.png) repeat-x;}
+
+/*定义整体宽度*/
+#header,#content,#banner,#footer{width: 940px; margin: 0 auto;}
+
+#header{height: 159px;}
+
+/*设置头部信息*/
+#logo{margin-top: 37px; margin-left: 15px;float: left;}
+/*设置导航条*/
+#nav{float: right; margin-top: 54px;}
+	#nav li{float: left; padding: 0 10px; border-left: 1px dotted #d6d6d6;}
+	#nav a{font:bold 14px Georgia; color: #666;text-decoration: none;}
+	#nav a:hover{text-decoration: underline; color: #a29f9f;}
+	#nav p{font:11px Tahoma; color: #b7b7b7;}
+	
+/*设置banner*/
+#banner{height: 357px; background: url(../img/banner_bg.png) no-repeat; position: relative;}	
+	#banner .poniter{width: 105px; height: 17px;position: absolute;left: 19px; bottom: 26px;}
+	#banner .poniter a{float: left; width: 17px; height: 17px; background: url(../img/sprite.png) no-repeat; margin-right: 4px;}
+	#banner .poniter a:hover , #banner .poniter a.active{background: url(../img/sprite.png) -17px 0 no-repeat ;}
+
+/*设置content*/
+#content h2{font:bold 24px Georgia; color: #000; text-align: center; padding-bottom: 20px;}
+	#content_top , #content_bottom{background: url(../img/line.png) no-repeat top center; overflow: hidden; }
+	#content .c_div{width: 300px;float: left; margin-left: 20px;} 
+	#content .left{margin-left: 0px;}
+	#content_top h3{font:21px Georgia; color: #11719e; padding-top: 38px;}
+	#content_top .p_title{font:12px Helvetica; color: #8c8c8c;}
+	#content_top .img{height: 190px; width:293px; background: url(../img/img_bg.png); margin-top:14px ; padding: 12px 0 0 7px; }
+	#content_top .p_content{font:13px/20px Helvetica; color: #3e3e3e; padding: 12px 0 0 6px;}
+	#content_top a{display:block; width: 163px; height: 40px; background: url(../img/btn1.png); font: 12px/40px Helvetica; color: #016999; text-decoration: none; text-indent: 1em; margin: 20px 0 36px 0;}
+	#content_top a:hover{color: #0395d9; text-decoration: underline;}
+	
+	/*content-bottom*/
+	#content_bottom{height: 380px;}
+		#content_bottom .left , #content_bottom .center , #content_bottom .right{height: 100%;position: relative; }
+		#content_bottom h3{height: 23px; font: 18px Georgia; color: #444; padding-top: 42px; border-bottom: 1px dashed #d3d3d3; margin-bottom: 14px;}
+		#content_bottom .p_left{height: 26px;font: 12px/12px Helvetica; color: #444;}
+		
+		#content_bottom .icon{height: 63px;padding-top:2px ;}
+			#content_bottom .icon a{float: left; width: 57px; height: 57px; margin-right: 3px;}
+			#content_bottom .icon .rss{background: url(../img/rss.png) no-repeat;}
+			#content_bottom .icon .fb{background: url(../img/fb.png) no-repeat;}
+			#content_bottom .icon .in{background: url(../img/in.png) no-repeat;}
+			#content_bottom .icon .yt{background: url(../img/yt.png) no-repeat;}
+			#content_bottom .icon .tw{background: url(../img/tw.png) no-repeat;}
+
+		#content_bottom .nl{height: 24px; padding-top: 33px; font: bold 18px "Gill Sans MT";}
+		#content_bottom .left form{height: 90px; }
+		#content_bottom .left .text{margin-top: 10px;}
+		/*#content_bottom .left .submit{margin-top: 14px;}*/
+		
+		
+	
+	#content_bottom .center form{height: 279px; }	
+		#content_bottom .text{width: 296px; height: 33px; background: url(../img/input.png) no-repeat; border: none;}
+		#content_bottom .textarea{width: 296px; height: 136px; background: url(../img/textarea.png) no-repeat; border: none; resize: none; overflow: hidden;}
+		#content_bottom .submit{width: 163px; height: 32px; background: url(../img/btn2.png) no-repeat; border: none; font:13px Georgia; color: white;text-align: left; padding-left: 13px;}
+		#content_bottom .center .text{margin-bottom: 16px;}
+		/*#content_bottom .center .submit{margin-top: 11px;}*/
+		
+		
+		
+	#content_bottom .p_right{height: 236px; }
+	#content_bottom .right p{font: 12px Helvetica; color: #444;border-bottom: 1px dashed #d3d3d3; padding-left: 65px; height: 57px; padding-bottom: 9px; margin-top: 15px; _margin-top: 12px;}
+	#content_bottom .p1{background: url(../img/1.png) no-repeat left top;}
+	#content_bottom .p2{background: url(../img/2.png) no-repeat left top;}
+	#content_bottom .p3{background: url(../img/3.png) no-repeat left top;}
+	#content_bottom .submit{position: absolute; left: 0px; bottom: 23px;}
+
+/*底部的信息*/
+#footer{height: 172px; background-color: #333333; width: 100%; border-top: 10px solid #4c4c4c;}
+	#footer .footer_div{width: 940px; margin: 0 auto; overflow: hidden;}
+	#footer p{font:11px/19px Helvetica; color: #999; margin-top: 16px;}
+	#footer p a{font:11px Helvetica; color: #999; text-decoration: none;}
+	#footer .link{float: left;}
+	#footer .copyright{float: right;}
+	#footer p a:hover{color: #cecece; text-decoration: underline; }
+
+
+
+
+

@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>无标题文档</title>
+		<script>
+/*
+功能说明:
+	1. 点击登陆后, 一周之内都能自动显示上次登陆的用户名
+	2. 点击删除后, 上面的功能失效了
+技术重点:
+	1. 事件监听
+	2. 读取cookie
+	3. 保存持久化cookie
+	4. 删除cookie
+	5. Date对象的操作
+ */
+			window.onload = function () {
+				var usernameEle = document.getElementById("username");
+				document.getElementById("login").onclick = function  () {
+					//将当前输入的用户名保存到cookie(持久化)
+					var username = usernameEle.value;
+					username = encodeURIComponent(username);
+					var date = new Date();
+					date.setTime(date.getTime()+1000*60*60*24);
+					document.cookie = 'name='+username+";expires="+date.toUTCString();
+				};
+				
+				document.getElementById("del").onclick = function () {
+					//删除对应的cookie数据
+					var date = new Date();
+					date.setTime(date.getTime()-1);
+					document.cookie = 'name=;expires='+date.toUTCString();
+				};
+				
+				//显示cookie中的用户名
+				var cookie = document.cookie; //name1=value1; name2=value2
+				if(cookie!='') {//有cookie数据
+					var cs = cookie.split("; ");
+					for(var i=0;i<cs.length;i++) {
+						var keyValue = cs[i].split('=');
+						var key = keyValue[0];
+						if(key=='name') {
+							
+							usernameEle.value = decodeURIComponent(keyValue[1]); //显示保存在cookie的用户名
+							return;
+						}
+					}
+				}
+			};
+			
+		</script>
+	</head>
+
+	<body>
+		<input type="text" id="username" />
+		<input type="button" value="登陆" id="login" />
+		<input type="button" value="删除" id="del" />
+	</body>
+
+</html>

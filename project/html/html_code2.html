@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<!--
+			表单：
+				银行 办银行卡 填一个单子
+				表单的作用就是将用户的信息提交给服务器
+				百度的搜索的框
+			
+			使用form标签去创建一个表单
+			表单中有一个必须填的属性，action，action指向的是一个服务器的地址
+			
+		-->
+		
+		<form action="target.html" method="post">
+			<fieldset>
+				<legend>注册表单</legend>
+
+				<!--
+                    用户填写完数据以后，数据会以键值对的形式发送个服务器
+                    比如：用户填写一个用户名 sunwukong 而文本框的name是username
+                    这个数据就会以 username=sunwukong，服务器里就可以根据username去获取到sunwukong
+                    可以传递多个参数，多个参数之间使用&符来隔开
+                -->
+			
+			<!-- 文本框 ，使用input标签 , type=text，表单项中我们一般需要指定一个name属性-->
+			<!-- 使用value属性为input来指定默认值-->
+			<label for="use">用户名 :</label> <input id="use" type="text" name="username" value="sunwukong" /> <br /><br />
+			
+			<!-- 密码框也是input，只不过他的type是password -->
+			密码 : <input type="password" name="password" placeholder="请输入密码"/> <br /><br />
+			
+			<!-- 单选按钮  同样也是input type是radio ， 单选按钮需要使用name属性进行分组-->
+			<!-- 像这种选择框，不需要用户填写内容，需要指定一个value属性 ,最终被选中的元素的value属性值将会被提交给服务器-->
+			性别 : <input type="radio" name="gender" value="male" id="nan"/><label for="nan">男</label>
+				<input type="radio" name="gender" value="female" checked="checked"  id="nv"/><label for="nv">女</label>  <br /><br />
+			你最喜欢的明星:
+			<select name="star">
+				<optgroup label="男明星">
+					<option value="pcj">潘长江</option>
+					<option value="ldh" selected="selected">刘德华</option>
+				</optgroup>
+				<optgroup label="女明星">
+					<option value="fbb">范冰冰</option>
+					<option value="zw">赵薇</option>
+				</optgroup>
+			</select>
+			<br/>
+			<!-- 多选按钮 ，input标签，type是checkbox -->
+			爱好 : <input type="checkbox" name="hobby" value="ppq" checked="checked" />乒乓球 
+				<input type="checkbox" name="hobby" value="ymq"/>羽毛球 
+				<input type="checkbox" name="hobby" value="lq" checked="checked"/>篮球<br /><br />
+			
+			<!-- 下拉列表，select 使用option在select中创建列表项 
+				 下拉列表的name属性需要指定在select标签中
+				 value属性需要指定到option中
+				 在select中添加一个 multiple="multiple" 可以将下拉列表设置为多选列表
+				
+			-->
+			你最喜欢明星 : <select name="star" >
+							<option value="fbb">范冰冰</option>
+							<option value="lxr">林心如</option>
+							<option value="zw">赵薇</option>
+						</select>
+			
+			<br /><br />
+			
+			<!-- 文本域 textarea  rows指定一共有几行  cols属性一共有几列  -->
+			个人简介 : <textarea rows="5" cols="10" name="info"></textarea>
+			
+			<br /><br />
+			
+			
+			
+			<!-- 提交按钮，同样也是input， type=submit
+				可以通过value属性来修改按钮上的文字
+			-->
+			<input type="submit" value="登录" />
+				<input type="reset" value="重置"/>
+				<button>我是一个按钮</button>
+        </fieldset>
+		</form>
+		
+	</body>
+</html>

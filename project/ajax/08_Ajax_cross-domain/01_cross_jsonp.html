@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+	<h2>测试jsonp解决跨域</h2>
+
+    用户名：<input type="text" name="username" id="name"/>
+    <span id="resultSpan"></span>
+    <br>
+    密码: <input type='password' name='pwd'>
+    <pre><code>
+        //跨域访问服务器端代码
+        router.get('/jsonp',function(req,res,next){
+        var username=req.query.username;
+        var callback=req.query.callback;
+        var result=null;
+        if(username=='admin'){
+        result='<font color="red">不可用</font>'
+        }else{
+        result='<font color="green">可用</font>';
+        }
+        var obj={result:result};
+        res.send(callback+'('+JSON.stringify(obj)+')');
+        });
+    </code></pre>
+</body>
+<script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+<script type="text/javascript">
+    $(function(){
+        $('#name').blur(function(){
+
+            $.getJSON('/jsonp?callback?',{username:this.value},function(data){
+                $('#resultSpan').html(data.result);
+            });
+        });
+    });
+</script>
+</html>

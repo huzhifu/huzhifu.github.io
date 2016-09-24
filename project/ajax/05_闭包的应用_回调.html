@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/jquery-1.10.1.js"></script>
+    <script type="text/javascript">
+        /*
+         闭包的应用1 : 回调函数
+         */
+
+        $(function () {
+            var $input = $('input');
+            $('#btn1').click(function () {
+                console.log($input.val());   //回调函数中引用了外部函数的变量$inpput
+            });
+        });
+
+        /*
+         需求: 每隔1s依次输出1到10
+         */
+        for (var i = 1; i <= 10; i++) {
+/*
+            setTimeout(function () {
+                console.log(i);
+            }, i * 1000);
+*/
+            (function (j) {
+                setTimeout(function () {
+                    console.log(j); //产生闭包(包含j)
+                }, j * 1000);
+            })(i);
+
+        }
+    </script>
+</head>
+<body>
+    <button id="btn1">点我点我</button>
+    <input type="text" name="username">
+</body>
+
+
+</html>

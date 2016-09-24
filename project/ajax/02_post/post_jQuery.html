@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+	<input type="button" value="测试post请求" id="postBtn"/>
+</body>
+<script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#postBtn').click(function () {
+            $.ajax({
+                method : 'POST',
+                url : '/node_ajax/test/post',
+                data : {username : 'Jack2', password: '123123'},
+                success : function (result) {
+                    alert(result);
+                }
+            });
+        });
+
+        /*另一种方法
+         $.post('/node_ajax/test/post',{username : 'Jack2', password: '123123'},function(result){
+         alert(result);
+         },'text');
+        */
+    });
+</script>
+</html>

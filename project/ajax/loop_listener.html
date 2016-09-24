@@ -1,0 +1,38 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+</head>
+<pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+    &lt;script type="text/javascript"&gt;
+        window.onload = function () {
+            var btns = document.getElementsByTagName('button');
+
+            for (var i = 0; i &lt; btns.length; i++) {
+                /*这是第一种方法
+                btns[i].index=i;
+                 btns[i].onclick=function(){
+                    alert(this.index);
+                }*/
+                //第二种方法
+                (function (j) {
+                    btns[j].onclick = function () {//产生闭包(包含btns)
+                        console.log('点击的是第' + j + "个button"); //产生闭包(包含j)
+                    };
+                })(i);
+            }
+        };
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;button&gt;测试1&lt;/button&gt;
+&lt;button&gt;测试2&lt;/button&gt;
+&lt;button&gt;测试3&lt;/button&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+</html>

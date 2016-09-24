@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+	<input type="button" value="测试get请求" id="getBtn"/>
+</body>
+<script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $('#getBtn').click(function () {
+            /*$.ajax({
+                method : 'GET',
+                url : '/node_ajax/test/get',
+                data : {username : 'tom2'},
+                success : function (result) {
+                    alert(result);
+                }
+            });*/
+
+
+            $.get('/test/json', function (result) {
+                alert(result);
+            }, 'json');
+        });
+    });
+</script>
+</html>

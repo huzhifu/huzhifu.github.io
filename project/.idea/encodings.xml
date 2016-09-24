@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/ajax/01_get" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ajax/02_post" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ajax/03_async_sync" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ajax/07_three_move(jQuery+Json)" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ajax/08_Ajax_cross-domain" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/img/kuayu.jpg" charset="UTF-8" />
+  </component>
+</project>

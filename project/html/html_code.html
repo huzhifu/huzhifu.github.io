@@ -1,0 +1,115 @@
+<!-- doctype用来声明网页的版本，html中提供了多个版本html4.01 xhtml，但是我们只要使用html5的doctype就足够了 -->
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>网页的标题</title>
+</head>
+<body>
+<!--
+    HTML的注释，注释的内容不会在网页中直接显示出来，
+    但是会在网页的源码中显示，我们可以在网页对标签进行注释
+-->
+<!-- 网页的主体 -->
+
+<!--<h1>Hello</h1>-->
+
+<!-- 注释不能嵌套 -->
+
+<!-- h1是标题标签中最重要，搜索引擎会主要去检索h1标签中内容，一个页面中只能有一个h1 -->
+<!-- 我们一般只会使用到h3-->
+<h1>一级标题</h1>
+<h2>二级标题</h2>
+<h3>三级标题</h3>
+<h4>三级标题</h4>
+<h5>三级标题</h5>
+<h6>三级标题</h6>
+
+<!-- p标签表示一个段落 -->
+<!-- html中如果内容间有多个空格，甚至换行，浏览器只会显示一个-->
+<p>今天天气真不错，&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PM2.5也就500多</p>
+
+<p>今天天气真不错，<br /> <br /><br />PM2.5也就500多</p>
+
+<!-- 在HTML中出来nbsp还提供了很多的转义字符，< > -->
+&amp;lt;  &copy;
+
+<!-- 使用hr标签来打印一条水平线 -->
+<hr />
+
+<!--上标和下标 -->
+<p>2<sup>2</sup></p>
+<p>范冰冰<sup>[1]</sup></p>
+
+<p>H<sub>2</sub>O</p>
+
+<!-- em标签表示强调的内容，通常浏览器中会将em作为斜体显示 -->
+<p><em>我</em> 是一个好人</p>
+
+<!-- strong表示强调的内容，比em的要更强调，一般浏览器会作为加粗显示 -->
+<p>我是一个 <strong>好人</strong></p>
+
+<!-- i就是一个斜体标签，它和em区别，em有语义，i就是单纯的斜体 -->
+<i>我</i>
+<b>好人</b>
+
+<!-- cite表示引入的内容 -->
+<p>周星驰的<cite>《美人鱼》</cite>挺好看的</p>
+
+<!-- dfn标签用来定义一个专业术语 -->
+<p>美国发现了<dfn>引力波</dfn>，据说比龟派气功波还厉害！</p>
+
+<!-- code标签表示的是一段程序的代码 -->
+<!-- pre预定义格式标签，会将标签的文本，原封不动的输出到页面中，一般使用它来保存程序代码 -->
+<code>
+			<pre>
+public class Hello{
+	public static void main(String[] args){
+		System.out.println("Hello World");
+	}
+}
+			</pre>
+</code>
+
+<hr />
+<p><big><big><big>big</big></big></big>标签可以使字体变大！</p>
+<p><small>small</small>标签可以使字体变小</p>
+<font color="red" size="7">font标签也可以修改字体的大小</font>
+
+<!-- address标签用于表示一个地址，将作者的信息写标签中 -->
+<address title="这是我的联系地址">
+    <p>abc@atguigu.com</p>
+    <p>北京市昌平区</p>
+</address>
+
+<!-- abbr用来表示一个单词缩写 -->
+<!-- 一般abbr需要添加一个属性 title ，来表示缩写完整写法,
+title属性会在鼠标移动到标签上时去显示提示信息
+title属性可以设置到大部分的标签上
+-->
+<abbr title="AtGuiGu">AGG</abbr>
+
+<!-- q标签表示的是一个短引用 -->
+<p>孔子曾经曰过：<q>学而时习之不亦说乎</q></p>
+
+<p>我最喜欢的一首诗<blockquote>锄禾日当午，汗滴禾下土，谁知盘中餐，粒粒皆辛苦</blockquote> 它陪伴我渡过了一个快乐的童年 </p>
+
+<p>我<del>不</del>是一个<ins>好</ins>人</p>
+
+<bdo dir="ltr">我是一个正常的文字方向</bdo>
+
+<br />
+<bdo dir="rtl">倒过来念的是猪</bdo>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+</body>
+</html>

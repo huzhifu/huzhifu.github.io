@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        p{
+            color:green;
+        }
+    </style>
+</head>
+<body>
+<h2>双倍边距问题</h2>
+<p>IE6双倍边距bug，块元素设置margin-left:10px;float:left；的时候产生距左边产生20px的边距。其他浏览器正常</p>
+<p>解决方案是在float的标签样式控制中加入  _display:inline;</p>
+<h2>png图片背景不透明</h2>
+<p>IE6中普通的png图片还会出现一个不透明的背景，此时需要使用png-8格式的图片就可以解决,也可以使用js,如下图</p>
+<img src="../img/png-fix.jpg"/>
+<p>但是对于body的背景图片又无效了，此时可以使用如下代码解决
+ <code>
+     <pre >
+ body{
+  height:300px;
+  _background: none;
+  filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="xxx.png" ,sizingMethod="crop");
+}
+     </pre>
+ </code>
+</p>
+<h2>fixed不支持IE6。opacity不支持IE6-8，透明度的问题可以通过filter:alpha(opacity=50);完美解决</h2>
+<h2>在为a元素设置hover的时候，各个浏览器都可以；为li等其他元素设置时IE6不兼容，此时要尽量把hover给a元素，其他属性也尽量设置到a属
+    性上</h2>
+<h2>float：right设置的时候，可能在IE6中不兼容，需要调整两个元素的顺序</h2>
+<h2>浏览器默认的margin和padding不同。解决方案是加一个全局的*{margin:0;padding:0;}来统一。</h2>
+<h2>IE下,even对象有x,y属性,但是没有pageX,pageY属性;
+    Firefox下,event对象有pageX,pageY属性,但是没有x,y属性。</h2>
+<p>解决方法：（条件注释）缺点是在IE浏览器下可能会增加额外的HTTP请求数。</p>
+<h2> Chrome 中文界面下默认会将小于 12px 的文本强制按照 12px 显示</h2>
+<p> 可通过加入 CSS 属性 -webkit-text-size-adjust: none; 解决。</p>
+<h2><a href="more.html">更多兼容性问题及解决方法</a></h2>
+</body>
+</html>

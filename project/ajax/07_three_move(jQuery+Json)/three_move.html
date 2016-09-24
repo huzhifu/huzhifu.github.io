@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var $province=$('#selProvince');
+        var $city=$('#selCity');
+        var $county=$('#selCounty');
+        $.post('/province',function(provinces){
+            $.each(provinces,function(index,item){
+                $province.append('<option value="'+item.id+'">'+item.province+'</option>');
+            });
+        },'json');
+        $province.change(function () {
+            $city.html('<option value="">--请选择城市--</option>');
+            $county.html('<option value="">--请选择区/县--</option>');
+            if(this.value===''){
+                return;
+            }
+            $.post('/city',{pid:this.value},function(citys){
+                $.each(citys,function(index,item){
+                    $city.append('<option value="'+item.id+'">'+item.city+'</option>');
+                });
+            },'json');
+        });
+        $city.change(function(){
+            $county.html('<option value="">--请选择区/县--</option>');
+            if(this.value===''){
+                return;
+            }
+            $.post('/county',{cid:this.value},function(countys){
+                $.each(countys,function(index,item){
+                    $county.append('<option value="'+item.id+'">'+item.county+'</option>');
+                });
+            },'json');
+        });
+    });
+</script>
+<body>
+<select id="selProvince">
+  <option value="">--请选择省份--</option>
+</select>
+<select id="selCity">
+  <option value="">--请选择城市--</option>
+</select>
+<select id="selCounty">
+  <option value="">--请选择区/县--</option>
+</select>
+<h1>相关的服务器端路由代码在ajax/07_three_move/newIndex.js中</h1>
+</body>
+</html>

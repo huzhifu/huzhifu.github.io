@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h1>1.软件的架构</h1>
+<li>- C/S 客户端/服务器。</li>
+<li>- 我们所有的图像化界面的软件全都是C/S。</li>
+<li>- 所谓的客户端就是用户使用软件的界面。</li>
+<li>- 所谓的服务器端，软件的远程后台，要处理软件的主要的业务逻辑。</li>
+<li>- 特点：
+<li> C/S架构的软件需要在计算机上安装</li>
+<li> 软件更新时客户端也需要更新</li>
+<li> C/S架构的软件往往是不能跨平台使用的</li>
+<li> C/S架构的软件的通信，使用的是自己定义的规则，所以C/S架构的软件安全性较高。</li>
+<li>- B/S 浏览器/服务器</li>
+<li>- B/S本质上也是C/S，只不过B/S的软件使用浏览器作为客户端。</li>
+<li>- B/S是通过访问一个网站的形式来使用软件的，比如：京东 淘宝 12306</li>
+<li>- 特点：</li>
+<li> B/S架构的软件不需要安装，可以直接使用</li>
+<li> 软件更新时，客户端是不需要更新</li>
+<li> B/S架构的软件可以跨平台使用。</li>
+<li> B/S架构，浏览器和服务器之间的通信采用的是HTTP协议，所以安全性较差。</li>
+
+<h1>2.根据w3c标准，将页面分为三个部分：结构、表现、行为。</h1>
+<li>- 结构：HTML</li>
+<li>- 表现：CSS</li>
+<li>- 行为：JavaScript</li>
+<li>- 我们在开发时需要使结构、表现、行为三者分离。</li>
+
+<h1>3.文本文件</h1>
+<li>- 所有的文件在计算机底层都是使用二进制编码的形式保存的</li>
+<li>- 进制：</li>
+<li>十进制：0 1 2 3 4 5 6 7 8 9</li>
+<li>二进制：0 1</li>
+<li>八进制：0 - 7</li>
+<li>十六进制：0 1 2 3 - 9 a b c d e f</li>
+<li>- 0101	文</li>
+<li>- 1010  本</li>
+<li>- 所有的文件都会根据一定的规则转换为二进制编码再计算机底层保存。</li>
+<li>- 规则就是我们所谓的 字符集</li>
+<li>- 常见的字符集：</li>
+<li>ACKII</li>
+<li>ISO-8859-1</li>
+<li>GBK</li>
+<li>GB2312</li>
+<li>UTF-8(万国码)</li>
+<li>- 产生乱码原因字符集不统一</li>
+<h1><a href="html_code.html">4.常见标签相关代码</a></h1>
+<hr width="80%" color="red" align="left"/>
+<h1>1.定义列表dl>dt>dd</h1>
+
+<h2>img中alt表示在图片不能显示的时候，描述图片；在搜索引擎抓取图片的时候，告诉它图片的主要内容</h2>
+
+<ul>
+
+
+
+    <h2>图片的格式：</h2>
+    <li> gif
+        - 图片颜色比较单一的时候
+        - 图像中透明的线条是直线的时候使用gif</li>
+    <li>jpeg
+        - 图片的颜色复杂的时候使用jpeg
+        - jpeg不支持透明</li>
+    <li> png
+        - 图片中透明效果复杂时使用png</li>
+    <li>WebP格式，谷歌（google）开发的一种旨在加快图片加载速度的图片格式。图片压缩体积大约只有JPEG的2/3，并能节省大量的服务器带宽资源和数据空间。Facebook Ebay等知名网站已经开始测试并使用WebP格式。
+        在质量相同的情况下，WebP格式图像的体积要比JPEG格式图像小40%</li>
+</ul>
+<ul>
+    a的target属性
+    <li>_blank表示在一个新的窗口中打开</li>
+    <li>_parent表示在父窗口中打开</li>
+    <li>_self表示在当前窗口打开，还可以指定打开的iframe名，将target设置为这个名字，在iframe中打开</li>
+    <li>_top表示在上一级窗口打开</li>
+    a的其他使用方法
+    <li>a中的target指定#top可以跳转到当前页面的顶部</li>
+    <li>给一个中间或者底部的标签设置一个id，让a的target等于这个id，就可以进行相应的跳转</li>
+</ul>
+<code>
+    <pre>
+       &lt;table border="1" cellspacing="0" cellpadding="0" align="center"&gt;
+        &lt;caption&gt;学生统计表格&lt;/caption&gt;
+           &lt;thead&gt;
+               &lt;tr&gt;
+                   &lt;th&gt;表头1&lt;/th&gt;
+                   &lt;th&gt;表头1&lt;/th&gt;
+                   &lt;th&gt;表头1&lt;/th&gt;
+                   &lt;th&gt;表头1&lt;/th&gt;
+               &lt;/tr&gt;
+           &lt;/thead&gt;
+           &lt;tbody&gt;
+               &lt;tr&gt;
+                   &lt;td&gt;表格&lt;/td&gt;
+                   &lt;td&gt;表格&lt;/td&gt;
+                   &lt;td colspan="2"&gt;表格&lt;/td&gt;
+
+               &lt;/tr&gt;
+               &lt;tr&gt;
+                   &lt;td&gt;表格&lt;/td&gt;
+                   &lt;td&gt;表格&lt;/td&gt;
+                   &lt;td&gt;表格&lt;/td&gt;
+                   &lt;td&gt;表格&lt;/td&gt;
+               &lt;/tr&gt;
+           &lt;/tbody&gt;
+           &lt;tfoot&gt;
+               &lt;tr&gt;
+                   &lt;td&gt;表格&lt;/td&gt;
+                   &lt;td&gt;表格&lt;/td&gt;
+                   &lt;td&gt;表格&lt;/td&gt;
+                   &lt;td&gt;表格&lt;/td&gt;
+               &lt;/tr&gt;
+           &lt;/tfoot&gt;
+       &lt;/table&gt;
+    </pre>
+</code>
+<h1><a href="html_code2.html">2.表单相关代码</a></h1>
+<hr width="80%" color="red" align="left"/>
+<h2>html发展：html(1991)>html4.0.1(1999)>xhtml1.0(2000)>html5(2012)</h2>
+<h2>meta标签不会影响网页在搜索引擎中的排名</h2>
+<h3>
+    <code><pre>
+        &lt;meta name="Keywords" content="HTML,CSS,HTML5,Java,Android"/&gt;
+        &lt;meta name="Description" content="IT培训"/&gt;
+        &lt;meta http-equiv="Refresh" content="3;url=index.html" /&gt;//网页重定向,其中content指定3秒后跳转
+    </pre></code>
+</h3>
+<h3><a href="html_code31.html">frameset代码</a></h3>
+<h2><a href="html_code32.html">网络协议</a></h2>
+</body>
+</html>

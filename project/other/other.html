@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        span{
+           color:darkgreen;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+<h1>cookies，sessionStorage 和 localStorage</h1>
+<h2>1.cookies，sessionStorage 和 localStorage 的区别？</h2>
+<li>定义:
+<ol type="a">
+<li>cookie是网站为了标示用户身份而储存在用户本地终端（Client Side）上的数据（通常经过加密）。</li>
+<li>cookie数据始终在同源的http请求中携带（即使不需要），记会在浏览器和服务器间来回传递。</li>
+<li>sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存。</li>
+</ol>
+</li>
+<li>存储大小:
+<ol type="a">
+<li>cookie数据大小不能超过4k。</li>
+<li>sessionStorage和localStorage 虽然也有存储大小的限制，但比cookie大得多，可以达到5M或更大。</li>
+</ol>
+</li>
+<li>有期时间:
+<ol type="a">
+<li>localStorage    存储持久数据，浏览器关闭后数据不丢失除非主动删除数据；</li>
+<li>sessionStorage  数据在当前浏览器窗口关闭后自动删除。</li>
+<li>cookie          设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭</li>
+</ol>
+</li>
+<h2>2.使用</h2>
+<li>
+    <pre><code>
+        * cookie的操作
+        *保存cookie数据:
+        * document.cookie = 'key=value'
+        * document.cookie = 'key=value;expires=大于当前的时间字符串'
+        *读取cookie数据:
+        * document.cookie   //格式: key1=value1; key2=value2
+        * 遍历cookie中的数据或通过正则表达式找到我们想要的数据
+        *移除cookie数据:
+        * document.cookie = 'key=;expires=小于当前的时间字符串'
+    </code></pre>
+    <a href="04_Cookie/01_cookie.html">相关代码</a><br/>
+    <a href="04_Cookie/练习_记录用户名.html">记录用户名练习</a>
+</li>
+<li>
+    <pre><code>
+        *设置session的值sessionStorage.setItem('key','value');
+        *获得session的值sessionStorage.getItem('key');
+        *移除session的值sessionStorage.removeItem('key');
+        *清除全部session sessionStorage.clear();
+    </code></pre>
+</li>
+<li>
+    <pre><code>
+        if( window.localStorage ){ 
+        localStorage.setItem("name","张三");   //设置name为"张三"
+        v var b = localStorage.getItem("name");  //获取name的值
+        localStorage.removeItem("name");   //清除key为name的值
+        localStorage.clear(); //清楚所有键-值对
+        for(var i=0; i<storage.length;i++){
+        //key(i)获得相应的键，再用getItem()方法获得对应的值
+        document.write(storage.key(i)+ " : " + storage.getItem(storage.key(i)) + "<br>");
+        }
+
+        }
+    </code></pre>
+</li>
+<h2>3.应用程序缓存Application Cache</h2>
+<p style="color:blue">
+    理解：在用户没有与因特网连接时，可以正常访问站点或应用，使用离线存储的资源。在用户与因特网连接时，更新用户机器上的缓存文件。
+    <br/><span style="color:darkviolet">原理：HTML5的离线存储是基于一个新建的.appcache文件的缓存机制(不是存储技术)，通过这个文件上的解析清单离线存
+        储资源，这些资源就会像cookie一样被存储了下来。之后当网络在处于离线状态下时，浏览器会通过被离线存储的数据进行
+        页面展示。</span>
+
+</p>
+<ul>
+    如何使用：
+    <li>1、页面头部像下面一样加入一个manifest的属性；&lt;html lang="en" manifest="cache.appcache"&gt;&lt;/html&gt;</li>
+    <li>2、在文件的同级目录下建一个cache.manifest文件,并编写离线存储的资源；
+        <pre><code>
+    CACHE MANIFEST
+    #v0.11           //版本号
+    CACHE:           //缓存的资源
+    js/app.js
+    css/style.css
+    NETWORK:          //不缓存的资源
+    resourse/logo.png
+    FALLBACK:         //指的是找不到资源时返回的界面如404.html
+    / /offline.html
+        </code></pre>
+    </li>
+    <li>3、在离线状态时，操作window.applicationCache进行需求实现。</li>
+</ul>
+<ol>
+    应用程序缓存为应用带来三个优势：
+    <li>离线浏览 - 用户可在应用离线时使用它们</li>
+    <li>速度 - 已缓存资源加载得更快</li>
+    <li>减少服务器负载 - 浏览器将只从服务器下载更新过或更改过的资源。</li>
+    生命周期：用户清空浏览器缓存
+</ol>
+<hr/>
+<h1>常见的浏览器内核有哪些？</h1>
+<li>Trident内核：IE,MaxThon,TT,The World,360,搜狗浏览器等。[又称MSHTML]</li>
+<li>Gecko内核：Netscape6及以上版本，FF,MozillaSuite/SeaMonkey等</li>
+<li>Presto内核：Opera7及以上。 [Opera内核原为：Presto，现为：Blink;]</li>
+<li>Webkit内核：Safari,Chrome等。 [ Chrome的：Blink（WebKit的分支）]</li>
+<hr/>
+<h1>一个页面从输入 URL 到页面加载显示完成，这个过程中都发生了什么？</h1>
+<li>浏览器根据请求的URL交给DNS域名解析，找到真实IP，向服务器发起请求；</li>
+<li>服务器交给后台处理完成后返回数据，浏览器接收文件（HTML、JS、CSS、图象等）；</li>
+<li>浏览器对加载到的资源（HTML、JS、CSS等）进行语法解析，建立相应的内部数据结构（如HTML的DOM）；</li>
+<li>载入解析到的资源文件，渲染页面，完成。</li>
+<hr/>
+<h1>页面重构 <span>不变、结构、性能、兼容、拓展、压缩、体验..变容展缩能构体</span></h1>
+<p>在不改变原有界面的前提下，简化结构、优化性能、解决跨平台的兼容性、减少耦合、提高可扩展性
+    ，压缩Js,css,image资源提高加载速度，HTTP文件缓存增强用户体验</p>
+
+<hr/>
+<h1>前端工程师的职位是怎么理解的 <span>贴近、效果、沟通、重构、体验、兼容、最新、优化?..新化贴沟效重兼体</span></h1>
+<p>
+<pre><code>
+    前端是最贴近用户的程序员，比后端、数据库、产品经理、运营、安全都近。
+    1、实现界面交互
+    2、提升用户体验
+    3、有了Node.js，前端可以实现服务端的一些事情
+    前端是最贴近用户的程序员，前端的能力就是能让产品从 90分进化到 100 分，甚至更好，
+    参与项目，快速高质量完成实现效果图，精确到1px；
+    与团队成员，UI设计，产品经理的沟通；
+    做好的页面结构，页面重构和用户体验；
+    处理hack，兼容、写出优美的代码格式；
+    针对服务器的优化、拥抱最新前端技术。
+</code></pre>
+</p>
+
+<hr/>
+<h1>平时如何管理你的项目 <span>编码模式、定义样式、标注注释、编写习惯、html/css/js/图片资
+    源分文件夹，以最能体现其内容或功能的单词命名、版本控制</span></h1>
+<p>
+<pre><code>
+    先期团队必须确定好全局样式（globe.css），编码模式(utf-8) 等；
+    编写习惯必须一致（例如都是采用继承式的写法，单样式都写成一行）；
+    标注样式编写人，各模块都及时标注（标注关键样式调用的地方）；
+    页面进行标注（例如 页面 模块 开始和结束）；
+    CSS跟HTML 分文件夹并行存放，命名都得统一（例如style.css）；
+    JS 分文件夹存放 命名以该JS功能为准的英文翻译。
+    图片采用整合的 images.png png8 格式文件使用 尽量整合在一起使用方便将来的管理
+</code></pre>
+</p>
+<script>
+
+</script>
+</body>
+</html>
