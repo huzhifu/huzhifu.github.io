@@ -11,8 +11,18 @@
 </head>
 <body>
 <h1>基本知识</h1>
-<li>基本数据类型：Undefined、Null、Boolean、Number（NaN,Infinity）、String</li>
-<li>引用数据类型：Object、Array、Function</li>
+<li>基本数据类型：Undefined、Null、Boolean、Number（NaN,Infinity）、String复合（引用类型）Function/Array/Object</li>
+<li style="color:blue">typeof : 返回数据类型的字符串值, 用来区别基本数据类型。instanceof : 判断左边的数据是否是右边类型的(boolean值), 用来区别引用类型</li>
+<li>进制：i=017(八进制)，i=0xA1(十六进制)，i=a.toString(num)(num进制，其中a为任意一个数)</li>
+<li>字面量/直接量 例如var a=[];是字面量 var a=new Array()就不是。var o={}是，var o=new Object()就不是</li>
+<li>当数值大于1.79e308为无穷大Infinity,当数值小于-1.79e308为负无穷大-Infinity;"abc"*1=NaN;isNaN(变量)可以判断其是否是NaN</li>
+<li>变量定义了但没赋值就是undefined;console.log(typeof null)输出的是object</li>
+<li>parseInt(15.6)可以取整去小数部分，也可以将字符串转换为数值parseInt('12a')=12</li>
+<li style="color:blue">function a(b,c,d){} a.length=3(也就是参数的个数);console.log(([]+{}).length)=>15;{}.toString()=>"[object Object]"</li>
+<li>标识符就是指程序员定义的变量名；关键字是指js语法中已经使用过的单词；保留字是为将来js语法准备的单词</li>
+<li>toAdd(驼峰命名法)to_add(蛇形命名法)</li>
+<li style="color:blue">将一个数转化为字符串：num+'';将一个字符串转化为数字：+string</li>
+<li style="color:blue">function a(){};第一种： true&&a() 第二种false||a().自己体悟吧！！</li>
 <p>JavaScript的基本规范？</p>
 <li>1.不要在同一行声明多个变量。</li>
 <li>2.请使用 ===/!==来比较true/false或者数值</li>
@@ -169,5 +179,15 @@ var module1 = (function(){
 　　})();
 </code></pre>
 <img src="../img/amd_cmd.jpg" alt=""/>
+<h1 style="color:red">JS的DOM操作</h1>
+<p>基本操作</p>
+<pre><code>
+alert('弹框内容');   document.write('输出内容');   console.log('控制台打印内容');</code></pre>
+<p>小示例</p>
+<pre><code>
+    &lt;button onclick="console.log('哈哈')"&gt;我点&lt;/button&gt;
+    &lt;a href="javascript:alert('呵呵')"&gt;点我&lt;/a&gt;
+</code></pre>
+<img src="../img/js-noscript.jpg" alt=""/>
 </body>
 </html>

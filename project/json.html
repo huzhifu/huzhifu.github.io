@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <title>ajax读取json文件</title>
+</head>
+<body>
+<button>点我</button>
+<script src="jquery.js"></script>
+<script>
+    $(function(){
+        $('button').click(function(){
+
+            /*$.ajax({
+                method : 'GET',
+                url : 'json.json',
+                success : function (result) {
+                    console.log(result);
+                }
+            });*/
+
+            $.ajax({
+                type:"get",
+                url:"json.json",
+                async:true,
+                //data:id,
+                dataType:'json',
+                success:function(data){
+                    console.log(data);
+                    $('body').append("<a>"+data.name+"</a>");
+                }
+            });
+        })
+
+    });
+</script>
+</body>
+</html>
