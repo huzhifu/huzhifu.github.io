@@ -5,10 +5,61 @@
     <title></title>
 </head>
 <body>
+<p>push：添加元素到数组结尾，unshift添加到开头；pop从数组结尾移除元素，shift从数组开头移除元素;delete arr[index],把数组中的index下标的元素变成undefined，数组长度不变</p>
+<p>slice( 下标为m开始截取到下标为n)截取数组的一部分返回</p>
+<p>splice(从下标为XX开始，删除n个元素，插入元素.,.,.)：splice(index,1)删除下标为index的元素；splice(index,0,num)在index下标的位置添加一个元素num；splice(index,1,num)替换下标为index的元素为num</p>
+<p>forEach:循环、遍历数组；没有返回值。与for循环类似</p>
+<pre><code>
+ array.forEach(function( value, index, array ) {
 
-<p>map:映射</p>
+        console.log(value);
+ } );
+</code></pre>
+<p>map(通常用于赋值):映射的意思，映射返回一个新数组，有返回值;filterArr:返回一个新对象 </p>
+<pre><code>
+    var mapArr = array.map(function(value, index, array ){
+
+        return value *  value;
+    });
+</code></pre>
 <img src="../img/map.jpg" alt=""/>
-<p>reduce:可以作累加或累乘</p>
+<p>filter(通常用于判断):过滤、筛选的意思; 有返回值; filterArr:返回过滤后新数组</p>
+<pre><code>
+    var filterArr = array.filter(function(value, index, array ) {
+        if ( value > 20 ) {
+            return true;
+        }
+        return false;
+    });
+</code></pre>
+<p>everyArr:每一个、每一项意思; 有返回值; every:返回boolean  true or false</p>
+<pre><code>
+    var everyArr = array.every(function(value, index, array){
+        if ( value > 1 ) {
+            return true;
+        }
+    });
+</code></pre>
+<p>some意指“某些”，指是否“某些项”合乎条件。(注意和every比较，只会返回一个满足的值)</p>
+<pre><code>
+    array.some(function(value, index, array){
+        if ( value > 1 ) {
+        return true;
+        }
+    });
+</code></pre>
+<p>indexOf:第一个是检索的值，第二个是需要检索的位置从0开始 </p>
+<pre><code>
+    console.log(array.indexOf(23,0));
+</code></pre>
+
+<p>reduce:迭代（可以作累加或累乘）</p>
+<pre><code>
+    var reduce = [1,2,3,4].reduce(function(prev, curr, index, array) {
+        console.log(prev +"  "+ curr);
+        return prev + curr;
+    });
+</code></pre>
 <img src="../img/reduce.jpg" alt=""/>
 </body>
 </html>
