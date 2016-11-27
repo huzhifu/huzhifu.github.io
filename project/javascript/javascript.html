@@ -14,15 +14,104 @@
 <li>基本数据类型：Undefined、Null、Boolean、Number（NaN,Infinity）、String复合（引用类型）Function/Array/Object</li>
 <li style="color:blue">typeof : 返回数据类型的字符串值, 用来区别基本数据类型。instanceof : 判断左边的数据是否是右边类型的(boolean值), 用来区别引用类型</li>
 <li>进制：i=017(八进制)，i=0xA1(十六进制)，i=a.toString(num)(num进制，其中a为任意一个数)</li>
-<li>字面量/直接量 例如var a=[];是字面量 var a=new Array()就不是。var o={}是，var o=new Object()就不是</li>
+<li>字面量/直接量(直接表达数据的方式) 例如var a=[];是字面量 var a=new Array()就不是。var o={}是，var o=new Object()就不是</li>
 <li>当数值大于1.79e308为无穷大Infinity,当数值小于-1.79e308为负无穷大-Infinity;"abc"*1=NaN;isNaN(变量)可以判断其是否是NaN</li>
 <li>变量定义了但没赋值就是undefined;console.log(typeof null)输出的是object</li>
-<li>parseInt(15.6)可以取整去小数部分，也可以将字符串转换为数值parseInt('12a')=12</li>
-<li style="color:blue">function a(b,c,d){} a.length=3(也就是参数的个数);console.log(([]+{}).length)=>15;{}.toString()=>"[object Object]"</li>
+<li>parseInt(15.6)可以取整去小数部分，也可以将字符串转换为数值parseInt('12a')=12;Math.floor(num)去小数取整。Math.Random(num)四舍五入</li>
+<li style="color:blue">function a(b,c,d){} a.length=3(也就是参数的个数);console.log(([]+{}).length)=>15;{}.toString()=>"[object Object]" 一个{}+别的东西就会自动调用{}.toString()方法</li>
 <li>标识符就是指程序员定义的变量名；关键字是指js语法中已经使用过的单词；保留字是为将来js语法准备的单词</li>
 <li>toAdd(驼峰命名法)to_add(蛇形命名法)</li>
-<li style="color:blue">将一个数转化为字符串：num+'';将一个字符串转化为数字：+string</li>
+<li style="color:blue">将一个数转化为字符串：num+'';将一个字符串转化为数字：+string或string*1或parseInt(string)</li>
 <li style="color:blue">function a(){};第一种： true&&a() 第二种false||a().自己体悟吧！！</li>
+<li>a++先运算（取值）再自增，++a先自增在运算（取值）</li>
+<li style="color:blue">var a=1; a=a++ + ++a;console.log(a);a=>4详解：
+    a++:将a为1取出来运算，a为2赋值给内存;
+    ++a:此时a为2.将a为3赋值给内存，a为3取出来运算;
+    a=1+3:此时将a=4赋值给内存;
+    console.log(a)将a从内存读出为4.
+</li>
+<li>var a='';a.constructor=>function String(){[native code]}</li>
+<li>do...while是不满足条件的情况下，也会执行一次；while是不满足条件的话，不会执行中间的语句</li>
+<li>for(;;){}会死循环。continue跳过当次循环，进入下次循环</li>
+<li>for(expression1;expression2;expression3) {
+    statements;
+    }
+    说明:
+    1. 第 一个执行的是expression1, 一般是赋值;
+    2. 第二个执行的是expression2, 它是一个boolean结果的表达式
+    结果为false: 结束循环, 循环体就一次都未执行
+    结果为true: 进入3;
+    3. 第三个执行循环体语句statements;
+    4. 第四个执行expression3, 可能会影响到expression2的结果(导致为false);
+    5. 进入2</li>
+<li style="color:blue">var arr=[...];for(var i in arr)可以取到数组的下标（对象的key）。for(var i of arr)可以取到数组的元素（对象的value）</li>
+<li>
+    定义函数（复用代码；模块化，便于阅读）：
+    *方式一: function语句（这种方式调用函数可以在定义函数前后）
+    function 函数名称([形参,...]){
+    代码段;
+    return 返回值;
+    }
+    *方式二: 函数字面量（这种方式调用函数只能在定义函数后）
+    var 名称 = function ([形参,...]){
+    代码段;
+    return 返回值;
+    }
+    *方式三: new Function()
+    var 名称 = new Function("形参1","形参2", "函数体代码段");
+    *注意
+    函数名: 严格区分大小写, 要有意义,驼峰标记法,  如果重复了后面覆盖前面的；
+    形参只要指定名称即可, 可以没有, 也可以多个；
+    function语句后面不用加分号, 而函数直接量后要加分号；
+    函数可以有返回值, 也可以没有, 没有时返回的是undefined；
+    如果不调用函数, 函数体不会执行
+    *参数
+    实参个数可以与形参个数不同；
+    如果实参多了, 后面多的实参会被忽略；
+    如果实参少了, 后面多的形参会赋值为undefined；
+    在函数体中可以通过arguments来操作实参；
+    arguments : 实参的数组
+    arguments.length: 实参的个数
+    arguments[i] : 某个参数
+</li>
+<li>function fun(){j=0}此时j在函数外面也可以用到，这叫做变量的提升；如果var j=0就只能在函数内部使用</li>
+<li style="color:blue">一段简单而又神奇的代码：var i=5;function fun(){console.log(i);var i=7;}输出结果是"undefined"若函数体中var 去掉，结果为5</li>
+<li>对象的分类
+    *按功能分
+    函数
+    数组
+    对象(Object)
+    *按定义者分
+    >ECMAScript定义的
+    ***构造函数对象
+    Object
+    Array
+    Function
+    Date
+    RegExp
+
+    Number
+    Boolean
+    String
+    ***一般函数对象
+    parseInt()
+    isNaN()
+    EncodeURI()
+    ......
+    ***对象(object)
+    Math
+    >浏览器BOM和DOM定义的
+    window
+    document
+    ......
+    >程序员自定义的
+    函数
+    数组
+    对象(Object)</li>
+<li>function fun(){}； new fun()是一个构造函数，返回的是一个对象</li>
+<li>创建对象的三种方式：1.new Object() 2.{...} 3.new 构造函数():function Person(name,age){this.name=name;this.age=age;}  var p=new Person('li',24)</li>
+<li style="color:blue" >console.log(this)如果在html的script的标签中，指的是全局变量window，如果是在node中指的是全局变量global</li>
+<li>创建数组的两种方式：1.[,,,]2.new Array()如果Array()的括号里有数值，则指定了数组元素的个数</li>
 <p>JavaScript的基本规范？</p>
 <li>1.不要在同一行声明多个变量。</li>
 <li>2.请使用 ===/!==来比较true/false或者数值</li>
@@ -153,10 +242,8 @@
 <h1 style="color:red">JS的常用类型及方法</h1>
 <p>Array</p>
 <img src="../img/array.jpg" alt=""/>
-<p>map:映射</p>
-<img src="../img/map.jpg" alt=""/>
-<p>reduce:可以作累加或累乘</p>
-<img src="../img/reduce.jpg" alt=""/>
+<br/>
+<a href="js_code.html" style="color: red">array方法详解</a>
 <p>String</p>
 <img src="../img/string.jpg" alt=""/><br/>
 <p>Date</p>
@@ -182,7 +269,7 @@ var module1 = (function(){
 <h1 style="color:red">JS的DOM操作</h1>
 <p>基本操作</p>
 <pre><code>
-alert('弹框内容');   document.write('输出内容');   console.log('控制台打印内容');</code></pre>
+alert('弹框内容');   document.write('输出内容');   console.log('控制台打印内容');  prompt('确定/取消弹框');</code></pre>
 <p>小示例</p>
 <pre><code>
     &lt;button onclick="console.log('哈哈')"&gt;我点&lt;/button&gt;
