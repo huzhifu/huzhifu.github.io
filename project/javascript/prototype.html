@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>原型链</title>
+</head>
+<body>
+<h2>原型</h2>
+<h3>原型的基本理解</h3>
+<li>所有的函数都有一个特别的属性, 属性名为prototype, 属性值默认为{}</li>
+<li>所有的实例对象都自动拥有了类型函数对象的prototype对象的属性/方法(继承)</li>
+<li>构造函数的原型(对象)是其所有实例对象的父对象</li>
+<li>Javascript的基本继承就是基于原型的继承</li>
+<h3>原型的基本使用</h3>
+<pre><code>
+    function Fun(){}
+    var f = new Fun();
+    Fun.prototype.xxx = value;
+    f.xxx; --->value
+</code></pre>
+<h3>分析原型(画内存图)</h3>
+<li>每个函数function都有一个prototype，即原型, 默认为{}</li>
+<li>每个实例对象都有一个__proto__，称为隐式原型</li>
+<li>对象的__proto__与对应的构造函数的prototype指向同一个对象</li>
+<h3>对象查找属性的流程</<li>
+<li>从自己内部查找, 如果找到了直接返回, 否则进入2</li>
+<li>从__proto__所指向的对象(也就是原型)中查找, 如果找到了返回, 否则进入3</li>
+<li>从原型对象的_proto__所指向的对象中查找, 如果找到返回, 否则继续向上一级原型中查找, 直到找到或没有原型了返回undefined为止</li>
+<h3>内存运行分析:</h3>
+<li>全局栈: 全局变量-->js开始执行就产生, 关闭页面消失</li>
+<li>函数栈: 局部变量-->调用函数才产生, 函数执行结束消失</li>
+<li>堆空间的对象什么时候被回收: 在栈空间中没有一个变量指向它, 它就是垃圾对象, 就应该被自动回收</li>
+<h2>内置对象  Object</h2>
+<h3>理解:</h3>
+<li>所有对象的超类类型</li>
+<li>Object中定义的属性/方法, 所有的对象都自动拥有</li>
+<h3>创建此类对象:</h3>
+<li>new Object() / {}</li>
+<li>{name:value,name2:value2...}</li>
+<h3>操作属性:</h3>
+<li>obj.constructor : 指向用于创建当前对象的构造函数对象的引用</li>
+<li>Object.prototype：原型对象</li>
+<li>obj.__proto__ : 原型对象</li>
+<h3>调用方法:</h3>
+<li>obj.hasOwnProperty(propertyName) 检查对象是否有自己定义属性/方法</li>
+<li>原型对象.isPrototypeOf(实例对象) 检查对象是否是指定对象的原型</li>
+<li>对象.toString() 返回对象的字符串表示</li>
+
+
+</body>
+</html>
