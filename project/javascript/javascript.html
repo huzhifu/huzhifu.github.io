@@ -17,7 +17,7 @@
 <li>字面量/直接量(直接表达数据的方式) 例如var a=[];是字面量 var a=new Array()就不是。var o={}是，var o=new Object()就不是</li>
 <li>当数值大于1.79e308为无穷大Infinity,当数值小于-1.79e308为负无穷大-Infinity;"abc"*1=NaN;isNaN(变量)可以判断其是否是NaN</li>
 <li>变量定义了但没赋值就是undefined;console.log(typeof null)输出的是object</li>
-<li>parseInt(15.6)可以取整去小数部分，也可以将字符串转换为数值parseInt('12a')=12;Math.floor(num)去小数取整。Math.Random(num)四舍五入</li>
+<li>parseInt(15.6)可以取整去小数部分，也可以将字符串转换为数值parseInt('12a')=12;Math.floor(num)去小数取整。Math.Random(num)四舍五入。Number.toFixed(digits) 取小数点后多少位, 去除部分四舍五入</li>
 <li style="color:blue">function a(b,c,d){} a.length=3(也就是参数的个数);console.log(([]+{}).length)=>15;{}.toString()=>"[object Object]" 一个{}+别的东西就会自动调用{}.toString()方法</li>
 <li>标识符就是指程序员定义的变量名；关键字是指js语法中已经使用过的单词；保留字是为将来js语法准备的单词</li>
 <li>toAdd(驼峰命名法)to_add(蛇形命名法)</li>
@@ -117,6 +117,10 @@
     ;若var b=a,此时b的属性方法也与a相同，但它们指向相同的引用，a的属性或方法的变化会引起b相应的变化。</li>
 <li><a href="prototype.html" style="color:red">原型</a></li>
 <li style="color:blue"><span style="font-size: 30px">在ES6中</span>箭头函数(arg)=>(a+b)等价于(arg)=>{return a+b;}</li>
+<li style="color:red">Error:  1.ReferenceError(引用错误) 在读取不存在的变量时抛出
+    2.TypeError 当一个值的类型错误时，抛出该异常
+    3.SyntaxError 语法异常</li>
+<li>0.1+0.2问题，得到0.30000000000000004.解决：function fix(num,digits){return num.toFixed(digits)*1}  fix(0.1+0.2,2)</li>
 <p>JavaScript的基本规范？</p>
 <li>1.不要在同一行声明多个变量。</li>
 <li>2.请使用 ===/!==来比较true/false或者数值</li>
@@ -162,7 +166,7 @@
     getElementsByName()
     getElementById()    <span style="color:red">//通过元素Id，唯一性 </span></li>
 <p>.call() 和 .apply() 的区别？</p>
-
+<li style="color: red">fun.call(obj, parameters参数) 将函数作为对象的方法调用;fun.apply(obj, parameters数组) 将函数作为一个对象的方法调用</li>
 <li>var arr=[3,1];add.call(sub,3,1) == add.apply(sub,arr)</li>
 <li style="color: blue">Array.apply(null, {length:5})将会生成了一个长度为5的数组，每个元素都是undefined;
 <pre><code>      //生成一个[3,3,3,3,3]
@@ -259,6 +263,9 @@
 <img src="../img/string.jpg" alt=""/><br/>
 <p>Date</p>
 <img src="../img/date.jpg" alt=""/>
+<p style="color: red;;">例如：var date=new Date();date.setTime(date.getTime()+1000*60*60*24*2);//两天之后</p>
+<p>RegExp</p>
+<a href="RegExp.html"  style="color: red">正则相关说明</a>
 <h1 style="color:red">JS的模块化</h1>
 <p>原生模块化（未使用模块加载器之前）</p>
 <pre><code>

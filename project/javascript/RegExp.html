@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>正则表达式</title>
+</head>
+<body>
+<h2>正则表达式语法:</h2>
+<ol>1. 元字符（Metacharacter）是拥有特殊含义的字符
+<ol>. : 匹配任意一个字符</ol>
+<ol>\w : 匹配单词   (A-Za-z0-9_)</ol>
+<ol>\w : 匹配非单词   (A-Za-z0-9_以外)</ol>
+<ol>\d : 匹配数字</ol>
+<ol>\D : 匹配非数字</ol>
+</ol>
+<ol>2. 方括号用于查找某个范围内的字符
+<ol>[bcd] :　b,c,d中任意一个</ol>
+<ol>[0-9] : 0到9中任意一个</ol>
+<ol>[a-zA-Z] : 任意大小写的字母</ol>
+</ol>
+<ol>3. 量词: 指定匹配的字符可以有多少个
+<ol>? : 0个或1个</ol>
+<ol>* : >=0个</ol>
+<ol>+ : >=1个</ol>
+<ol>{num} : num个</ol>
+<ol>{num1,num2}: num1到num2个</ol>
+<ol>{num1,}: >=num1个</ol>
+</ol>
+<ol>4. 以什么开头与结尾
+<ol>^ : 以右边的开头</ol>
+<ol>$ : 以左边的结尾</ol>
+</ol>
+<ol>5. 或者
+<ol>| : 左边或右边的字符串</ol>
+</ol>
+<h2>正则表达式对象:</h2>
+<ol>方式一: new RegExp(pattern, attributes)</ol>
+<ol>方法二: /pattern/attributes (一般用此方式)
+pattern: 为模式字符串
+attributes: 可选的字符串, 可以为:
+<ol>i : 忽略大小写(ignoreCase)</ol>
+<ol>g : 全局匹配(global)</ol>
+<ol>m : 多行匹配(multiline)</ol>
+</ol>
+<h2>方法调用:</h2>
+<li>exec(string): 从string中找出匹配的字符串, 返回匹配的字符串组成的数组</li>
+<li>test(string): 检测字符串是否匹配某个模式, 返回的是boolean值</li>
+<h2>String对象的相关方法</h2>
+<li>search(reg): 检索与正则表达式相匹配的子串, 找到返回其下标,否则返回-1 功能类似于reg.test(str)</li>
+<li>match(reg) : 返回匹配的第一个或所有子串组成的数组</li>
+<li>replace(reg, newString) : 将匹配的子串替换为新的字符串</li>
+<li>split(reg) : 用匹配的子串将字符串分隔成数组 </li></body>
+</html>
