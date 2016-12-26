@@ -54,5 +54,11 @@
 <img src="../img/regexp.jpg" alt=""/>
 <img src="../img/regexp1.jpg" alt=""/>
 <li>split(reg) : 用匹配的子串将字符串分隔成数组</li>
+<div style="color:red">
+    <h3>一个较为复杂的例子</h3>
+<li>articleDetail.content = articleDetail.content.replace(/&lt;a [^&gt]*href=['"]([^'"]+)[^&gt;]*>/g, '&lt;p class="text_link_color" ng-click="' + "action.onOuterLinkClicked('$1')" + '"&gt');</li>
+<li>articleDetail.content=articleDetail.content.replace( /&lt;\/a&gt;/g,"&lt;/p&gt;");</li>
+ <img src="../img/regexp2.jpg" alt=""/>
+</div>
 </body>
 </html>
