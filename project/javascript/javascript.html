@@ -165,6 +165,11 @@
     getElementsByTagName()    <span style="color:red">//通过标签名称 </span>
     getElementsByName()
     getElementById()    <span style="color:red">//通过元素Id，唯一性 </span></li>
+<li>（4）属性操作
+    setAttribute(name,value)     <span style="color:red">//设置属性值</span>
+    removeAttribute(name)     <span style="color:red">//删除属性</span>
+    getAttribute('type')     <span style="color:red">//用来取得属性的值</span>
+</li>
 <p>.call() 和 .apply() 的区别？</p>
 <li style="color: red">fun.call(obj, parameters参数) 将函数作为对象的方法调用;fun.apply(obj, parameters数组) 将函数作为一个对象的方法调用</li>
 <li>var arr=[3,1];add.call(sub,3,1) == add.apply(sub,arr)</li>
@@ -294,7 +299,10 @@ var module1 = (function(){
 <h1 style="color:red">JS的DOM操作</h1>
 <p>基本操作</p>
 <pre><code>
-alert('弹框内容');   document.write('输出内容');   console.log('控制台打印内容');  confirm('确定/取消弹框'); prompt('确定/取消弹框（含输入框）');</code></pre>
+alert('弹框内容');   document.write('输出内容');   console.log('控制台打印内容');  confirm('确定/取消弹框'); prompt('确定/取消弹框（含输入框）');
+setTimeout(code,ms);//超时,返回timeoutId   clearTimeout(timeoutId);//清除超时  setInterval(code,ms);//循环执行  clearInterval(intervalId)//清除
+scrollBy(X,Y);//按照指定像素值滚动  scrollTo(X,Y);//把内容滚动到指定坐标  window.open(url);//打开指定链接 window.close();//关闭当前窗口
+</code></pre>
 <p>小示例</p>
 <pre><code>
     &lt;button onclick="console.log('哈哈')"&gt;我点&lt;/button&gt;

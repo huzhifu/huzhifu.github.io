@@ -12,5 +12,10 @@
 <body>
 <h3>典型例子</h3>
 <img src="../img/dom1.jpg" alt=""/>
+<li>var btnNode=getElementById("btn"); btnNode.innerHTML===btnNode.firstChild.nodeValue（都可以用来取节点的值，还可以取节点名和节点类型分别用nodeName/nodeType）对于表单元素来说，可以直接eleNode.value来取值</li>
+<li>formEles=document.forms(得到页面中所有表单对象);formEles[i].id(可以得到某个表单的id)</li>
+<li>var childEles=ParentNode.children;(得到父元素下的所有子元素)</li>
+<li>var nextEle=nodeEle.nextSibling(得到元素的相邻节点)</li>
+<li>如果input的type为radio，那么inputEle.checked可以判断是否选中</li>
 </body>
 </html>
