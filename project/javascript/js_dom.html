@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Dom操作</title>
     <style type="text/css">
-        h3{
+        h3 {
             color: green;
         }
     </style>
@@ -12,10 +12,413 @@
 <body>
 <h3>典型例子</h3>
 <img src="../img/dom1.jpg" alt=""/>
-<li>var btnNode=getElementById("btn"); btnNode.innerHTML(Text)===btnNode.firstChild.nodeValue（都可以用来取节点的值，还可以取节点名和节点类型分别用nodeName/nodeType）对于表单元素来说，可以直接eleNode.value来取值</li>
+<li>var btnNode=getElementById("btn");
+    btnNode.innerHTML(Text)===btnNode.firstChild.nodeValue（都可以用来取节点的值，还可以取节点名和节点类型分别用nodeName/nodeType）对于表单元素来说，可以直接eleNode.value来取值
+</li>
 <li>formEles=document.forms(得到页面中所有表单对象);formEles[i].id(可以得到某个表单的id)</li>
 <li>var childEles=ParentNode.children;(得到父元素下的所有子元素)</li>
-<li>var nextEle=nodeEle.nextSibling(得到元素的相邻节点)</li>
+<li>var nextEle=nodeEle.nextSibling(得到元素的相邻下一个节点) previousSibling上一个节点</li>
 <li>如果input的type为radio，那么inputEle.checked可以判断是否选中</li>
+<li>parentNode.firstChild==parentNode.children[0]</li>
+<li>eleNode.focus()//使元素获得焦点</li>
+<h1>事件相关</h1>
+<img src="../img/event1.jpg" alt=""/><br/>
+<img src="../img/event2.jpg" alt=""/>
+<h2>**爱好选择器**</h2>
+
+<form method="post" action="">
+    你爱好的运动是？<input type="checkbox" id="checkedAllBox"/>全选/全不选
+
+    <br/>
+    <input type="checkbox" name="items" value="足球"/>足球
+    <input type="checkbox" name="items" value="篮球"/>篮球
+    <input type="checkbox" name="items" value="羽毛球"/>羽毛球
+    <input type="checkbox" name="items" value="乒乓球"/>乒乓球
+    <br/>
+    <input type="button" id="checkedAllBtn" value="全　选"/>
+    <input type="button" id="checkedNoBtn" value="全不选"/>
+    <input type="button" id="checkedRevBtn" value="反　选"/>
+    <input type="button" id="sendBtn" value="提　交"/>
+</form>
+<h2>**增删记录**</h2>
+<table id="employeeTable">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Salary</th>
+        <th>&nbsp;</th>
+    </tr>
+    <tr>
+        <td>Tom</td>
+        <td>tom@tom.com</td>
+        <td>5000</td>
+        <td><a href="deleteEmp?id=001">Delete</a></td>
+    </tr>
+    <tr>
+        <td>Jerry</td>
+        <td>jerry@sohu.com</td>
+        <td>8000</td>
+        <td><a href="deleteEmp?id=002">Delete</a></td>
+    </tr>
+    <tr>
+        <td>Bob</td>
+        <td>bob@tom.com</td>
+        <td>10000</td>
+        <td><a href="deleteEmp?id=003">Delete</a></td>
+    </tr>
+</table>
+
+<div id="formDiv">
+
+    <h4>添加新员工</h4>
+
+    <table>
+        <tr>
+            <td class="word">name: </td>
+            <td class="inp">
+                <input type="text" name="empName" id="empName" />
+            </td>
+        </tr>
+        <tr>
+            <td class="word">email: </td>
+            <td class="inp">
+                <input type="text" name="email" id="email" />
+            </td>
+        </tr>
+        <tr>
+            <td class="word">salary: </td>
+            <td class="inp">
+                <input type="text" name="salary" id="salary" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <button id="addEmpButton" value="abc">
+                    Submit
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>
+<h2>**注册表单验证**</h2>
+<div id="content">
+    <table width="950" border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#99ccff">
+        <form name="userfrm" method="post" action="register_success.htm">
+            <tr>
+                <td width="160" align="right" bgcolor="#e7fbff">登录名：</td>
+                <td align="left" bordercolor="#e7e3e7">
+                    <input name="sname" type="text" class="register_textbroader" id="sname" size="24"> （6到8位字符, 包含 a-z、0-9 和下划线）</td>
+            </tr>
+            <tr>
+                <td width="160" align="right" bgcolor="#e7fbff">密码：</td>
+                <td align="left" bordercolor="#e7e3e7">
+                    <input name="pass" type="password" class="register_textbroader" id="pwd" size="26"> （至少包含 6 个字符） </td>
+            </tr>
+            <tr>
+                <td width="160" height="0" align="right" bgcolor="#e7fbff">确认密码：</td>
+                <td height="0" align="left" bordercolor="#e7e3e7">
+                    <input name="rpass" type="password" class="register_textbroader" id="pwd2" size="26"> (与密码一致)
+                </td>
+            </tr>
+            <tr>
+                <td width="160" height="0" align="right" bgcolor="#e7fbff">电子邮箱：</td>
+                <td height="0" align="left" bordercolor="#e7e3e7">
+                    <input name="email" type="text" class="register_textbroader" id="email" size="24">（必须满足邮箱格式）</td>
+            </tr>
+            <tr>
+                <td width="160" align="right" bgcolor="#e7fbff">性别：</td>
+                <td align="left" bordercolor="#e7e3e7">
+                    <input name="gen" type="radio" value="男" checked> 男&nbsp;
+                    <input name="gen" type="radio" value="女" class="input"> 女
+                </td>
+            </tr>
+            <tr>
+                <td width="160" align="right" bgcolor="#e7fbff">爱好：</td>
+                <td align="left" bordercolor="#e7e3e7">
+                    <label>
+                        <input type="checkbox" name="checkbox" value="checkbox">
+                    </label>
+                    运动&nbsp;&nbsp;
+                    <label>
+                        <input type="checkbox" name="checkbox2" value="checkbox">
+                    </label>
+                    聊天&nbsp;&nbsp;
+                    <label>
+                        <input type="checkbox" name="checkbox22" value="checkbox">
+                    </label>
+                    玩游戏
+                </td>
+            </tr>
+
+            <tr>
+                <td width="160" height="35" align="right" bgcolor="#e7fbff">
+                    <input type="reset" name="reset" value=" 重   填 ">
+                </td>
+                <td height="35" align="left" bordercolor="#e7e3e7">
+                    <input type="submit" name="button" value="同意以下服务条款，提交注册信息">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <table width="760" border="0">
+                        <tr>
+                            <td height="36">
+                                <h4>阅读服务协议 </h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="120">
+										<textarea name="textarea" cols="80" rows="6">
+											欢迎阅读服务条款协议，本协议阐述之条款和条件适用于您使用taobao.com网站的各种工具和服务。 本服务协议双方为淘宝与淘宝网用户，本服务协议具有合同效力。 淘宝的权利和义务 1.淘宝有义务在现有技术上维护整个网上交易平台的正常运行，并努力提升和改进技术，使用户网上交易活动的顺利。 2.对用户在注册使用淘宝网上交易平台中所遇到的与交易或注册有关的问题及反映的情况，淘宝应及时作出回复。 3.对于在淘宝网网上交易平台上的不当行为或其它任何淘宝认为应当终止服务的情况，淘宝有权随时作出删除相关信息、终止服务提
+											供等处理，而无须征得用户的同意。 4.因网上交易平台的特殊性，淘宝没有义务对所有用户的注册资料、所有的交易行为以及与交易有关的其他事项进行事先审查。
+										</textarea>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </form>
+    </table>
+</div>
+<script>
+    window.onload = function () {
+//得到所有name="items"的checkbox集合
+        var itemsEles = document.getElementsByName("items");
+        var checkedAllBoxEle = $("checkedAllBox");
+
+//1. 点击'全选': 选中所有爱好
+//1. 给id="checkedAllBtn"为btn设置点击回调
+        click("checkedAllBtn", function () {
+            checkAllItems(true);
+//选中checkedAllBoxEle
+            checkedAllBoxEle.checked = true;
+        });
+
+        /*2. 点击'全不选': 所有爱好都不勾选*/
+        click("checkedNoBtn", function () {
+            checkAllItems(false);
+
+//不选中checkedAllBoxEle
+            checkedAllBoxEle.checked = false;
+        });
+
+        /*3. 点击'反选': 改变所有爱好的勾选状态*/
+        click("checkedRevBtn", function () {
+            checkAllItems(); //不传参数
+
+            checkedAllBoxEle.checked = isAllChecked();
+        });
+
+        /*5. 点击'提交': 提示所有勾选的爱好*/
+        click("sendBtn", function () {
+            for (var i = 0, length = itemsEles.length; i < length; i++) {
+//如果是选中, 提示其值
+                if (itemsEles[i].checked) {
+                    alert(itemsEles[i].value);
+                }
+            }
+        });
+        /*6. 点击'全选/全不选': 选中所有爱好, 或者全不选中*/
+        click("checkedAllBox", function () {
+            checkAllItems(this.checked);
+        });
+
+
+        /*7. 点击某个爱好时, 必要时更新'全选/全不选'的选中状态*/
+//给所有爱好checkbox绑定点击监听
+        for (var i = 0, length = itemsEles.length; i < length; i++) {
+            itemsEles[i].onclick = function () {
+//在回调函数中, 判断是否全部选中,将其设置为checkedAllBox的状态
+                checkedAllBoxEle.checked = isAllChecked();
+            };
+        }
+
+
+        /*
+         * 判断爱好 checkbox是否都选中了
+         * 只要有一个没有选中就返回false
+         */
+        function isAllChecked() {
+//遍历
+            for (var i = 0, length = itemsEles.length; i < length; i++) {
+//取出一个checkbox, 判断是否选中, 如果没有选中, 直接返回false;
+                if (!itemsEles[i].checked) {
+                    return false;
+                }
+            }
+//出循环, 就返回true
+            return true;
+        }
+
+        /*
+         * 设置所有爱好checkbox的选中状态
+         * check : 选中的状态
+         * 如果check没有指定, 选中状态取反
+         */
+        function checkAllItems(check) {
+            for (var i = 0, length = itemsEles.length; i < length; i++) {
+                itemsEles[i].checked = check === undefined ? !itemsEles[i].checked : check;
+            }
+        }
+    };
+
+    /*
+     * 得到id对应的标签对象
+     */
+    function $(id) {
+        return document.getElementById(id);
+    }
+    /*
+     * 给指定id的标签绑定点击监听
+     */
+    function click(id, callback) {
+        $(id).onclick = callback;
+    }
+////////////////////////增删记录////////////////////////////
+    //1. 点击'Submit', 根据输入的信息在表单中生成一行员工信息
+    //1. 给'Submit'绑定监听
+    click("addEmpButton", function () {
+        //2.得到输入的3个信息
+        var empName = $("empName").value;
+        var email = $("email").value;
+        var salary = $("salary").value;
+        //3. 创建一个完整<tr>
+        /*
+         <tr>
+         <td>Jerry</td>
+         <td>jerry@sohu.com</td>
+         <td>8000</td>
+         <td><a href="deleteEmp?id=002">Delete</a></td>
+         </tr>
+         */
+        //<tr>
+        var trEle = document.createElement("tr");
+        //<td>empName</td>
+        var tdEle = document.createElement("td");
+        tdEle.innerHTML = empName;
+        trEle.appendChild(tdEle);
+        //<td>email</td>
+        tdEle = document.createElement("td");
+        tdEle.innerHTML = email;
+        trEle.appendChild(tdEle);
+        //<td>salary</td>
+        tdEle = document.createElement("td");
+        tdEle.innerHTML = salary;
+        trEle.appendChild(tdEle);
+        //<td><a href="deleteEmp?id=##">Delete</a></td>
+        tdEle = document.createElement("td");
+        tdEle.innerHTML = '<a href="deleteEmp?id=##">Delete</a>';
+
+        //得到里面的<a>, 并绑定点击监听
+        tdEle.firstChild.onclick = clickCallback;
+
+        trEle.appendChild(tdEle);
+        //4. 得到<table id="employeeTable">的<tbody>
+        var tbodyEle = $("employeeTable").children[0];
+        //5. 添加
+        tbodyEle.appendChild(trEle);
+    });
+
+    /*2. 点击Delete链接, 提示删除当前行信息, 点击确定后删除信息*/
+    //1. 给所有的<a>绑定点击监听
+    var aEles = document.getElementsByTagName("a");
+    for(var i=0,length=aEles.length;i<length;i++) {
+        aEles[i].onclick = clickCallback;
+    }
+
+    /*
+     * a标签点击监听回调函数
+     */
+    function clickCallback() {
+        //2. 显示确认框, 要显示对应的员工姓名
+        var trEle = this.parentNode.parentNode;
+        var name = trEle.children[0].innerHTML;
+        if(confirm("确定要删除"+name+"吗?")) {
+            //3. 点击确定, 删除当前行<tr>
+            trEle.parentNode.removeChild(trEle);
+        }
+
+        //取消默认行为
+        return false;
+    }
+    ////////////////////////注册表单验证////////////////////////////
+    //1. 给<form>绑定提交监听
+    var formEle = document.forms[0];
+    formEle.onsubmit = function () {
+        //2. 对用户名, 密码, 确认密码, 邮箱进行检查
+        //3. 如果检查不通过返回false
+        return checkName() && checkPwd() && checkPwd2() && checkEmail();
+    };
+
+    /*
+     * 检查用户名
+     * （6到8位字符, 包含 a-z、0-9 和下划线）
+     */
+    function checkName () {
+        var nameEle = document.getElementById("sname");
+        var name = nameEle.value;
+        var reg = /^[a-z0-9_]{6,8}$/;
+        if(reg.test(name)) {
+            return true;
+        } else {
+            alert("用户名格式不正确");
+            nameEle.value = '';
+            nameEle.focus();//使输入框获得焦点
+            return false;
+        }
+    }
+
+    var pwd;
+    /*
+     * 检查密码
+     * （至少包含 6 个字符）
+     */
+    function checkPwd () {
+        var pwdEle = document.getElementById("pwd");
+        pwd = pwdEle.value;
+        if(/^\w{6,}$/.test(pwd)) {
+            return true;
+        } else {
+            alert("密码格式不正确");
+            pwdEle.value = '';
+            pwdEle.focus();
+            return false;
+        }
+    }
+
+    /*
+     * 检查确认密码
+     */
+    function checkPwd2 () {
+        var pwd2Ele = document.getElementById("pwd2");
+        var pwd2 = pwd2Ele.value;
+        if(pwd2==pwd) {
+            return true;
+        } else {
+            alert("确认密码与密码不一致");
+            pwd2Ele.value = '';
+            pwd2Ele.focus();
+            return false;
+        }
+    }
+
+    /*
+     * 检查email
+     */
+    function checkEmail () {
+        var emailEle = document.getElementById("email");
+        var email = emailEle.value;
+        if(/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/.test(email)) {
+            return true;
+        } else {
+            alert("邮箱格式不正确");
+            emailEle.value = '';
+            emailEle.focus();
+            return false;
+        }
+    }
+
+
+</script>
 </body>
 </html>
