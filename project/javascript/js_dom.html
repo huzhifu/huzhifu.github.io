@@ -20,10 +20,18 @@
 <li>var nextEle=nodeEle.nextSibling(得到元素的相邻下一个节点) previousSibling上一个节点</li>
 <li>如果input的type为radio，那么inputEle.checked可以判断是否选中</li>
 <li>parentNode.firstChild==parentNode.children[0]</li>
-<li>eleNode.focus()//使元素获得焦点</li>
+<li>eleNode.focus()//使元素获得焦点  inputEle.select()//让输入框选中其内容 key相关事件不能在元素上，必须document.onkeydown</li>
 <h1>事件相关</h1>
 <img src="../img/event1.jpg" alt=""/><br/>
-<img src="../img/event2.jpg" alt=""/>
+<img src="../img/event2.jpg" alt=""/><br/>
+<img src="../img/event3.jpg" alt=""/>
+<span style="color: red;font-size: 14px">eventX和eventY的原点是可视窗口的左上角;ev.ctrlKey是否按下ctrl ev.keyCode按键的code值</span>
+<br/><img src="../img/event4.jpg" alt=""/>
+<br/><img src="../img/event5.jpg" alt=""/><span style="color: red;font-size: 14px">style操作的是内联样式，并不会操作css中的style样式</span>
+<br/><img src="../img/event6.jpg" alt=""/>
+
+<p href="./js_drop.html" style="color:red;cursor: pointer" onclick="location.href='./js_drop.html'">点击查看：鼠标拖动效果</p>
+
 <h2>**爱好选择器**</h2>
 
 <form method="post" action="">

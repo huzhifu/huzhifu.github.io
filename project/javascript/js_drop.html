@@ -1,0 +1,99 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>无标题文档</title>
+    <style>
+        * {
+            padding: 0px;
+        }
+
+        #div1 {
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+        }
+
+        #img1 {
+            position: absolute;
+        }
+    </style>
+    <script>
+        /*
+         功能需求:
+         1. 在div上按下鼠标, 移动鼠标时div会随鼠标一起移动
+         2. div不能移出窗口的可视区域
+         3. 当页面中有文本时, 拖动会出现问题
+         技术重点:
+         1. 事件监听: onmousedown, onmousemove, onmouseup
+         2. 移除事件监听
+         3. 事件的坐标
+         4. 给元素定位 :
+         5. 得到元素的总宽高:
+         6. 得到元素的可视宽高:
+         7. 全局捕获事件
+         setCapture()
+         releaseCapture()
+         */
+        window.onload = function() {
+            var divEle = document.getElementById("div1");
+
+            divEle.onmousedown = function (ev) {
+
+                if(typeof divEle.setCapture=='function') {
+                    divEle.setCapture(); //全局捕获事件
+                }
+
+                //event兼容
+                ev = ev || event;
+                //得到事件坐标与divEle的坐标之间的距离坐标
+                var dx = ev.clientX-this.offsetLeft;
+                var dy = ev.clientY-this.offsetTop;
+                document.onmousemove = function (ev) {
+                    ev = ev || event;
+                    var divX = ev.clientX-dx;
+                    var divY = ev.clientY-dy;
+                    //限制在可视范围内
+                    var maxDivX = document.documentElement.clientWidth - divEle.offsetWidth;
+                    var maxDivY = document.documentElement.clientHeight-divEle.offsetHeight;
+                    //限制在整个页面范围内
+                    /*var maxDivX = document.body.offsetWidth - divEle.offsetWidth;
+                    var maxDivY = document.body.offsetHeight-divEle.offsetHeight;*/
+                    //限制divX[0, maxDivX]
+                    if(divX<0) {
+                        divX = 0;
+                    } else if(divX>maxDivX) {
+                        divX = maxDivX;
+                    }
+                    //限制divY[0, maxDivY]
+                    if(divY<0) {
+                        divY = 0;
+                    } else if(divY>maxDivY) {
+                        divY = maxDivY;
+                    }
+
+                    divEle.style.left = divX +"px";
+                    divEle.style.top = divY + "px";
+                };
+                document.onmouseup = function () {
+                    document.onmousemove = null;
+                    document.onmouseup = null;
+                    //释放事件全局捕获
+                    if(typeof divEle.releaseCapture=='function') {
+                        divEle.releaseCapture();
+                    }
+                }
+
+                return false;
+            };
+        }
+    </script>
+</head>
+
+<body>
+这里有一些文本, 它们对拖拽有影响,需要特别处理
+<div id="div1"></div>
+</body>
+</html>
