@@ -61,6 +61,315 @@
     });
 </code></pre>
 <img src="../img/reduce.jpg" alt=""/>
+<h2>数组去重</h2>
+<li>方法一（自创）
+    <pre><code>
+    var arr=['a',true,6,'a',8,3,true];
+    var newArr=[];
+    for(var i=0,length=arr.length;i&lt length;i++){
+        if(newArr.indexOf(arr[i])==-1){
+            newArr.push(arr[i]);
+        }
+    }
+    console.log(newArr);
+    </code></pre>
+</li>
+<li>方法二
+    <pre><code>
+    Array.prototype.unique1 = function(){
+    var res = [this[0]];
+    for(var i = 1; i &lt this.length; i++){
+        var repeat = false;
+        for(var j = 0; j &lt res.length; j++){
+            if(this[i] == res[j]){
+            repeat = true;
+            break;
+            }
+        }
+        if(!repeat){
+            res.push(this[i]);
+        }
+    }
+    return res;
+    }
+    var arr = ['a',true,6,'a',8,3,true];
+    alert(arr.unique1());
+    </code></pre>
+</li>
+<li>方法三
+    <pre><code>
+    Array.prototype.unique2 = function(){
+        this.sort(); //先排序
+        var res = [this[0]];
+        for(var i = 1; i &lt this.length; i++){
+            if(this[i] !== res[res.length - 1]){
+            res.push(this[i]);
+        }
+    }
+    return res;
+    }
+    var arr = ['a',true,6,'a',8,3,true];
+    alert(arr.unique2());
+    </code></pre>
+</li>
+<li>方法四
+    <pre><code>
+    Array.prototype.unique3 = function(){
+    var res = [];
+    var json = {};
+    for(var i = 0; i &lt this.length; i++){
+        if(!json[this[i]]){
+            res.push(this[i]);
+            json[this[i]] = 1;
+        }
+    }
+    return res;
+    }
+    var arr = ['a',true,6,'a',8,3,true];
+    alert(arr.unique3());
+    </code></pre>
+</li>
+<li>方法五
+    <pre><code>
+    function getArray(a) {
+    var hash = {},
+    len = a.length,
+    result = [];
+    for (var i = 0; i < len; i++){
+        if (!hash[a[i]]){
+            hash[a[i]] = true;
+            result.push(a[i]);
+        }
+    }
+    return result;
+    }
+
+    var arr = ['a',true,6,'a',8,3,true];
+    getArray(arr);
+    </code></pre>
+</li>
+<li>方法六
+    <pre><code>
+    function unique(array){
+        var n = {}, r = [], len = array.length, val, type;
+        for (var i = 0; i < array.length; i++) {
+            val = array[i];
+            type = typeof val;
+            if (!n[val]) {
+                n[val] = [type];
+                r.push(val);
+            } else if (n[val].indexOf(type) < 0) {
+                n[val].push(type);
+                r.push(val);
+            }
+        }
+        return r;
+    }
+    var arr = ['a',true,6,'a',8,3,true];
+    alert(unique(array));
+    </code></pre>
+</li>
+<li>方法七
+    <pre><code>
+    // 思路：获取没重复的最右一值放入新数组
+    function unique(array){
+        var r = [];
+        for(var i = 0, l = array.length; i < l; i++) {
+            for(var j = i + 1; j < l; j++)
+                if (array[i] === array[j]) j = ++i;
+                    r.push(array[i]);
+        }
+            return r;
+    }
+    var arr = ['a',true,6,'a',8,3,true];
+    alert(unique(arr));
+    </code></pre>
+</li>
+<li>方法八
+    <pre><code>
+    Array.prototype.unique = function()
+    {
+        var n = [this[0]]; //结果数组
+        for(var i = 1; i < this.length; i++) //从第二项开始遍历
+        {
+            //如果当前数组的第i项在当前数组中第一次出现的位置不是i，
+            //那么表示第i项是重复的，忽略掉。否则存入结果数组
+            if (this.indexOf(this[i]) == i) n.push(this[i]);
+        }
+        return n;
+    }
+    var arr = ['a',true,6,'a',8,3,true];
+    alert(arr.unique());
+    </code></pre>
+</li>
 <p style="background: #f00;">排序算法：快速排序，冒泡排序，选择排序，插入排序</p>
+<li>快速排序
+    <pre><code>
+步骤：
+
+1.从数列中挑出一个元素，称为 “基准”（pivot），
+2.重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面
+（相同的数可以到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作。
+3.递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序。
+    </code></pre>
+<p style="color: green">相关代码：
+<pre><code>
+// 快速排序
+quickSort: function(array) {
+    //var array = [8,4,6,2,7,9,3,5,74,5];
+    //var array = [0,1,2,44,4,324,5,65,6,6,34,4,5,6,2,43,5,6,62,43,5,1,4,51,56,76,7,7,2,1,45,4,6,7];
+    var i = 0;
+    var j = array.length - 1;
+    var Sort = function(i, j) {
+
+        // 结束条件
+        if (i == j) {
+            return
+        };
+
+        var key = array[i];
+        var stepi = i; // 记录开始位置
+        var stepj = j; // 记录结束位置
+        while (j > i) {
+            // j <<-------------- 向前查找
+            if (array[j] >= key) {
+             j--;
+            } else {
+                array[i] = array[j]
+                //i++ ------------>>向后查找
+                while (j > ++i) {
+                    if (array[i] > key) {
+                    array[j] = array[i];
+                    break;
+                }
+             }
+        }
+    }
+
+    // 如果第一个取出的 key 是最小的数
+    if (stepi == i) {
+        Sort(++i, stepj);
+        return;
+    }
+
+    // 最后一个空位留给 key
+    array[i] = key;
+
+    // 递归
+    Sort(stepi, i);
+    Sort(j, stepj);
+}
+
+Sort(i, j);
+
+return array;
+},
+</code></pre>
+</p>
+</li>
+<li>冒泡排序
+    <pre><code>
+步骤：
+
+1.比较相邻的元素。如果第一个比第二个大，就交换他们两个。
+2.对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。在这一点，最后的元素应该会是最大的数。
+3.针对所有的元素重复以上的步骤，除了最后一个。
+4.持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。
+    </code></pre>
+<p style="color: green">相关代码：
+<pre><code>
+// 冒泡排序
+bubbleSort: function(array) {
+    var i = 0,
+    len = array.length,
+    j, d;
+    for (; i < len; i++) {
+        for (j = 0; j < len; j++) {
+            if (array[i] < array[j]) {
+                d = array[j];
+                array[j] = array[i];
+                array[i] = d;
+            }
+        }
+    }
+    return array;
+}
+</code></pre>
+</p>
+</li>
+<li>选择排序
+    <pre><code>
+选择排序(Selection sort)是一种简单直观的排序算法。它的工作原理如下。
+首先在未排序序列中找到最小元素，存放到排序序列的起始位置，然后，
+再从剩余未排序元素中继续寻找最小元素，然后放到排序序列末尾。以此类推，直到所有元素均排序完毕。
+    </code></pre>
+<p style="color: green">相关代码：
+<pre><code>
+// 选择排序
+function SelectionSort(array) {
+    var length = array.length;
+    for (var i = 0; i < length; i++) { //缩小选择的范围
+        var min = array[i]; //假定范围内第一个为最小值
+        var index = i; //记录最小值的下标
+        for (var j = i + 1; j < length; j++) { //在范围内选取最小值
+            if (array[j] < min) {
+                min = array[j];
+                index = j;
+            }
+        }
+        if (index != i) { //把范围内最小值交换到范围内第一个
+            var temp = array[i];
+            array[i] = array[index];
+            array[index] = temp;
+        }
+        console.log(array);
+        console.log("---------------------");
+    }
+    return array;
+}
+
+var arr = [ 1, 10, 100, 90, 65, 5, 4, 10, 2, 4 ];
+var result = SelectionSort(arr);
+console.log(result);
+</code></pre>
+</p>
+</li>
+<li>插入排序
+    <pre><code>
+步骤：
+
+1.从第一个元素开始，该元素可以认为已经被排序
+2.取出下一个元素，在已经排序的元素序列中从后向前扫描
+3.如果该元素（已排序）大于新元素，将该元素移到下一位置
+4.重复步骤3，直到找到已排序的元素小于或者等于新元素的位置
+5.将新元素插入到该位置中
+6.重复步骤2
+    </code></pre>
+<p style="color: green">相关代码：
+    <pre><code>
+// 插入排序
+insertSort: function(array) {
+
+    // http://baike.baidu.com/image/d57e99942da24e5dd21b7080
+    // http://baike.baidu.com/view/396887.htm
+    //var array = [0,1,2,44,4,324,5,65,6,6,34,4,5,6,2,43,5,6,62,43,5,1,4,51,56,76,7,7,2,1,45,4,6,7];
+    var i = 1,j, step, key, len = array.length;
+    for (; i < len; i++) {
+        step = j = i;
+        key = array[j];
+        while (--j > -1) {
+            if (array[j] > key) {
+                array[j + 1] = array[j];
+            } else {
+                break;
+            }
+        }
+        array[j + 1] = key;
+    }
+    return array;
+}
+    </code></pre>
+</p>
+</li>
 </body>
 </html>

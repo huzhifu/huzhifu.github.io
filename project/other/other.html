@@ -45,6 +45,7 @@
         * 遍历cookie中的数据或通过正则表达式找到我们想要的数据
         *移除cookie数据:
         * document.cookie = 'key=;expires=小于当前的时间字符串'
+        *注意，当cookie的值想保存中文时，需要先编码(encodeURI(content))，取的时候解码(decodeURI(编码后的值))，否则就会在设置之后刷新页面出错
     </code></pre>
     <a href="04_Cookie/01_cookie.html">相关代码</a><br/>
     <a href="04_Cookie/练习_记录用户名.html">记录用户名练习</a>
