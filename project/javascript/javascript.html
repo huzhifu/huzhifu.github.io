@@ -121,6 +121,7 @@
     2.TypeError 当一个值的类型错误时，抛出该异常
     3.SyntaxError 语法异常</li>
 <li>0.1+0.2问题，得到0.30000000000000004.解决：function fix(num,digits){return num.toFixed(digits)*1}  fix(0.1+0.2,2)</li>
+<h1><a href="luoboAndMenu.html">原生js实现轮播图和二级菜单</a></h1>
 <p>JavaScript的基本规范？</p>
 <li>1.不要在同一行声明多个变量。</li>
 <li>2.请使用 ===/!==来比较true/false或者数值</li>
@@ -235,11 +236,13 @@
 </code></pre>
 <p>取消事件的默认行为</p>
 <pre><code style="font-size: 18px">preventDefault : function(event) {
+    e=e||event;
     if (event.preventDefault) {
     event.preventDefault();
     } else {
     event.returnValue = false;
     }
+    return false;
 }
 </code></pre>
 <p> 获取event对象的引用，取到事件的所有信息，确保随时能使用event</p>
@@ -262,6 +265,18 @@
 <pre><code style="font-size: 18px">getTarget : function(event) {
     return event.target || event.srcElement;
 }
+</code></pre>
+<p>事件的全局捕获与释放</p>
+<pre><code style="font-size: 18px">
+    捕获事件: 只要产生了此事件, 当前元素就能捕获到此事件
+    if(divEle.setCapture) {
+        divEle.setCapture(); //全局捕获事件
+    }
+    释放捕获: 不再捕获此事件
+    if(divEle.releaseCapture) {
+        divEle.releaseCapture();//释放全局捕获
+    }
+    只有IE和FireFox有, chrome中没有
 </code></pre>
 <h1 style="color:red">JS的常用类型及方法</h1>
 <p>Array</p>

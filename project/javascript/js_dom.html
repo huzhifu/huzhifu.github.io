@@ -21,6 +21,8 @@
 <li>如果input的type为radio，那么inputEle.checked可以判断是否选中</li>
 <li>parentNode.firstChild==parentNode.children[0]</li>
 <li>eleNode.focus()//使元素获得焦点  inputEle.select()//让输入框选中其内容 key相关事件不能在元素上，必须document.onkeydown</li>
+<li>元素定位: offsetLeft ---> style.left</li>
+<li>setAttribute('class', value)----->className = value     removeAttribute('class')---->className = ''</li>
 <h1>事件相关</h1>
 <img src="../img/event1.jpg" alt=""/><br/>
 <img src="../img/event2.jpg" alt=""/><br/>
@@ -30,8 +32,52 @@
 <br/><img src="../img/event5.jpg" alt=""/><span style="color: red;font-size: 14px">style操作的是内联样式，并不会操作css中的style样式</span>
 <br/><img src="../img/event6.jpg" alt=""/>
 
-<p href="./js_drop.html" style="color:red;cursor: pointer" onclick="location.href='./js_drop.html'">点击查看：鼠标拖动效果</p>
+<p href="./js_drop.html" style="color:blue;cursor: pointer" onclick="location.href='./js_drop.html'">点击查看：鼠标拖动效果</p>
+<h3>* 坐标和尺寸问题</h3>
+<ul style="color:red">
+    <li>滚动条坐标: (原点是页面左上角) (可读写)</li>
+    document.documentElement.scrollLeft+document.body.scrollLeft <br/>
+    document.documentElement.scrollTop+document.body.scrollTop <br/>
+    <li>元素的坐标:(原点是页面左上角) (只读)</li>
+    element.offsetLeft: 其值等于style.left的数值部分 <br/>
+    element.offsetTop:  其值等于style.top的数值部分 <br/>
+    <li>元素的样式坐标:(原点是页面左上角) (可读写, 但一般只写)</li>
+    element.style.left:  其值为带px单位的字符串    //style是内联样式属性   带单位的字符串 <br/>
+    element.style.top: 其值为带px单位的字符串 //style是内联样式属性  带单位的字符串 <br/>
+    <li>事件的坐标:(原点是可视窗口左上角)(只读)</li>
+    ev.clientX; //x坐标   原点为可视窗口的左上角 <br/>
+    ev.clientY; //y坐标  原点为可视窗口的左上角 <br/>
+    <p>-------------------------------------------------------------------------------</p>
+    <li>元素的样式尺寸</li>
+    element.style.width : 其值为带px单位的字符串 <br/>
+    element.style.Height : 其值为带px单位的字符串 <br/>
+    <li>元素的可视尺寸: width+2*padding</li>
+    element.clientWidth : 当前可用区域的宽度(注意不包含滚动条的宽度) <br/>
+    element.clientHeight : 当前可用区域的高度(注意不包含滚动条的宽度) <br/>
+    <li>元素的外部尺寸: width+2*padding+2*border</li>
+    element.offsetWidth : 元素边框左外到边框右外的长度(注意不包含margin) <br/>
+    element.offsetHeight : 元素边框上外到边框下外的长度(注意不包含margin) <br/>
 
+    <li>窗口的可视尺寸:</li>
+    document.documentElement.clientWidth <br/>
+    document.documentElement.clientHeight <br/>
+    <li>窗口的外部尺寸:</li>
+    document.body.offsetWidth <br/>
+    document.body.offsetHeight <br/>
+</ul>
+<h3>*事件流</h3>
+<ul>
+    <li>1. 理解:</li>
+    事件流描述的是页面中接收事件的顺序
+    <li>2. 3个阶段(流程图):</li>
+    事件捕获阶段 : 先调用
+    目标元素处理阶段 :  多个回调时谁先调用不确定
+    事件冒泡阶段 : 后调用
+    <li>3. addEventListener("事件名", callback, capture)</li>
+    第三个参数为true: 代表在捕获阶段处理
+    第三个参数为false: 代表在冒泡阶段处理
+    <li>4. onxxx方式支持的是冒泡</li>
+</ul>
 <h2>**爱好选择器**</h2>
 
 <form method="post" action="">
