@@ -13,12 +13,116 @@
 <li>两把利器，jQuery核心函数(如：$('p'))，jQuery对象（执行jQuery函数返回的对象,如$('p').val()），不管执行其任何方法都将自身返回</li>
 <li>$(ele)将dom对象封装为jQuery对象，$('selector')[0],:将jQuery对象转化为dom对象</li>
 <li>jQuery基本行为：each() size()/length  [index]/get()  index()</li>
-<li>层次选择器，用来查找某个元素的孩子，兄弟...(亲属)如：$('div>.content').css('background','red');过滤选择器：在原有选择器匹配的基础上进一步过滤，如$('div:first')</li>
-<li>jQuery操作属性：attr()【传参同html()】 removeAttr() addClass() removeClass() html()【传一个参，取值；传两个参，赋值】 val()</li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
+<li>层次选择器，用来查找某个元素的孩子，兄弟...(亲属)如：$('div>.content').css('background','red')【也可以传对象，里面是样式名值对】;过滤选择器：在原有选择器匹配的基础上进一步过滤，如$('div:first')</li>
+<li>得到页面滚动条的scrollTop  $(document.body).scrollTop()+$(document.documentElement).scrollTop()  设置滚动条坐标：$('body,html').scrollTop(60)</li>
+<li>jQuery文档筛选模块，过滤是从当前满足条件的一堆元素找到某一个或某一类；查找是从当前元素找到其亲属元素（父子、兄弟节点...）</li>
+<ul>
+    <li>* 属性/HTML/val </li>
+    * 操作任意属性 <br/>
+    attr(): 读取某个属性值, 设置属性 <br/>
+    removeAttr(name) <br/>
+    prop(): prop('checked', true/false); <br/>
+    * 操作class属性 <br/>
+    addClass() : 添加class属性值, 原来的值还在 <br/>
+    removeClass(): 移除属性值 <br/>
+    * 操作HTML代码/文本/值 <br/>
+    html() : 标签体文本 <br/>
+    //text() <br/>
+    val() : value属性值 <br/>
+    <li>*CSS </li>
+    设置css样式/读取css值 <br/>
+    css() : 元素的样式属性(可读写)  操作的是内联样式 <br/>
+    获取/设置标签的位置数据 <br/>
+    offset() : 相对页面左上角的坐标(可读写)  : 包含坐标值的对象 {left: xxx, top:yyy} <br/>
+    position() : 相对于父元素左上角的坐标 (只读)  : 包含坐标值的对象 {left: xxx, top:yyy} <br/>
+    scrollTop() : scrollLeft() : 滚动条坐标 (可读写) <br/>
+    获取/设置标签的尺寸数据 <br/>
+    heigh() / width() : 不包括内边距和边框的尺寸 <br/>
+    innerHeight() / innerWidth() : 包括内边距,但不包括边框的尺寸 <br/>
+    outerHeight() / outerWidth() : 包括内边距和边框的尺寸(参数为true还包括外边距) <br/>
+    <li>*文档 </li>
+    添加节点 <br/>
+    append(content) : 向当前匹配的所有元素内部的最后插入指定内容 <br/>
+    appendTo(selector): 将当前标签插入到selector对应的标签内部的最后 <br/>
+    prepend(content) : 向当前匹配的所有元素内部的最前面插入指定内容 <br/>
+    before(content) : 将指定内容插入到当前所有匹配元素的前面 <br/>
+    after(content) : 将指定内容插入到当前所有匹配元素的后面 <br/>
+    替换节点 <br/>
+    replaceWith(content) : 用指定内容替换所有匹配的标签 <br/>
+    删除节点 <br/>
+    empty() : 删除所有匹配元素的子元素 <br/>
+    remove() : 删除所有匹配的元素 <br/>
+    <li>*筛选 </li>
+    过滤 : 在jQuery对象中的元素对象数组中过滤出一部分元素来 <br/>
+    first() <br/>
+    last() <br/>
+    eq(index|-index) <br/>
+    filter(selector) : 在当前元素中找 <br/>
+    not(selector) <br/>
+    has(selector) <br/>
+    查找: 在已经匹配出的元素集合中根据选择器查找孩子/父母/兄弟标签 <br/>
+    children() : 找孩子 <br/>
+    find() : 找后代 <br/>
+    parent() <br/>
+    prevall() <br/>
+    nextall() <br/>
+    siblings() <br/>
+    <li>*事件 </li>
+    事件处理 <br/>
+    on(事件名, funn) : 通用的绑定事件监听 <br/>
+    xxx(fun) : 绑定某个具体的事件监听 <br/>
+    off(事件名) : 解绑事件监听 <br/>
+    事件切换 <br/>
+    hover(fun1, fun2) : 同时绑定鼠标移入和移出监听 <br/>
+    事件委派(委托) <br/>
+    delegate(selector, 事件名, fun) : 绑定委托事件监听 <br/>
+    undelegate() : 移除委托事件监听 <br/>
+    相关重要知识 <br/>
+    事件坐标 <br/>
+    event.clientX | event.clientY : 相对可视窗口左上角 <br/>
+    event.pageX | event.pageY : 相对页面左上角 <br/>
+    event.offsetX | event.offsetY : 以offsetParent(已定位的父辈元素)的左上角为原点 <br/>
+    阻止事件冒泡 <br/>
+    event.stopPropagation(); <br/>
+    取消事件的默认行为 <br/>
+    event.preventDefault(); <br/>
+    return false; <br/>
+    <li>*效果 </li>
+    滑动动画 <br/>
+    原理: 不断改变元素的高度来实现的 <br/>
+    slideDown() : 带动画的展开 <br/>
+    slideUp() : 带动画的收缩 <br/>
+    slideToggle() : 带动画的切换展开/收缩 <br/>
+    淡入淡出动画 <br/>
+    原理: 不断改变元素的透明度来实现的 <br/>
+    fadeIn() : 带动画的显示 <br/>
+    fadeOut() : 带动画隐藏 <br/>
+    fadeToggle() : 带动画切换显示/隐藏 <br/>
+    显示/隐藏动画 <br/>
+    原理: 不断改变元素的尺寸和透明度来实现 <br/>
+    show() : (不)带动画的显示  display='block/inline' <br/>
+    hide() : (不)带动画的隐藏 <br/>
+    toggle() : (不)带动画的切换显示/隐藏 <br/>
+    自定义动画 <br/>
+    animate() : 自定义动画效果的动画 <br/>
+    stop() : 停止动画 <br/>
+    <li>* jQuery对象 </li>
+    自定义动画 <br/>
+    animate({}, speed, 'linear', fn) : 自定义动画效果的动画 <br/>
+    stop() : 停止动画 <br/>
+    <li>* 插件机制 </li>
+    jQuery.fn.extend(object) <br/>
+    扩展jQuery对象的方法, object中的方法会成为jQuery对象的方法 <br/>
+    注意方法中this的问题 <br/>
+    jQuery.extend(object) <br/>
+    扩展jQuery核心函数的方法, object中的方法会成为$的方法 <br/>
+    <li>* 多库共存 </li>
+    jQuery.noConflict() : 执行完此方法后, jQuery不再使用$, 这样其它框架就可以使用$了 <br/>
+</ul>
 <a href="exec1.html">爱好选择器jQuery练习</a>
+<a href="exec2.html">添加删除记录jQuery练习</a>
+<a href="jd/jd_detail.html">京东详情页jQuery练习</a>
+<a href="lunbo.html">自己实现轮播jQuery练习</a>
+<a href="menu.html">自己实现二级菜单jQuery练习</a>
 </body>
 </html>

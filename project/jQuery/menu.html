@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>二级菜单</title>
+	</head>
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+			text-decoration: none;
+		}
+		
+		#menu {
+			margin-top:30px ;
+			margin-left:30px ;
+			width: 120px;
+			background: blueviolet;
+		}
+		
+		a {
+			width: 120px;
+			height: 25px;
+			line-height: 25px;
+			text-align: center;
+			display: block;
+			color:yellow;
+			border-top: solid blue 1px;
+		}
+		a.no_split{
+			border:none;
+		}
+		a:hover{
+			background: yellow;
+			color: blueviolet;
+		}
+		span {
+			cursor: pointer;
+			display: block;
+			width: 118px;
+			height: 36px;
+			line-height: 36px;
+			background: blue;
+			text-align: center;
+			color:white;
+			border:solid 1px red;
+		}
+		div.collpased{
+			height: 36px;
+			overflow: hidden;			
+		}
+	</style>
+	<script src="js/jquery-1.12.3.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+	
+		$(function() {
+			
+			var $spanMenu=$("span");
+			var menuNum=$spanMenu.length;
+			var moving=true;
+			for(var i=0;i<menuNum;i++){
+				$spanMenu[i].index=i;
+				$spanMenu[i].onclick=function(){
+					if(moving){
+						moving=false;
+					 var $divMenu=$(this).parent();
+					if($divMenu[0].className==''){
+						$divMenu.animate({height:36},1000,"linear",function(){
+							moving=true;
+						});
+						$divMenu[0].className='collpased';
+					}else{
+						var totalH=0;
+						for(var j=0,length=$divMenu[0].children.length;j<length;j++){
+							    totalH+=$divMenu[0].children[j].offsetHeight;
+						}
+						$divMenu[0].className='';
+						$divMenu.animate({height:totalH},1000,"linear",function(){
+							moving=true;
+						});
+					}
+					/*setTimeout(function () {
+						moving=true;
+					},1000);*/
+					}
+				}
+					
+				}
+		});
+	</script>
+
+	<body>
+		<div id="menu">
+			<div id="div1">
+				<span>编程类书籍</span>
+				<a href="#" class="no_split">Java程序设计</a>
+				<a href="#">Android开发</a>
+				<a href="#">数据库分析</a>
+				<a href="#">C语言概论</a>
+				<a href="#">计算机组成原理</a></div>
+			<div id="div2">
+				<span>历史书籍</span>
+				<a href="#" class="no_split">隋唐史</a>
+				<a href="#">闻鸡起舞起源</a>
+				<a href="#">李自成起义逸事</a>
+				<a href="#">光绪死亡之谜</a>
+			</div>
+				<div id="div3">
+					<span>文学书籍</span>
+					<a href="#" class="no_split">受戒</a>
+					<a href="#">把栏杆拍遍</a>
+					<a href="#">大有大无周恩来</a>
+					<a href="#">香炉山</a>
+					<a href="#">茶香与酒</a>
+					<a href="#">十月围城</a></div>
+				<div id="div4">
+					<span>经济类书籍</span>
+					<a href="#" class="no_split">世界经济概论</a>
+					<a href="#">四小龙发展简要</a>
+					<a href="#">改革开放看中国</a>
+				</div>
+	</body>
+
+</html>

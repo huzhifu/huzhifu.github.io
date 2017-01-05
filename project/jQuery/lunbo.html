@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+
+	</head>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+			text-decoration: none;
+		}
+		
+		#container {
+			width: 600px;
+			height: 400px;
+			border: 3px saddlebrown solid;
+			overflow: hidden;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			margin-left: -300px;
+			margin-top: -200px;
+		}
+		
+		#list {
+			width: 3000px;
+			height: 400px;
+			position: absolute;
+			left: 0px;
+		}
+		
+		img {
+			float: left;
+		}
+		
+		.arrow {
+			line-height: 40px;
+			display: none;
+		}
+		
+		#container:hover .arrow {
+			display: block;
+		}
+		
+		a {
+			width: 50px;
+			height: 40px;
+			background: rgba(1, 1, 1, 0.3);
+			top: 50%;
+			margin-top: -15px;
+			color: #fff;
+			position: absolute;
+			font-size: 30px;
+			text-align: center;
+		}
+		
+		a:hover {
+			background: rgba(1, 1, 1, 0.5);
+		}
+		
+		a#pre {
+			left: 0%;
+			margin-left: -4px;
+		}
+		
+		a#next {
+			right: 0%;
+			margin-right: -4px;
+		}
+		
+		#focus {
+			width: 185px;
+			height: 60px;
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			margin-left: -92px;
+		}
+		
+		span {
+			display: block;
+			width: 15px;
+			height: 15px;
+			background: blue;
+			border-radius: 50%;
+			border: 1px solid #fff;
+			float: left;
+			margin: 10px;
+			cursor: pointer;
+		}
+		
+		span.on {
+			background: blueviolet;
+		}
+	</style>
+
+	<body>
+		<div id="container">
+			<div id="list">
+				<img src="img/img/1.jpg" />
+				<img src="img/img/2.jpg" />
+				<img src="img/img/3.jpg" />
+				<img src="img/img/4.jpg" />
+				<img src="img/img/5.jpg" />
+			</div>
+			<div id="focus">
+				<span class="on"></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+			<div class="arrow">
+				<a href="#" id="pre">&lt;</a>
+				<a href="#" id="next">&gt;</a>
+			</div>
+		</div>
+	</body>
+	<script src="js/jquery-1.12.3.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var count = 0;
+		var listEle = $("#list");
+		var moving = true;
+		var spanEles = $("span");
+		var intervalId = setInterval(nextPage, 2000);
+		$("#container").mouseover(function() {
+			clearInterval(intervalId);
+		});
+		$("#container").mouseout(function() {
+			intervalId = setInterval(nextPage, 2000);
+		});
+		for (var i = 0, length = spanEles.length; i < length; i++) {
+			spanEles[i].index = i;
+			spanEles[i].onclick = function() {
+				for (var i = 0, length = spanEles.length; i < length; i++) {
+					if (spanEles[i].className = 'on') {
+						spanEles[i].className = '';
+					}
+				}
+				this.className = 'on';
+				count = this.index;
+				listEle.animate({
+					left: -count * 600
+				}, 1000);
+				//listEle.style.left = -count * 600 + "px";
+			};
+		}
+		$("#pre").click(function() {
+			if (moving) {
+				moving = false;
+			spanEles[count].removeAttribute("class");
+			if (count == 0) {
+				count = 4;
+			} else {
+				count--;
+			}
+			listEle.animate({
+				left: -count * 600
+			}, 1000);
+			//listEle.style.left = -count * 600 + "px";
+			spanEles[count].setAttribute("class", "on");
+			setTimeout(function() {
+					moving = true;
+				}, 1000);
+			}
+		});
+		$("#next").click(nextPage);
+
+		function nextPage() {
+			if (moving) {
+				moving = false;
+				spanEles[count].removeAttribute("class");
+				if (count < 4) {
+					count++;
+				} else {
+					count = 0;
+				}
+				listEle.animate({
+					left: -count * 600
+				}, 1000);
+				//listEle.style.left = -count * 600 + "px";
+				spanEles[count].setAttribute("class", "on");
+				setTimeout(function() {
+					moving = true;
+				}, 1000);
+			}
+		}
+	</script>
+
+</html>
