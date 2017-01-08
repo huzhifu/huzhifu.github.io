@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<li>元素隐藏：visibility:hidden;（不可见，占位）display:none（不可见，不占位） </li>
+<li>透明度：opacity会使元素本身和其子元素都透明；rgba只是作用于背景色</li>
+<li>windows默认的字体在：c/windows/fonts路径下。  chrome设置字体，工具栏-->设置-->高级设置-->字体。 地址栏地址解析：C:/Windows/System32/drivers/etc/目录下的hosts文件，把localhost修改成其他名字</li>
+<li>@media选择器   @media(max-width:400px){...} :文档宽度小于400px时（最大为400px时）;@media(min-width:300px){...} :文档宽度大于300px时（最小为300px时）;</li>
+<li>IE5,6使用的是quirk模式，行内元素也可以设置宽高.所以要避免就要设置doctype</li>
+<li>border-radius:10px出现圆角效果，border-radius:50%;就可以实现圆形效果</li>
+<li>cursor可以改变鼠标的形状，如：cursor:pointer手型</li>
+<li>制作三角形
+    <pre><code>
+        div{
+            width:0;
+            height:0;
+            border-top:30px solid transparent;
+            border-left:30px solid transparent;
+            border-right:30px solid transparent;
+            border-bottom:30px solid green;
+        }
+    </code></pre>
+</li>
+<li>跳转到相应的位置： &lt;a href="#p1"&gt;目标&lt;/a&gt; &lt;p id="p1"&gt;目标段落&lt;/p&gt;</li>
+<li> p:target{border:1px dotted red} 承接上一个内容，表示点击之后目标段落加上红色虚线效果</li>
+<li>:first-child :last-child :nth-child结构化伪类（第一个，最后一个,第n个）</li>
+</body>
+</html>
