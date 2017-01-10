@@ -43,7 +43,7 @@
     </tbody>
 </table>
 <h3 style="color: red">注意：a标签的几个伪类选择器需要一定的顺序，否则某些效果出不来</h3>
-<p>顺序为L-V-H-A,即按照a:link>a:visited>a:hover>a:active这样的顺序使用。 input:focus输入框获取焦点伪类</p>
+<p>顺序为L-V-H-A,即按照a:link>a:visited（chrome无痕模式即ctrl+shift+N,此样式无效）>a:hover>a:active这样的顺序使用。 input:focus输入框获取焦点伪类</p>
 <h3 style="color: green">颜色的表示方法：</h3>
 <li>color:rgb(0,233,78)  color:rgba(0,233,78,.5)//有透明度</li>
 <li>color:rgb(10%,37%,100%)</li>
@@ -94,11 +94,14 @@
 <h2>浮动</h2>
 <h3 style="color: green">内联元素设置为float之后就变成了块级元素</h3>
 清除浮动的方式
+<li>给浮动的父元素也加上float:left(这种方式大多数情况下不建议用)</li>
 <li>在浮动的父元素加上overflow：hidden；</li>
 <li>::after{
     content："";display:block;clear:both;}</li>
+<li>在浮动元素的后面加上 < div style="clear:both">.< /div ></li>
 <li>clear:both;</li>
 <li>/以下这种方式兼容性最好/
+    如果.clearfix是浮动的父元素，那么
     .clearfix:after{content:"\200B";display:block;height:0;clear:both;}
     .clearfix{*zoom:1;}/*IE/7/6*/</li>
 <h3 style="color: green">
@@ -108,7 +111,7 @@
 </h3>
 <h2>定位</h2>
 <li>position:relative<span>相对定位指的是相对于元素本身的位置，不脱离文本流，不改变元素的性质，使元素上升一层</span></li>
-<li>position:absolute<span>绝对定位指的是相对于设置了position属性最近的祖先元素，如果没有，就相对于浏览器窗口。绝对定位会脱离文本流，元素设置这个属性后就变成了块元素</span></li>
+<li>position:absolute<span>绝对定位指的是相对于设置了position属性最近的祖先元素，如果没有，就相对于浏览器窗口(body)。绝对定位会脱离文本流，元素设置这个属性后就变成了块元素</span></li>
 <li>position:fixed<span>固定定位相对于浏览器窗口，但是这个属性在ie6中不支持</span></li>
 <li>position属性设置后，即可使用top,right,bottom,left和z-index属性，否则这些属性无效</li>
 <h2>居中</h2>
