@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        body {
+            margin: 0;
+            font-size: 14px;
+        }
+        header {
+            position: relative;
+        }
+        .brand {
+            width: 124px;
+            height: 41px;
+            display: inline-block;
+            background-size: 124px 41px;
+            background-image: url("logo.png");
+            position: absolute;
+            float: left;
+            margin-top: 6px;
+            margin-left: 15px;
+        }
+        nav {
+            background-color: #f0f0f0;
+            border-bottom: 1px solid #d0d0d0;
+            height: 50px;
+            /*线性背景过度色*/
+            /*background: -webkit-linear-gradient( #f9f9f9, #d0d0d0);*/
+        }
+        /*包裹浮动元素*/
+        nav:after {
+            content: ".";
+            height: 0;
+            display: block;
+            visibility: hidden;
+            clear: both;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            float: right;
+            margin: 0;
+        }
+
+        /*让所有菜单项都浮动起来，实现水平排列*/
+        ul li {
+            float: left;
+            display: block;
+            text-align: center;
+            width: 100px;
+            height: 51px;
+            line-height: 50px;
+            border: 1px solid transparent;
+        }
+
+        ul li:hover {
+            color: #319579;
+        }
+
+        .have-menu0-l2:hover{
+            color: #319579;
+            border: 1px solid #d0d0d0;
+            border-bottom-color: transparent;
+            background-color: #f0f0f0;
+        }
+
+        ul li:hover .menu-l2{
+            visibility: visible;
+        }
+
+        .menu-l2 {
+            visibility: hidden;
+            width: 300px;
+            height: 200px;
+            background-color: #f0f0f0;
+            border: 1px solid #d0d0d0;
+            border-top: 1px solid transparent;
+            margin-top: 0;
+            margin-left: -1px;
+
+
+        }
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <i class="brand"></i>
+        <nav>
+            <ul>
+                <li>首页</li>
+                <li class="have-menu0-l2">WEB前端
+                    <div class="menu-l2" style="">
+                        <h3>HTML5</h3>
+                        <img src="icon-h5.png">
+                    </div>
+                </li>
+                <li>Android&IOS</li>
+                <li>机器学习</li>
+                <li>VR</li>
+                <li>JavaEE+云计算</li>
+                <li>大数据</li>
+                <li>免费视频</li>
+                <li>关于&留言</li>
+            </ul>
+        </nav>
+    </header>
+</body>
+</html>
