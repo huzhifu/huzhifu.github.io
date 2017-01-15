@@ -31,6 +31,14 @@
 <li>居中的两种思路：父元素relative>目标居中元素absolute，top:50%，left:50%,margin-left:目标的宽度/2,margin-top:目标的高度/2>ok;
 父元素display:table-cell,text-align:center,vertical-align:middle>ok
 </li>
-<a href="exec1.html">二级菜单纯css制作(类似淘宝京东、图片大小自适应)</a>
+<li>其他居中：两个内联元素放一起，span+input如果input元素并没有和span一条水平线上，可以vertical-align:middle</li>
+<li>display:table-cell 其父元素display:table  css3新增的单元格布局,可以像普通的单元格那样布局，主要用来做响应式布局</li>
+<li><span class="color:red">计算函数</span>width: calc(100%-20px)</li>
+<a href="exec1.html">二级菜单纯css制作(类似淘宝京东、图片大小自适应)</a> <a href="./jd_mobile/index.html">京东移动端界面</a>
+<h2>动画</h2>
+<li>transition:过渡 例如：.box{background:red}  .box:hover{background:green;transition:all 2s linear(这个是速率，可以用cubic-bezier(0,1.5,1,-0.38)代替)}</li>
+<li>transform:缩放、移动、倾斜、旋转 例如：transform:rotate(45deg)--transform:scale(2)--transform:translate(20px,20px)--transform:skew(45deg,45deg)</li>
+<li>animation:动画</li>
+<a href="exec2.html">幽灵按钮</a>   <a href="exec3.html">会飞的鸟</a>   <a href="exec4.html">跳跳球</a>
 </body>
 </html>

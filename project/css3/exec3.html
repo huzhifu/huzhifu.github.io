@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <title>fly-bird</title>
+      <style type="text/css">
+            .fly_bird_div{
+                  width:259px;
+                  height: 300px;
+                  background-image: url("img/b1.jpg") ;
+
+                  animation: anim 2s infinite;
+                  -webkit-animation: anim 2s infinite;
+                  -moz-animation: anim 2s infinite;
+                  -ms-animation: anim 2s infinite;
+                  -o-animation: anim 2s infinite;
+
+            }
+            @keyframes anim {
+                  50%{
+                        background-image: url("img/b2.jpg");
+                  }
+                  70%{
+                        background-image: url("img/b3.jpg");
+                  }
+            }
+      </style>
+</head>
+<body>
+      <div class="fly_bird_div"></div>
+</body>
+</html>

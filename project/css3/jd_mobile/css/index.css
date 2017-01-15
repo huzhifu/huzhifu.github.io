@@ -1,0 +1,136 @@
+body{
+    margin: 0;
+    background-color: #f5f5f5;
+    font-size: 14px;
+}
+header{
+    width: 100%;
+    /*background-color: rgba(0, 56, 68 , .9);*/
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.search-bar{
+    background-color: rgba(209, 56, 68 , .9);
+    min-width: 300px;
+    max-width: 640px;
+    margin: 0 auto;
+}
+.search-table{
+    width: 100%;
+    display: table;
+    height: 35px;
+    padding-left: 5px;
+}
+.search-bar-col{
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+.col-center{
+    width: 100%;
+}
+.search-bar-col>span{
+    display: block;
+    width: 56px;
+}
+.search-form{
+    background-color: white;
+    margin-left: 11px;
+    height: 27px;
+    border-radius: 10px;
+    line-height: 27px;
+    position: relative;
+}
+
+.search-form input{
+    width: calc(100% - 63px);
+    border: 0;
+    outline: 0;
+}
+
+
+.main-wrapper {
+    min-width: 300px;
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.block-bg{
+    background-color: white;
+}
+
+.nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-size: 12px;
+    padding: 5px;
+}
+.nav li{
+    float: left;
+    width: 25%;
+    text-align: center;
+}
+.nav a{
+    width: 100%;
+    text-decoration: none;
+    color: #a8a8a8;
+    display: block;
+    text-align: center;
+    /*border: 1px solid red;*/
+    margin: 0;
+    padding: 0;
+}
+.nav a>img{
+    width: 40px;
+    height: 40px;
+}
+a>span{
+    display: block;
+    margin: 5px;
+}
+.carousel{
+    width: 100%;
+}
+
+.carousel img{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+
+.list{
+
+}
+
+
+/*京东Logo */
+.jd-logo{
+    display: inline-block;
+
+    width: 56px;
+    height: 21px;
+
+    background-image: url("../img/jd-sprites.png");
+    background-size: 200px 200px;
+    background-position: 0 -109px;
+}
+
+/*京东 搜索框 查询Logo */
+.jd-search-form-icon{
+    display: inline-block;
+
+    width: 20px;
+    height: 20px;
+
+    background-image: url("../img/jd-sprites.png");
+    background-size: 200px 200px;
+    background-position: -60px -109px;
+
+    position: absolute;
+    top: 3px;
+    left: 5px;
+}
