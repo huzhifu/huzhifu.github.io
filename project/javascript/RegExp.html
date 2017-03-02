@@ -58,6 +58,19 @@
     <h3>一个较为复杂的例子</h3>
 <li>articleDetail.content = articleDetail.content.replace(/&lt;a [^&gt]*href=['"]([^'"]+)[^&gt;]*>/g, '&lt;p class="text_link_color" ng-click="' + "action.onOuterLinkClicked('$1')" + '"&gt');</li>
 <li>articleDetail.content=articleDetail.content.replace( /&lt;\/a&gt;/g,"&lt;/p&gt;");</li>
+    <h3>另外一个典型的例子</h3>
+<pre><code>
+    //偶数个字符的正则匹配
+    temp=temp.replace(/\*\*!/g, function(match) {
+        i++;
+        if(i%2==0)
+        {
+            return match+'&nbsp;';
+        }
+        else{return match}
+    });
+    console.log(temp);
+</code></pre>
  <img src="../img/regexp2.jpg" alt=""/>
 </div>
 </body>

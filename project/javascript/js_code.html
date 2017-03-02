@@ -5,6 +5,23 @@
     <title></title>
 </head>
 <body>
+<pre><code>
+    //从一堆数据中，随机取几个
+    function getRandom(opt) {
+        var old_arry = opt.arry, range = opt.range;
+        range = range > old_arry.length?old_arry.length:range;//防止超过数组的长度
+        var newArray = [].concat(old_arry), //拷贝原数组进行操作就不会破坏原数组
+        valArray = [];
+        for (var n = 0; n < range; n++) {
+            var r = Math.floor(Math.random() * (newArray.length));
+            valArray.push(newArray[r]);
+            newArray.splice(r, 1);//在原数组删掉，然后在下轮循环中就可以避免重复获取
+        }
+        return valArray;
+    }
+    var new_val = getRandom({'arry':['证券','汇率','黄金','原油','房产','宏观','股票'],'range':3});
+    console.log(new_val);
+</code></pre>
 <p>push：添加元素到数组结尾，unshift添加到开头；pop从数组结尾移除元素，shift从数组开头移除元素;delete arr[index],把数组中的index下标的元素变成undefined，数组长度不变</p>
 <p>slice( 下标为m开始截取到下标为n)截取数组的一部分返回</p>
 <p>splice(从下标为XX开始，删除n个元素，插入元素.,.,.)：splice(index,1)删除下标为index的元素；splice(index,0,num)在index下标的位置添加一个元素num；splice(index,1,num)替换下标为index的元素为num</p>
@@ -15,7 +32,7 @@
         console.log(value);
  } );
 </code></pre>
-<p>map(通常用于赋值):映射的意思，映射返回一个新数组，有返回值;filterArr:返回一个新对象 </p>
+<p>map(通常用于赋值):映射的意思，映射返回一个新数组，有返回值(map适用于元素赋值，但不适用于比较过滤);mapArr:返回一个新对象 </p>
 <pre><code>
     var mapArr = array.map(function(value, index, array ){
 
@@ -23,7 +40,7 @@
     });
 </code></pre>
 <img src="../img/map.jpg" alt=""/>
-<p>filter(通常用于判断):过滤、筛选的意思; 有返回值; filterArr:返回过滤后新数组</p>
+<p>filter(通常用于判断):过滤、筛选的意思; 有返回值(filter返回满足条件的数组，但是不使用于元素赋值); filterArr:返回过滤后新数组</p>
 <pre><code>
     var filterArr = array.filter(function(value, index, array ) {
         if ( value > 20 ) {
