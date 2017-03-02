@@ -5,10 +5,13 @@
     <title></title>
 </head>
 <body>
+<li><a href="baseline.html">基线的理解</a></li>
 <li>元素隐藏：visibility:hidden;（不可见，占位）display:none（不可见，不占位） </li>
 <li>透明度：opacity会使元素本身和其子元素都透明；rgba只是作用于背景色</li>
 <li>windows默认的字体在：c/windows/fonts路径下。  chrome设置字体，工具栏-->设置-->高级设置-->字体。 地址栏地址解析：C:/Windows/System32/drivers/etc/目录下的hosts文件，把localhost修改成其他名字</li>
-<li>@media选择器   @media(max-width:400px){...} :文档宽度小于400px时（最大为400px时）;@media(min-width:300px){...} :文档宽度大于300px时（最小为300px时）;</li>
+<li>@media选择器   @media(max-width:400px){...} :文档宽度小于400px时（最大为400px时）;@media(min-width:300px){...} :文档宽度大于300px时（最小为300px时）;
+以上主要应用于pc端。  @media(max-device-width:640px){}用于移动端设备
+</li>
 <li>IE5,6使用的是quirk模式，行内元素也可以设置宽高.所以要避免就要设置doctype</li>
 <li>border-radius:10px出现圆角效果，border-radius:50%;就可以实现圆形效果，border-radius:100px(水平方向半径)/50px(垂直方向半径):做一个椭圆</li>
 <li>cursor可以改变鼠标的形状，如：cursor:pointer手型</li>
