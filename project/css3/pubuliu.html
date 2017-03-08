@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            overflow: hidden;
+        }
+        ul>li{
+            float:left;
+            width:170px;
+            border: 2px solid white;
+            margin-left:2px ;
+            box-shadow: 0px 0px 3px black;
+        }
+        ul>li:last-child{
+            margin-right: 2px;
+        }
+        img{
+            width: 100%;
+            vertical-align: middle;
+            transition: 1s linear;
+        }
+        #container{
+            width: 706px;
+            height: 800px;
+            margin:50px auto;
+            /*background-color: blue;*/
+        }
+        div{
+            margin-bottom: 5px;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript">
+        var imgArr=[{src:"img/1.png"},
+            {src:"img/2.jpg"},
+            {src:"img/3.jpg"},
+            {src:"img/4.jpg"},
+            {src:"img/5.jpg"},
+            {src:"img/6.jpg"},
+            {src:"img/7.jpg"},
+            {src:"img/8.jpg"},
+            {src:"img/9.jpg"},
+            {src:"img/10.jpg"},
+            {src:"img/11.jpg"},
+            {src:"img/12.jpg"},
+        ];
+        var i=0;
+        var sum='';
+        function loadImg(){
+            if(!isNaN(i)){
+                i++;
+                if(i<12){
+                    for(;i<12;i++){
+                        createImg();
+                    }
+                }else{
+                    sum=i;
+                    for(;i<sum+3;i++){
+                        createImg();
+                    }
+                }
+            }
+        }
+        function createImg(){
+            var imgEle=new Image();
+            imgEle.src=imgArr[i%imgArr.length].src;
+            imgEle.style.cssText='opacity:0;transform:scale(0.1) rotate(-600deg) skew(30deg) translate(50px,50px)';
+            var divEle=document.createElement("div");
+            divEle.appendChild(imgEle);
+            getList($("ul li")).append(divEle);
+            (function(imgEle){
+                setTimeout(function(){
+                    imgEle.style.cssText='opacity:1;transform:scale(0.8) rotate(0deg) skew(0deg) translate(0px,0px)';
+                },100);
+            })(imgEle);
+        }
+        function getList(obj){
+            var getList;
+            var length=obj.length;
+            var h=Infinity;
+            for(var i=0;i<length;i++){
+                if(obj.eq(i).height()<h){
+                    getList=obj.eq(i);
+                    h=obj.eq(i).height();
+                }
+            }
+            return getList;
+        }
+        $(function(){
+            var height=$(window).height();
+            loadImg();
+            $(window).scroll(function(){
+                var scrollT=document.body.scrollTop+document.documentElement.scrollTop;
+                var scrollH=document.body.scrollHeight;
+                if(scrollT+height+50>scrollH){
+                    loadImg();
+                }
+                /*if(scrollT+height>5000){
+                    alert("已经到底了");
+                    i=NaN;
+
+                }*/
+            });
+        });
+    </script>
+</head>
+<body>
+<div id="container">
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+</body>
+</html>
