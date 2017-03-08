@@ -1,0 +1,165 @@
+body{
+    margin: 0;
+    background-color: #f0f0f0;
+}
+header{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+.jm-reg, .jm-header{
+    display: table;
+    width: 100%;
+}
+.jm-reg{
+    background-image: url("../img/float_car.png");
+}
+.jm-header{
+    background-color: #ed145b;
+    color: white;
+}
+.t-cell{
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+.jm-reg-center, .jm-header-center{
+    width: 100%;
+}
+.jm-reg-right{
+    position: relative;
+}
+.jm-reg-right img{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 15px;
+    height: 15px;
+    margin: 10px;
+}
+.download-app{
+    display: inline-block;
+    width: 6rem;
+    height: 2.2rem;
+    line-height: 2.2rem;
+    color: white;
+    border-radius: 2rem;
+    background-color: #fe4478;
+    margin: 10px 33px;
+}
+.ad{
+    display: block;
+    font-color: #696969;
+    text-align: left;
+    margin: 0.3rem 1rem;
+    white-space: nowrap;
+
+}
+.ad-sm{
+    font-size: 0.8rem;
+}
+.jm-reg-left>img{
+    width: 3rem;
+    height: 3rem;
+    vertical-align: middle;
+    margin: 0.5rem;
+}
+footer{
+    width: 100%;
+    /*background-color: red;*/
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+.h-main-wrapper, .main-wrapper, .f-main-wrapper{
+    max-width: 560px;
+    min-width: 340px;
+    margin: 0 auto;
+    background-color: #f0f0f0;
+}
+.main-wrapper{
+    margin: 7.7rem auto;
+}
+.nav{
+    width: 100%;
+    /*overflow: hidden;*/
+    float: left;
+    position: relative;
+}
+.nav .box{
+    width: 25%;
+    float: left;
+    text-align: center;
+}
+.box-txt{
+    display: inline-block;
+    width: 100%;
+    height: 3rem;
+    line-height: 3rem;
+    vertical-align: center;
+    border: 1px solid #f0f0f0;
+}
+.box{
+    /*position: relative;*/
+}
+.box:hover{
+    color:  #fe4478;
+}
+.box-txt{
+    position: relative;
+}
+.box-txt::after{
+    content: "";
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border: 0.3rem solid transparent;
+    border-left: 0.3rem solid #696969;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transform: rotateZ(45deg);
+
+}
+.box:hover .box-list{
+    visibility: visible;
+}
+.box-list{
+    visibility: hidden;
+    position: absolute;
+    top: 3em;
+    left:  0;
+    color: #696969;
+    background-color: #fff;
+    border: 1px solid #f0f0f0;
+    width: 100%;
+}
+.detail{
+    padding: 0;
+    margin: 0 auto;
+    list-style: none;
+    text-align: center;
+    width: 80%;
+
+}
+.classify{
+    float: left;
+    width: 30%;
+    height: 3rem;
+    line-height: 3rem;
+    border: 1px solid #f0f0f0;
+    vertical-align: middle;
+}
+
+.jm-header-left img{
+    width: 26px;
+    height: 26px;
+    margin: 10px 15px;
+}
+.jm-header-right img{
+    width: 35px;
+    height: 35px;
+    margin: 10px 15px;
+}
