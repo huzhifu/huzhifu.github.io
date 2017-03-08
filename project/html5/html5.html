@@ -56,6 +56,22 @@
     <ol>情况四：
         如果是块级元素，eg：div，设置具体宽度时，不管是百分比还是px，内容区的宽度是设置值，给它设置一个padding时，会把盒子撑大，内容区不变。</ol>
 </li>
+<li>
+    Collapsing margin. <br/>
+    <ol>发生条件：
+    1、子元素与父元素必须都是display: block</ol>
 
+    <ol>现象：
+    1、父元素和子元素公用了margin-top，margin-bottom:
+    2、子元素和子元素公用了上下margin，且使用外边距较大的元素作为公共的margin。如果某一个元素的外边距为负数，那么margin是取他们的和。</ol>
+
+    <ol>怎么解决：
+    1、给父元素加一个边框。
+    2、加入文本，可以分割父元素和子元素的margin-top.
+    3、给父元素增加内边距；</ol>
+
+
+
+</li>
 </body>
 </html>
