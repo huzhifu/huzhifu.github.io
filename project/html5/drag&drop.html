@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .items-selected, .items-list{
+            background-color: #00CCFF;
+            width: 100%;
+            height: 200px;
+        }
+        .items-list{
+            background-color: #f0f0f0;
+        }
+        .items-list img, .items-selected img{
+            width: 150px;
+            height: 150px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="items-selected" class="items-selected">
+
+    </div>
+    <div id="items-list" class="items-list">
+        <img src="img/item01.jpg">
+        <img src="img/item02.jpg">
+        <img src="img/item03.jpg">
+        <img src="img/item04.jpg">
+        <img src="img/item05.jpg">
+        <img src="img/item06.jpg">
+    </div>
+
+    <script type="text/javascript">
+
+        var obj;
+
+        var itemsSelected = document.getElementById("items-selected");
+        itemsSelected.addEventListener("dragover", function(event){
+            console.log("drag over");
+            event.preventDefault();
+        });
+
+        itemsSelected.addEventListener("drop", function(event){
+            console.log("drop");
+            itemsSelected.appendChild(obj);
+            var text = event.dataTransfer.getData("Text");
+            console.log(text);
+        });
+
+
+        var imgs = document.getElementsByTagName("img");
+        for(var i=0; i<imgs.length; i++){
+            imgs[i].addEventListener("dragstart", function(event){
+                console.log("drag start");
+                event.dataTransfer.setData("Text", "Hello");
+                obj = this;
+            });
+        }
+
+
+    </script>
+</body>
+</html>
