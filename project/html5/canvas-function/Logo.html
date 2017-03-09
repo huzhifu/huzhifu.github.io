@@ -1,0 +1,62 @@
+<script type="text/javascript" src="Painter.js"></script>
+<script type="text/javascript">
+document.onreadystatechange =function(){
+	if(document.readyState=='complete'){
+		console.log(document.readyState);
+		console.log(arguments);
+
+
+		p = new Painter(500).coor()
+			.paraPlot('30*sin(t)','30*(cos(t) + abs(sin(t)))',0,2*pi,'green')
+			.plot('x',-250,250,'red')
+
+		p = new Painter(500).coor()
+			.polarPlot('50 + 5 * sin(5*x)',0,2*pi,'green', 20)
+
+		p = new Painter(500).coor()
+			.polarPlot('50 + 20 * sin(5*x)',0,2*pi,'red', 20)
+
+		p = new Painter(500).coor()
+			.polarPlot('50 + 30 * sin(5*x)',0,2*pi,'brown', 20)
+
+		p = new Painter(500).coor()
+			.polarPlot('200*(sin(2*x))',0,40*pi,'red',20)
+		p = new Painter(500).coor()
+			.polarPlot('200*(sin(0.95*x))',0,40*pi,'green',10);
+		//	.polarPlot('x*sin(5.1*x)',0,25*pi,'red',20);
+		
+		// p  = new Painter(1000).coor()
+			// .plot('250*(-3*0.002*x*log(0.002*x)+(1/36)*exp(-pow((36*0.002*x-36/E),4)))',0,500);
+		
+		p = new Painter(500).coor()
+			.polarPlot('245*sin(1.1*x)',0,20*pi,'red',20)
+		p = new Painter(500).coor()
+			.polarPlot('245*sin(2.1*x)',0,20*pi,'green',20)
+		p = new Painter(500).coor()
+			.polarPlot('245*sin(3.1*x)',0,20*pi,'blut',20)
+		p = new Painter(500).coor()
+			.polarPlot('245*sin(4.1*x)',0,20*pi,'yellow',20)
+		p = new Painter(500).coor()
+			.polarPlot('450*sin(6.04*x)',0,25*pi,'purple',20)
+		p = new Painter(500).coor()
+			.polarPlot('x*sin(5.1*x)',0,300*pi,'red',20)
+			.polarPlot('x*abs(sin(6.03*x))',0,100*pi,'purple',20)
+			.polarPlot('-245*sin(1.1*x)',0,20*pi,'lightseagreen',20)
+	//	s = new Painter(500).coor()
+		//	.polarPlot('2*x',0,122,'blue',10)
+		//	.polarPlot('-2*x',0,122,'red',10)
+		//	.polarPlot('x*2*sin(5.1*x)',0,122,'green',20)
+		//	.plot('0.003*x*x',-250,250,'red',20)
+		//	.save();
+		d = new Painter(500).coor()
+			.polarPlot('x*abs(sin(7.1*x))',0,50*pi,'red',20)
+		s = new Painter(500).coor()
+			.polarPlot('3*x',0,200,'red',10)
+			.polarPlot('-3*(x+0)',0,200,'black',10)
+		//	.polarPlot('3*(x+pi/2)',0,200,'blue',10)
+		//	.polarPlot('-3*(x+pi/2)',0,200,'green',10);
+		
+		s.paraPlot('10*16*sin(t)*sin(t)*sin(t)','10*(13*cos(t)-5*cos(2*t)-2*cos(3*t)-cos(4*t))',-200,200,'red')
+	}
+}
+</script>

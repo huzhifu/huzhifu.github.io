@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    .axis line,
+    .axis path{
+      fill: none;
+      stroke: black;
+      shape-rendering: crispEdges;
+    }
+  </style>
+</head>
+<body>
+  <button onclick="update()">Change</button>
+</body>
+<script src="d3.v3.min.js"></script>
+<script>
+  var w = 1200
+  var h = 600
+  var p = 40
+  d3.select('body').append('svg')
+  .attr('width',w)
+  .attr('height',h)
+  .style('border', '1px solid')
+
+
+  var xRange = Math.random()*w
+  var yRange = Math.random()*h
+
+  var dots = new Array(50)
+
+  for (var i = 0; i<dots.length; i++) {
+    var x = xRange * Math.random()
+    var y = yRange * Math.random()
+    dots[i] = [x, y]
+  }
+
+  console.log(dots)
+
+  xScale = d3.scale.linear().domain([0, xRange]).range([p,w-p])
+  yScale = d3.scale.linear().domain([yRange, 0]).range([p,h-p])
+
+
+  d3.select('svg').selectAll('circle')
+  .data(dots).enter()
+  .append('circle')
+  .attr('cx', function(d){
+    return xScale(d[0])
+  })
+  .attr('cy', function(d){
+    return yScale(d[1])
+  })
+  .attr('r', 5)
+
+  xAxis = d3.svg.axis().scale(xScale).orient('bottom')//.ticks(10)
+  yAxis = d3.svg.axis().scale(yScale).orient('left')//.ticks(10)
+
+  d3.select('svg').append('g').classed('xaxis axis',true).style('transform', 'translate(0,'+(h-p)+'px)').call(xAxis)
+  d3.select('svg').append('g').classed('yaxis axis',true).style('transform', 'translate('+p+'px,0)').call(yAxis)
+
+  d3.select('svg').on('click', update)
+
+  function update(){
+    var xRange = Math.random()*w
+    var yRange = Math.random()*h
+
+    var dots = new Array(50)
+
+    for (var i = 0; i<dots.length; i++) {
+      var x = xRange * Math.random()
+      var y = yRange * Math.random()
+      dots[i] = [x, y]
+    }
+
+    xScale = d3.scale.linear().domain([0, xRange]).range([p,w-p])
+    yScale = d3.scale.linear().domain([yRange, 0]).range([p,h-p])
+
+
+    d3.select('svg').selectAll('circle')
+    .data(dots)
+    // .transition()
+    // .attr('r', 10)
+    // .attr('fill', 'tan')
+    .transition()
+    .duration(500)
+    .delay(function(d,i){
+      return i*5
+    })
+    .attr('cx', function(d){
+      return xScale(d[0])
+    })
+    .attr('cy', function(d){
+      return yScale(d[1])
+    })
+    .transition()
+    .attr('r', 5)
+    .attr('fill', 'black')
+    .duration(500)
+
+    xAxis.scale(xScale)
+    yAxis.scale(yScale)
+
+    d3.select('.xaxis').transition().duration(500).call(xAxis)
+    d3.select('.yaxis').transition().duration(500).call(yAxis)
+    
+
+  }
+  
+</script>
+</html>
