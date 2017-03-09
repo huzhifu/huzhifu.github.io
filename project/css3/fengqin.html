@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta keywords="手风琴，css">
+    <meta content="这是时手风琴的所有代码">
+    <title>手风琴效果</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #main-wrapper{
+            width:1038px;
+            height:405px;
+            border: 2px solid blueviolet;
+            overflow: hidden;
+            margin: 50px auto;
+        }
+        #main-wrapper>ul{
+            width:1038px;
+            height:405px ;
+            list-style: none;
+        }
+        ul li{
+            width:100px;
+            float:left;
+            transition: 1s;
+        }
+        li:hover{
+            width:538px;
+        }
+    </style>
+</head>
+<body>
+<div id="main-wrapper">
+    <ul>
+        <li><img src="img/feng0.jpg"/></li>
+        <li><img src="img/feng1.jpg"/></li>
+        <li><img src="img/feng2.jpg"/></li>
+        <li><img src="img/feng3.jpg"/></li>
+        <li><img src="img/feng4.jpg"/></li>
+        <li><img src="img/feng5.jpg"/></li>
+    </ul>
+</div>
+</body>
+</html>
