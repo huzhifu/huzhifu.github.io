@@ -1,0 +1,88 @@
+body{
+    background-color: #f0f0f0
+}
+.h-bg{
+    background-color: rgba(250, 0, 0, .5);
+}
+.center {
+    width: auto;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+}
+.jd-logo{
+    width: 73px;
+    height: 34px;
+    background-image: url("../img/jd-sprites.png");
+    background-position: 0 -132px;
+    background-size: 250px 250px;
+
+}
+.btn-login{
+    width: 100%;
+    height: 100%;
+    line-height:34px;
+    text-align: center;
+    color: #fff;
+    font-family: "微软雅黑 Light";
+    font-size: 1.7rem;
+}
+/*.jd-search{*/
+    /*display: inline-block;*/
+    /*width: 34px;*/
+    /*height: 34px;*/
+    /*background-image: url("../img/jd-sprites.png");*/
+    /*background-position: -70px -132px;*/
+    /*background-size: 250px 250px;*/
+/*}*/
+
+.jd-search{
+    width: 73px;
+    height: 42px;
+    line-height: 42px;
+}
+.nav-img{
+    width: 40px;
+    height: 40px;
+    margin: 20px auto;
+}
+.good-desc{
+    font-family: "微软雅黑 Light";
+    margin: 15px auto 5px;
+    display: block;
+    color: #696969;
+    font-size: 1.6rem;
+}
+.price{
+    color: #f15353;
+    font-size: 1rem;
+}
+.price:before{
+    content: "￥";
+}
+.item-title{
+    margin: 10px 0 0 28px;
+}
+.goods-item{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    line-height: 100%;
+    /*background-color: red;*/
+}
+
+.sell-out{
+    display: inline-block;
+    width: 4rem;
+    height: 4rem;
+    line-height: 4rem;
+    background-color: rgba(0, 0, 0, .6);
+    border-radius: 2rem;
+    font-size: 1rem;
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+    position: absolute;
+    top: 4rem;
+    left: 6.6rem;
+}
