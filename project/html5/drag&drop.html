@@ -2,64 +2,88 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>拖放</title>
     <style type="text/css">
-        .items-selected, .items-list{
-            background-color: #00CCFF;
-            width: 100%;
-            height: 200px;
+
+        .items-selected{
+            background-color: #2B81AF;
+            height: 220px;;
         }
-        .items-list{
+
+        .items{
             background-color: #f0f0f0;
         }
-        .items-list img, .items-selected img{
-            width: 150px;
-            height: 150px;
+        .items img, .items-selected img{
+            width: 126px;
+            height: auto;
             margin: 10px;
+
         }
     </style>
 </head>
 <body>
-    <div id="items-selected" class="items-selected">
+<h1>释放区</h1>
+<div id="items-selected" class="items-selected">
 
-    </div>
-    <div id="items-list" class="items-list">
-        <img src="img/item01.jpg">
-        <img src="img/item02.jpg">
-        <img src="img/item03.jpg">
-        <img src="img/item04.jpg">
-        <img src="img/item05.jpg">
-        <img src="img/item06.jpg">
-    </div>
+</div>
+<h1>可选元素</h1>
+<div class="items">
+    <img src="img/item01.jpg">
+    <img src="img/item02.jpg">
+    <a href="#">链接</a>
+    <!--如果元素不是img 或者 a 需要显示声明属性  draggable="true"-->
 
-    <script type="text/javascript">
+    <span id="testSpan" draggable="true" style="display: inline-block; width: 126px; height: 126px; background-color: indianred"></span>
+</div>
 
-        var obj;
+<script type="text/javascript">
 
-        var itemsSelected = document.getElementById("items-selected");
-        itemsSelected.addEventListener("dragover", function(event){
-            console.log("drag over");
-            event.preventDefault();
+    var obj;
+
+    //释放区
+    var itemSelectd = document.getElementById("items-selected");
+
+
+    itemSelectd.addEventListener("dragover",function(eve){
+        //console.log("元素已经进入释放区");
+        //console.log(obj);
+//            可以让被拖拽的元素浮在元素上方
+        eve.preventDefault();
+        var text = eve.dataTransfer.getData("Text");
+        console.log(text);
+
+    });
+
+    itemSelectd.addEventListener("drop", function(eve){
+//            把被拖拽的元素的添加到释放区
+        itemSelectd.appendChild(obj);
+
+        var text = eve.dataTransfer.getData("Text");
+        console.log(text);
+    });
+
+
+    //        被拖拽元素
+    var imgs = document.getElementsByTagName("img");
+
+    for(var i=0; i<imgs.length; i++){
+        imgs[i].addEventListener("dragstart", function(eve){
+            //console.log("拖放开始");
+            obj =  this;
         });
+    }
 
-        itemsSelected.addEventListener("drop", function(event){
-            console.log("drop");
-            itemsSelected.appendChild(obj);
-            var text = event.dataTransfer.getData("Text");
-            console.log(text);
-        });
+    //        Span元素拖放
+    var testSpan = document.getElementById("testSpan");
+    testSpan.addEventListener("dragstart", function(eve){
+        //console.log("拖放开始");
+        obj =  this;
+        eve.dataTransfer.setData("Text", "555");
 
-
-        var imgs = document.getElementsByTagName("img");
-        for(var i=0; i<imgs.length; i++){
-            imgs[i].addEventListener("dragstart", function(event){
-                console.log("drag start");
-                event.dataTransfer.setData("Text", "Hello");
-                obj = this;
-            });
-        }
+    });
 
 
-    </script>
+
+</script>
 </body>
 </html>
