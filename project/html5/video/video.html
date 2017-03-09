@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<video src="video/video.mp4" controls="controls" type="video/mp4" ></video>
+<br/>
+<button id="start">播放</button>
+<button id="stop">暂停</button>
+<button id="jin">快进</button>
+<button id="tui">快退</button>
+<button id="jing">静音</button>
+<button id="add">加速</button>
+<button id="sub">减速</button>
+<button id="common">正常</button>
+<button id="add_yin">音量加</button>
+<button id="sub_yin">音量减</button>
+<button id="revert">重播</button>
+<script type="text/javascript">
+    var video=document.getElementsByTagName('video');
+    var btn_start=document.getElementById('start');
+    var btn_stop=document.getElementById('stop');
+    var btn_jin=document.getElementById('jin');
+    var btn_tui=document.getElementById('tui');
+    var btn_jing=document.getElementById('jing');
+    var btn_add=document.getElementById('add');
+    var btn_sub=document.getElementById('sub');
+    var btn_common=document.getElementById('common');
+    var btn_add_yin=document.getElementById('add_yin');
+    var btn_sub_yin=document.getElementById('sub_yin');
+    var btn_revert=document.getElementById('revert');
+    video[0].autoplay=true;
+    video[0].loop=true;
+    btn_start.onclick=function(){
+        video[0].play();
+    };
+    btn_stop.onclick=function(){
+        video[0].pause();
+    };
+    btn_jin.onclick=function(){
+        video[0].currentTime+=10;
+    };
+    btn_tui.onclick=function(){
+        video[0].currentTime-=10;
+    };
+    btn_jing.onclick=function(){
+        video[0].muted=!video[0].muted;
+        this.innerHTML=video[0].muted? '声音':'静音';
+    };
+    btn_add.onclick=function(){
+        video[0].playbackRate=3;
+    };
+    btn_sub.onclick=function(){
+        video[0].playbackRate=1/3;
+    };
+    btn_common.onclick=function(){
+        video[0].playbackRate=1;
+    };
+    btn_add_yin.onclick=function(){
+        video[0].volume+=.1;
+    };
+    btn_sub_yin.onclick=function(){
+        video[0].volume-=.1;
+    };
+    btn_revert.onclick=function(){
+        video[0].load();
+    }
+</script>
+</body>
+</html>

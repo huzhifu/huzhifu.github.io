@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        #canvas{
+            background-color: greenyellow;
+        }
+    </style>
+</head>
+<body>
+<canvas id="canvas" width="500" height="500">
+
+</canvas>
+<script type="text/javascript">
+    var canvas=document.getElementById('canvas');
+    var context=canvas.getContext('2d');
+    //画线
+    context.moveTo(20,20);
+    context.lineTo(200,200);
+    context.lineWidth=7;
+//    context.fillStyle='#f0f';
+    context.stroke();
+    context.closePath();
+    //画圆
+    context.beginPath();
+    context.arc(300,300,100,0,360,false);
+    context.strokeStyle='#00f';
+    context.stroke();
+    context.closePath();
+    //画实心圆
+    context.beginPath();
+    context.arc(400,500,100,0,360,false);
+    context.fillStyle='#ff0';
+    context.fill();
+    context.closePath();
+    //画矩形
+    context.beginPath();
+    context.strokeStyle='#0480FF';
+    context.strokeRect(0,30,30,40);
+    context.fillStyle='#BB19FF';
+    context.fillRect(0,30,30,40);
+    context.closePath();
+    //写字
+    context.beginPath();
+    context.font='40px 黑体';
+    context.fillStyle='#FF45E5';
+    context.fillText('哈哈哈',100,100,150);
+    context.closePath();
+    //引入图片
+    var image=new Image();
+    image.src='ok.gif';
+    context.save();
+    context.translate(20,270);
+    context.rotate(-10*Math.PI/180);
+    context.drawImage(image,20,330,200,200);
+    context.restore();
+</script>
+</body>
+</html>
