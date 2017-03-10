@@ -12,6 +12,11 @@
 <a href="float--jsbin.cupexuneyo.1.html">float布局</a>
 <a href="position--jsbin.vofawinewo.1.html">position布局</a>
 <h2>flex布局(支持IE10及以上版本，移动端)</h2>
-
+<li>display:flex;(给布局的父元素)</li>
+<li>flex-basis:120px;(用于子元素，相当于width，当它和width同时出现时，优先级高于width)</li>
+<li>flex-grow:1;(用于子元素，用来按比例分割父元素剩余的宽度，注意此时如果子元素有自身的宽度需要flex-basis:0)</li>
+<li>flex-shrink:2;(当父元素的空间不够时，子元素该如何收缩和适配父元素的宽度),理解图如下
+    <img src="img/flex-shrink.jpg" alt=""/>
+</li>
 </body>
 </html>
