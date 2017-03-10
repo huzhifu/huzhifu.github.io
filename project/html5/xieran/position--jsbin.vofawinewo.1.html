@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2016 by anonymous (http://jsbin.com/vofawinewo/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html ng-app="app">
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+<style id="jsbin-css">
+html,body{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.toolbar {
+  width: 170px;
+  background-color: #2a2a2a;
+  height: 100%;
+  color: white;
+}
+.container{
+  height: 100%;
+  background-color: #ddd;
+  position: absolute;
+  left: 170px;
+  right: 0;
+  top: 0;
+}
+.hero {
+  background-color: pink;
+  height: 100%;
+  width: 25%;
+  float: left;
+}
+.content{
+  background-color: lightblue;
+  height: 100%;
+  width: 75%;
+  float: left;
+  overflow-y: scroll;
+}
+
+@media (max-width: 1580px) {
+  .toolbar {
+    width: 45px;
+  }
+  .container {
+    left: 45px;
+  }
+}
+
+@media (max-width: 768px) {
+  .toolbar{
+    display: none;
+  }
+  .hero{
+    display: none;
+  }
+  .container {
+    left: 0;
+  }
+  .content {
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body ng-controller="Ctrl">
+  <div class="toolbar">toolbar</div>
+  <div class="container">
+    <div class="hero">hero</div>
+    <div class="content">content</div>
+  </div>
+</body>
+</html>

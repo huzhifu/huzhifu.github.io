@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2016 by anonymous (http://jsbin.com/mixezukeve/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html ng-app="app">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+<style id="jsbin-css">
+html,body{
+  margin:0;
+  padding: 0;
+  height:100%;
+}
+body{
+  display: flex;
+}
+
+.toolbar{
+  width: 170px;
+  background-color: #2a2a2a;
+  color: white;
+}
+.hero{
+  background-color: pink;
+  flex-grow: 3;
+}
+.content{
+  flex-grow: 9;
+  background-color: lightblue;
+  overflow-y: scroll;
+}
+
+@media (max-width: 1580px) {
+  .toolbar {
+    width: 45px;
+  }
+}
+
+@media (max-width: 768px) {
+  .toolbar {
+    display: none;
+  }
+  .hero {
+    display: none;
+  }
+}
+</style>
+</head>
+<body ng-controller="Ctrl">
+  <div class="toolbar">toolbar</div>
+  <div class="hero">hero</div>
+  <div class="content">content</div>
+</body>
+</html>
