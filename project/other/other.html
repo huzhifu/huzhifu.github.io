@@ -144,6 +144,92 @@
 </li>
 <li>4.
     <a href="fontSize.js">fontSize源码</a> </li>
+<h1>前端跨域问题解决：</h1>
+<li>1.jsonp，script,cors,浏览器设置</li>
+<li>2.document.domain
+<pre><code>
+    应用场景
+    必须满足两个条件
+    1）页面中嵌入firame框架。
+    2）当前页面和iframe中的页面，主域、协议、端口必须完全一致。
+    解决方法
+    比如页面地址是http://a.baidu.com/，嵌入的iframe是 http://b.baidu.com/
+    分别设置页面和iframe的document.domain为： baidu.com，就可以解决问题。
+</code></pre>
+</li>
+<li>3.使用H5中的window.postMessage
+<pre><code>
+    解决方法
+    window.postMessage(message,targetOrigin) 方法是html5新引进的特性，可以使用它来向其它
+    的window对象发送消息，无论这个window对象是属于同源或不同源，目前IE8+、FireFox、Chrome、
+    Opera等浏览器都已经支持window.postMessage方法。
+    应用场景
+    1）页面和其打开的新窗口的数据传递
+    2）.多窗口之间消息传递
+    3）.页面与嵌套的iframe消息传递
+    详细介绍：http://www.cnblogs.com/dolphinX/p/3464056.html
+</code></pre>
+</li>
+<li>4.websocket
+<pre><code>
+    web sockets原理：在JS创建了web socket之后，会有一个HTTP请求发送到浏览器以发起连接。取得服务器响应后，建立的连接会使用HTTP升级从HTTP协议交换为web sockt协议。
+
+    只有在支持web socket协议的服务器上才能正常工作。
+    var socket = new WebSockt('ws://www.baidu.com');//http->ws; https->wss
+    socket.send('hello WebSockt');
+    socket.onmessage = function(event){
+    var data = event.data;
+    }
+</code></pre>
+</li>
+<li>5.window.name+iframe
+<pre><code>
+    window.name 的美妙之处：name 值在不同的页面（甚至不同域名）加载后依旧存在，并且可以支持非常长的 name 值（2MB）。
+
+    1) 创建a.com/cs1.html
+
+    2) 创建a.com/proxy.html，并加入如下代码
+    < head>
+        < script>
+            function proxy(url, func){
+                var isFirst = true,
+                        ifr = document.createElement('iframe'),
+                        loadFunc = function(){
+                            if(isFirst){
+                                ifr.contentWindow.location = 'http://a.com/cs1.html';
+                                isFirst = false;
+                            }else{
+                                func(ifr.contentWindow.name);
+                                ifr.contentWindow.close();
+                                document.body.removeChild(ifr);
+                                ifr.src = '';
+                                ifr = null;
+                            }
+                        };
+
+                ifr.src = url;
+                ifr.style.display = 'none';
+                if(ifr.attachEvent) ifr.attachEvent('onload', loadFunc);
+                else ifr.onload = loadFunc;
+
+                document.body.appendChild(iframe);
+            }
+        < /script>
+    < /head>
+    < body>
+    < script>
+        proxy('http://www.baidu.com/', function(data){
+            console.log(data);
+        });
+    < /script>
+    < /body>
+    3) 在b.com/cs1.html中包含：
+
+    < script>
+        window.name = '要传送的内容';
+    < /script>
+</code></pre>
+</li>
 <h1>常见的浏览器内核有哪些？</h1>
 <li>Trident内核：IE,MaxThon,TT,The World,360,搜狗浏览器等。[又称MSHTML]</li>
 <li>Gecko内核：Netscape6及以上版本，FF,MozillaSuite/SeaMonkey等</li>
