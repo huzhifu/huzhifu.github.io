@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>面试问题</title>
+</head>
+<body>
+<li>1.函数与执行顺序
+<pre><code>
+    function Foo(){
+      getName=function(){console.log(1)};
+      return this;
+    }
+    Foo.getName=function(){console.log(2);};
+    Foo.prototype.getName=function(){console.log(3);};
+    var getName=function(){console.log(4);};
+    function getName(){console.log(5);}
+
+    Foo.getName();
+    getName();
+    Foo().getName();
+    getName();
+    new Foo.getName();
+    new Foo().getName();
+    new new Foo().getName();
+    都输出什么
+</code></pre>
+</li>
+<li>2.用原生css实现一个宽高按一定比例的矩形
+<pre><code>
+    div{
+        width:100%;(或者用height：100%   或者不写)
+        padding-bottom:50%;(或者用padding-bottom)
+        background:pink;
+    }
+    可以实现一比二的一个矩形
+</code></pre>
+</li>
+</body>
+</html>
