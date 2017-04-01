@@ -144,6 +144,7 @@
 <p>bind的使用</p>
 <li>parseInt(num,jz)</li>
 <li>fun.bind(null,para),表示fun函数锁定第一个参数为para</li>
+<li>fun.bind(this)指的是强制给函数里的绑定this，以方便函数内部中this.变量调用;如果是es6的箭头函数，则不需要bind，函数里的this默认指的是其最近层的作用域</li>
 <p>with的使用</p>
 <li>with 语句用于设置代码在特定对象中的作用域。</li>
 <li>
