@@ -114,7 +114,8 @@
 <li style="color:blue" >console.log(this)如果在html的script的标签中，指的是全局变量window，如果是在node中指的是全局变量global</li>
 <li>创建数组的两种方式：1.[,,,]2.new Array()如果Array()的括号里有数值，则指定了数组元素的个数</li>
 <li style="color:blue">var a={...}.若var b=Object.assign({},a)，此时b的属性和方法与a相同,它们指向不同的引用，a的属性变化不会引起b属性的变化
-    ;若var b=a,此时b的属性方法也与a相同，但它们指向相同的引用，a的属性或方法的变化会引起b相应的变化。</li>
+    ;若var b=a,此时b的属性方法也与a相同，但它们指向相同的引用，a的属性或方法的变化会引起b相应的变化。如果assign({},a,b,...)就是将这些对象合并</li>
+<li>Object.keys({...}),得到某个对象所有键的集合；返回一个数组</li>
 <li><a href="prototype.html" style="color:red">原型</a></li>
 <li style="color:blue"><span style="font-size: 30px">在ES6中</span>箭头函数(arg)=>(a+b)等价于(arg)=>{return a+b;}</li>
 <li style="color:red">Error:  1.ReferenceError(引用错误) 在读取不存在的变量时抛出
