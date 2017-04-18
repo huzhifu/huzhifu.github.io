@@ -173,11 +173,18 @@
     createDocumentFragment()    <span style="color:red">//创建一个DOM片段 </span>
     createElement()   <span style="color:red">//创建一个具体的元素 </span>
     createTextNode()   <span style="color:red">//创建一个文本节点 </span></li>
-<li>（2）添加、移除、替换、插入
-    appendChild()
+<li>（2）添加/移动、移除、替换、插入、复制
+    appendChild(),如果添加已经存在的元素，会将元素从原来的位置移到新的位置如：<br/>
+    var ul = document.getElementByIdx_xx_x("myList"); //获得ul <br/>
+    ul.appendChild(ul.firstChild); //把ul的第一个元素节点移到ul子节点的末尾 <br/>
     removeChild()
     replaceChild()
-    insertBefore() <span style="color:red">//在已有的子节点前插入一个新的子节点 </span></li>
+    insertBefore() <span style="color:red">//在已有的子节点前插入一个新的子节点 </span> <br/>
+    cloneNode() 方法，用于复制节点， 接受一个布尔值参数， true 表示深复制（复制节点及其所有子节点）， false 表示浅复制（复制节点本身，不复制子节点）<br/>
+    var ul = document.getElementByIdx_xx_x("myList"); //获得ul <br/>
+    var deepList = ul.cloneNode(true); //深复制 <br/>
+    var shallowList = ul.cloneNode(false); //浅复制
+</li>
 <li>（3）查找
     getElementsByTagName()    <span style="color:red">//通过标签名称 </span>
     getElementsByName()
