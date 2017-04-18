@@ -112,9 +112,10 @@
 <li>创建对象的三种方式：1.new Object() 2.{...} 3.new 构造函数():function Person(name,age){this.name=name;this.age=age;}  var p=new Person('li',24)</li>
 <li style="color:blue">为对象增删属性：var a={};增加属性：a.b='3',a['c']='4';删除属性：delete a.c;特点地,arr=[],a['d']=3为数组添加特殊下标的元素,此时只能用for-in遍历出来</li>
 <li style="color:blue" >console.log(this)如果在html的script的标签中，指的是全局变量window，如果是在node中指的是全局变量global</li>
-<li>创建数组的两种方式：1.[,,,]2.new Array()如果Array()的括号里有数值，则指定了数组元素的个数</li>
+<li>创建数组的两种方式：1.[,,,]2.new Array()如果Array()的括号里有数值，则指定了数组元素的个数;new Arrray('a','b','c')===['a','b','c']</li>
 <li style="color:blue">var a={...}.若var b=Object.assign({},a)，此时b的属性和方法与a相同,它们指向不同的引用，a的属性变化不会引起b属性的变化
-    ;若var b=a,此时b的属性方法也与a相同，但它们指向相同的引用，a的属性或方法的变化会引起b相应的变化。</li>
+    ;若var b=a,此时b的属性方法也与a相同，但它们指向相同的引用，a的属性或方法的变化会引起b相应的变化。如果assign({},a,b,...)就是将这些对象合并</li>
+<li>Object.keys({...}),得到某个对象所有键的集合；返回一个数组</li>
 <li><a href="prototype.html" style="color:red">原型</a></li>
 <li style="color:blue"><span style="font-size: 30px">在ES6中</span>箭头函数(arg)=>(a+b)等价于(arg)=>{return a+b;}</li>
 <li style="color:red">Error:  1.ReferenceError(引用错误) 在读取不存在的变量时抛出
@@ -144,6 +145,7 @@
 <p>bind的使用</p>
 <li>parseInt(num,jz)</li>
 <li>fun.bind(null,para),表示fun函数锁定第一个参数为para</li>
+<li>fun.bind(this)指的是强制给函数里的绑定this，以方便函数内部中this.变量调用;如果是es6的箭头函数，则不需要bind，函数里的this默认指的是其最近层的作用域</li>
 <p>with的使用</p>
 <li>with 语句用于设置代码在特定对象中的作用域。</li>
 <li>
