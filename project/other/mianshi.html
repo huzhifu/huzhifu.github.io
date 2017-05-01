@@ -100,5 +100,91 @@
         <li>身份证：/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/</li>
     </ol>
 </li>
+<li>12.<a href="switchButton.html">纯css实现toggle按钮</a>
+
+</li>
+<li>13.箭头函数的理解：<br>
+    当你只需要一个只有一个参数的简单函数时，可以使用新标准中的箭头函数，它的语法非常简单：标识符=>表达式。你无需输入function和return，一些小括号、大括号以及分号也可以省略。<br/>
+    使用了块语句的箭头函数不会自动返回值，你需要使用return语句将所需值返回。<br/>
+    当使用箭头函数创建普通对象时，你总是需要将对象包裹在小括号里。<br/>
+    如：var chewToys = puppies.map(puppy => 3);   // 会return 3 <br/>
+    var chewToys = puppies.map(puppy => {...});   // 执行{}里面的语句后，会return undefined <br/>
+    var chewToys = puppies.map(puppy => ({})); //   会return{} <br/>
+    一个空对象{}和一个空的块{}看起来完全一样。ES6中的规则是，紧随箭头的{被解析为块的开始，而不是对象的开始。因此，puppy => {}这段代码就被解析为没有任何行为并返回undefined的箭头函数。<br/>
+    <p style="color:red">普通function函数和箭头函数的行为有一个微妙的区别，箭头函数没有它自己的this值，箭头函数内的this值继承自外围作用域。箭头函数不会获取它们自己的arguments对象。</p>
+</li>
+<li>14.点击一个按钮，发出ajax请求，如何防止请求返回之前，用户再次点击。
+    <ol>
+        <li>1.修改点击按钮的状态 <br/>
+            这种情形在点赞按钮点击后，一般采取disable按钮，防止重复点击，也就防止了重复请求。不过你需要处理各种出错情形，然后enable按钮，以便用户修改数据再次提交。
+        </li>
+        <li>
+            2.定时器处理 <br/>
+            setTimeout + clearTimeout
+            连续的点击会把上一次点击清除掉，也就是ajax请求会在最后一次点击后发出去
+        </li>
+        <li>
+            3.立一个flag <br/>
+            通过设置全局变量，控制按钮是否提交，优点是比较常用，缺点是全局变量较难控制 <br/>
+            <img src="img/submit_ajax_double.jpg" alt=""/>
+        </li>
+        <li>4.上锁与开锁 <br/>
+            通过对点击按钮先解除绑定再添加绑定事件来实现防止连续点击 <br/>
+            <pre><code>
+                $("#btn").unbind("click").bind("click", function(){
+                //你想写的代码
+                })
+            </code></pre>
+        </li>
+    </ol>
+</li>
+<li>15.http与https的区别 <br/>
+    https协议需要到ca申请证书，一般免费证书很少，需要交费。http是超文本传输协议，信息是明文传输，https 则是具有安全性的ssl加密传输协议http和https使用的是完全不同的连接方式用的端口也不一样,前者是80,后者是443。http的连接很简单,是无状态的HTTPS协议是由SSL+HTTP协议构建的可进行加密传输、身份认证的网络协议 要比http协议安全
+</li>
+<li>16.回调函数 <br/>
+    <pre><code>
+        //首先，创建通用诗的生成函数；它将作为下面的getUserInput函数的回调函数
+
+        function genericPoemMaker(name, gender) {
+        console.log(name + " is finer than fine wine.");
+        console.log("Altruistic and noble for the modern time.");
+        console.log("Always admirably adorned with the latest style.");
+        console.log("A " + gender + " of unfortunate tragedies who still manages a perpetual smile");
+        }
+
+        //callback，参数的最后一项，将会是我们在上面定义的genericPoemMaker函数
+        function getUserInput(firstName, lastName, gender, callback) {
+        var fullName = firstName + " " + lastName;
+
+        // Make sure the callback is a function
+        if (typeof callback === "function") {
+        // Execute the callback function and pass the parameters to it
+        callback(fullName, gender);
+        }
+        }
+        //调用
+        getUserInput("Michael", "Fassbender", "Man", genericPoemMaker);
+    </code></pre>
+</li>
+<li>17.意外发现： <br/>
+    当函数被调用时，它的arguments.callee对象就会指向自身，也就是一个对自己的引用(在递归中用于替代函数名，解耦) <br>
+    在一个函数调用另一个函数时，被调用函数会自动生成一个caller属性，指向调用它的函数对象。如果该函数当前未被调用，或并非被其他函数调用，则caller为null。<br/>
+    </br>
+</li>
+<li>18.深度克隆 <br/>
+    <pre><code>
+        function clone3(obj){
+            function Clone(){}
+            Clone.prototype = obj;
+            var o = new Clone();
+            for(var a in o){
+                if(typeof o[a] == "object") {
+                    o[a] = clone3(o[a]);
+                }
+            }
+            return o;
+        }
+    </code></pre>
+</li>
 </body>
 </html>
