@@ -179,7 +179,7 @@
             var o = new Clone();
             for(var a in o){
                 if(typeof o[a] == "object") {
-                    o[a] = clone3(o[a]);
+                    o[a] = arguments.callee(o[a]);
                 }
             }
             return o;
