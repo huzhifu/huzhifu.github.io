@@ -23,7 +23,7 @@
     new Foo.getName();
     new Foo().getName();
     new new Foo().getName();
-    都输出什么
+    都输出什么  2 4 1 1 2 3 3
 </code></pre>
 </li>
 <li>2.用原生css实现一个宽高按一定比例的矩形
@@ -200,6 +200,10 @@
         var Doctor = deepCopy(Chinese);
     </code></pre>
 <p>理解：copy的原理是:如果是基本类型或function,就可以直接赋值的方式copy;如果是数组或者对象，就得如上判断递归</p>
+</li>
+<li>19.1&2与1&&2的结果为 <br/>
+0和2，原因：&&和||是逻辑运算的，返回的是boolean值，&和|是位运算的；&& 和|| 是短路的，&和|不是短路的。<br/>
+    短路原理：只要“&&”前面是true，无论“&&”后面是true还是false，结果都将返“&&”后面的值;
 </li>
 </body>
 </html>
