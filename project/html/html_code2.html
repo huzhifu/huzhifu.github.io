@@ -88,5 +88,67 @@
 		<h3>Readonly和Disabled是用在表单中的两个属性，它们都能够做到使用户不能够更改表单域中的内容。但是它们之间有着微小的差别，总结如下：</h3>
 		<li>Readonly只针对input(text / password)和textarea有效，而disabled对于所有的表单元素都有效，包括select, radio, checkbox, button等。</li>
 		<li>但是表单元素在使用了disabled后，当我们将表单以POST或GET的方式提交的话，这个元素的值不会被传递出去，而readonly会将该值传递出去</li>
+		<h3>JS使用post提交的两种方式</h3>
+		<li>
+			<pre><code>
+				function post(URL, PARAMS) {
+				  var temp = document.createElement("form");
+				  temp.action = URL;
+				  temp.method = "post";
+				  temp.style.display = "none";
+				  for (var x in PARAMS) {
+				    var opt = document.createElement("textarea");
+				    opt.name = x;
+				    opt.value = PARAMS[x];
+				    // alert(opt.name)
+				    temp.appendChild(opt);
+				  }
+				  document.body.appendChild(temp);
+				  temp.submit();
+				  return temp;
+				}
+				post('pages/statisticsJsp/excel.action', {html :prnhtml,cm1:'sdsddsd',cm2:'haha'});
+			</code></pre>
+		</li>
+		<li>
+			<SCRIPT stype=text/javascript>
+				var xmlobj; //定义XMLHttpRequest对象
+				function CreateXMLHttpRequest()
+				{
+					if(window.ActiveXObject)
+					//如果当前浏览器支持Active Xobject，则创建ActiveXObject对象
+					{
+						//xmlobj = new ActiveXObject("Microsoft.XMLHTTP");
+						try {
+							xmlobj = new ActiveXObject("Msxml2.XMLHTTP");
+						} catch (e) {
+							try {
+								xmlobj = new ActiveXObject("Microsoft.XMLHTTP");
+							} catch (E) {
+								xmlobj = false;
+							}
+						}
+					}
+					else if(window.XMLHttpRequest)
+					//如果当前浏览器支持XMLHttp Request，则创建XMLHttpRequest对象
+					{
+						xmlobj = new XMLHttpRequest();
+					}
+				}
+				function SubmitArticle(act,cityname,antique) //主程序函数
+				{
+					CreateXMLHttpRequest(); //创建对象
+					//var parm = "act=firstweather" ;//构造URL参数
+					//antique = escape(antique);
+					var parm = "act=" + act + "&cityname=" + cityname + "&antique=" + antique;//构造URL参数
+					//xmlobj.open("POST", "{dede:global.cfg_templeturl/}/../include/weather.php", true); //调用weather.php
+					xmlobj.open("POST", "/weather/include/weather.php", true); //调用weather.php
+					xmlobj.setRequestHeader("cache-control","no-cache");
+					xmlobj.setRequestHeader("contentType","text/html;charset=uft-8") //指定发送的编码
+					xmlobj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;");  //设置请求头信息
+					xmlobj.onreadystatechange = StatHandler;  //判断URL调用的状态值并处理
+					xmlobj.send(parm); //设置为发送给服务器数据
+				}
+		</li>
 	</body>
 </html>
