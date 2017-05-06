@@ -85,6 +85,8 @@
 				<button>我是一个按钮</button>
         </fieldset>
 		</form>
-		
+		<h3>Readonly和Disabled是用在表单中的两个属性，它们都能够做到使用户不能够更改表单域中的内容。但是它们之间有着微小的差别，总结如下：</h3>
+		<li>Readonly只针对input(text / password)和textarea有效，而disabled对于所有的表单元素都有效，包括select, radio, checkbox, button等。</li>
+		<li>但是表单元素在使用了disabled后，当我们将表单以POST或GET的方式提交的话，这个元素的值不会被传递出去，而readonly会将该值传递出去</li>
 	</body>
 </html>
