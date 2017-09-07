@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul{
+            list-style-type:none;
+            counter-reset: li;
+        }
+        li{
+            margin: 8px 0;
+        }
+        li::before{
+            content: counter(li);
+            counter-increment: li;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: blueviolet;
+            color:white;
+            text-align: center;
+            border-radius: 50%;
+            line-height: 20px;
+            font-size: 15px;
+            transition: all 0.3s ease-out;
+            cursor: pointer;
+        }
+        li:hover::before {
+            transform: rotate(360deg);
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>Yui哦</li>
+    <li>客家人</li>
+    <li>能恢复的</li>
+    <li>真是的任天野</li>
+</ul>
+</body>
+</html>
