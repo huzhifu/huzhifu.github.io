@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
-        ul{
+        /*序号翻转*/
+        #ul1{
             list-style-type:none;
             counter-reset: li;
         }
-        li{
+        #ul1 li{
             margin: 8px 0;
         }
-        li::before{
+        #ul1 li::before{
             content: counter(li);
             counter-increment: li;
             display: inline-block;
@@ -26,17 +28,105 @@
             transition: all 0.3s ease-out;
             cursor: pointer;
         }
-        li:hover::before {
+        #ul1 li:hover::before {
             transform: rotate(360deg);
+        }
+        /*分割效果*/
+        h2{
+            cursor: pointer;
+            display: block;
+            font-size: 1.5em;
+        }
+        h2:before {
+            margin-right: 0.3rem;
+            color: #f47466;
+            content: "\f02e";
+            font: normal normal normal 14px/1 FontAwesome;
+            font-size: 1.4rem;
+            transition: all 0.2s ease-out;
+        }
+        h2:hover:before {
+            margin-right: 0.4rem;
+            color: #49b1f5;
+        }
+        /*列表空心圆效果*/
+        #ul2{
+            margin-top: 0.4rem;
+            padding: 0 0 0 0.8rem;
+            list-style: none;
+            counter-reset: li;
+        }
+        #ul2 li{
+            position: relative;
+            margin: 0.2rem 0;
+            padding: 0.1rem 0.5rem 0.1rem 1.5rem;
+        }
+        #ul2 li:before {
+            top: 10px;
+            margin-left: 0.45rem;
+            width: 0.5rem;
+            height: 0.5rem;
+            border: 0.2rem solid #49b1f5;
+            border-radius: 0.5rem;
+            background: #fff;
+            content: "";
+            line-height: 0.5rem;
+            position: absolute;
+            top: 6px;
+            left: 0;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease-out;
+        }
+        #ul2 li:hover:before {
+            border-color: #ff7242;
+            transform: rotate(360deg);
+        }
+        hr {
+            margin: 1rem 0;
+            width: calc(100% - 0.25rem);
+            position: relative;
+            border: 2px dashed #a4d8fa;
+            background: #fff;
+            box-sizing: content-box;
+            height: 0;
+            overflow: visible;
+        }
+        hr:before {
+            position: absolute;
+            top: -10px;
+            left: 5%;
+            z-index: 1;
+            color: #49b1f5;
+            content: "\f0c4";
+            font: normal normal normal 14px/1 FontAwesome;
+            font-size: 20px;
+            transition: all 1s ease-in-out;
+        }
+        hr:hover:before {
+            left: calc(95% - 20px);
         }
     </style>
 </head>
 <body>
-<ul>
+<ul id="ul1">
     <li>Yui哦</li>
     <li>客家人</li>
     <li>能恢复的</li>
     <li>真是的任天野</li>
 </ul>
+<h2 id="项目用到的一些关键依赖"><a href="#项目用到的一些关键依赖" class="headerlink" title="项目用到的一些关键依赖"></a>项目用到的一些关键依赖</h2>
+<ul id="ul2">
+    <li>Vue.js(v2.1.8)</li>
+    <li>Vue-Router(v2.1.1)</li>
+    <li>Axios(v0.15.3)</li>
+    <li>Element(v1.1.2)</li>
+    <li>Koa.js(v1.2.4) // 没采用Koa2</li>
+    <li>Koa-Router@5.4\Koa-jwt\Koa-static等一系列Koa中间件</li>
+    <li>Mysql(v2.12.0) // nodejs的mysql驱动，并不是mysql本身版本（项目采用mysql5.6）</li>
+    <li>Sequelize(v3.28.0) // 操作数据库的ORM</li>
+    <li>Yarn(v0.18.1) // 比起npm更快一些</li>
+</ul>
+<hr>
 </body>
 </html>
