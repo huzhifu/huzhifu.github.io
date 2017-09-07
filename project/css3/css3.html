@@ -45,6 +45,47 @@
 <li>animation:动画</li>
 <a href="exec2.html">幽灵按钮</a>   <a href="exec3.html">会飞的鸟</a>   <a href="exec4.html">跳跳球</a>   <a href="pubuliu.html">瀑布流</a>  <a href="slide-mobile.html">手机手势滑动</a>
 <a href="pubuliu1.html">瀑布流（另）</a>   <a href="fengqin.html">手风琴</a>
+<h2>居中总结</h2>
+<h3>1.水平居中</h3>
+<li>inline-block+text-align <p>.parent{text-align:center} .child{display:inline-block}</p></li>
+<li>table+margin <p>.child{display:table;margin:0 auto;}</p></li>
+<li>absolute+transform <p>.parent{position:relative;height:1.5em;} .child{position:absolute;left:50%;transform:translateX(-50%)}</p></li>
+<li>absolute+margin-left(child定宽) <p>.parent{position:relative;height:1.5em;} .child{position:absolute;width:100px;left:50%;margin-left:-50px;}</p></li>
+<li>flex+justify-content <p>.parent{display:flex;justify-content:center;}  .child{margin: 0 auto;}</p></li>
+<h3>2.垂直居中</h3>
+<li>table-cell+vertical-align <p>.parent{display:table-cell; vertical-align:middle}</p></li>
+<li>absolute+transform <p>.parent{position:relative;} .child{position:absolute;top:50%;transform:translateY(-50%);}</p></li>
+<li>flex+align-items <p>.parent{display:flex;align-items:center;}</p></li>
+<h3>3.水平垂直</h3>
+<li>inline-block+table-cell+text-align+vertical-align <p>.parent{text-align:center;display:table-cell;vertical-align:middle} .child{display:inline-block;}</p></li>
+<li>absolute+transform <p>.parent{position:relative;} .child{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%)}</p></li>
+<li>flex <p>.parent{display:flex;justify-content:center;align-items:center;}</p></li>
+<h2>多列布局</h2>
+<h3>1.一列定宽，一列自适应</h3>
+<li>float+margin <p>.left{float:left;width:100px;} .right{margin-left:120px;}</p></li>
+<li>float+overflow <p>.left{float:left;width:100px;margin-right:20px;} .right{overflow:hidden;}</p></li>
+<li>table <p>.parent{display:table;width:100%;table-layout:fixed;} .left,.right{display:table-cell;} .left{width:100px;padding-right:20px}</p></li>
+<li>flex <p>.parent{display:flex;} .left{width:100px;padding-right:20px;} .right{flex:1;}</p></li>
+<h3>2.多列定宽，一列自适应</h3>
+<li>float+overflow <p>.left,.center{float:left;width:100px;margin-right:20px;} .right{overflow:hidden;}</p></li>
+<li>table <p>.parent{display:table;width:100%;table-layout:fixed;} .left,.center,.right{display:table-cell;} .right{width:100px;padding-right:20px;}</p></li>
+<li>flex <p>.parent{display:flex;} .left,.center{width:100px;padding-right:20px;} .right{flex:1;}</p></li>
+<h3>3.一列不定宽，一列自适应</h3>
+<li>float+overflow <p>.left{float:left;margin-right:20px;} .right{overflow:hidden;} .left p{width:200px;}</p></li>
+<li>table <p>.parent{display:table;width:100%;} .left,.right{display:table-cell;} .left p{width:0.1%;padding-right:20px;} .left p{width:200px;}</p></li>
+<li>flex <p>.parent{display:flex;} .left{margin-right:20px;} .right{flex:1;} .left p{width:200px;}</p></li>
+<h3>4.多列不定宽，一列自适应</h3>
+<li>float+overflow <p>.left,.center{float:left;margin-right:20px;} .right{overflow:hidden;} .left p,.center p{width:100px;}</p></li>
+<h3>5.等分</h3>
+<li>float+margin <p>.parent{margin-left:-20px;} .column{float:left:width:25%;padding-left:20px;box-sizing:border-box;}</p></li>
+<li>table+margin <p>.parent-fix{margin-left:-20px;} .parent{display:table;width:100%;table-layout:fixed;} .column{display:table-cell; padding-left:20px;}</p></li>
+<li>flex <p>.parent{display:flex;} .column{flex:1;} .column+.column{margin-left:20px;}</p></li>
+<h3>6.等高</h3>
+<li>float+overflow <p>.parent{overflow:hidden;} .left,.right{padding-bottom:9999px;margin-bottom:-9999px;} .left{float:left;width:100px;} .right{overflow:hidden;}</p></li>
+<li>table <p>.parent{display:table;width:100%;} .left{display:table-cell;width:100px;margin-right:20px;} .right{display:table-cell;}</p></li>
+<li>flex <p>.parent{display:flex;width:100%;} .left{width:100px;} .right{flex:1;}</p></li>
+<h3>7.并排等分，单排对其靠左布局</h3>
+<li>flex <p>.main{display:flex;flex-flow:row wrap;justify-content:space-between;} .item{display:inline-block;} .empty{height:0;visibility:hidden;}</p></li>
 <h2>css预处理器（语言）</h2>
 <li>less和sass共同的都是变量和嵌套，其中变量less是@符，sass是$符</li>
 </body>
