@@ -112,7 +112,7 @@
 <li>创建对象的三种方式：1.new Object() 2.{...} 3.new 构造函数():function Person(name,age){this.name=name;this.age=age;}  var p=new Person('li',24)</li>
 <li style="color:blue">为对象增删属性：var a={};增加属性：a.b='3',a['c']='4';删除属性：delete a.c;特点地,arr=[],a['d']=3为数组添加特殊下标的元素,此时只能用for-in遍历出来</li>
 <li style="color:blue" >console.log(this)如果在html的script的标签中，指的是全局变量window，如果是在node中指的是全局变量global</li>
-<li>创建数组的两种方式：1.[,,,]2.new Array()如果Array()的括号里有数值，则指定了数组元素的个数;new Arrray('a','b','c')===['a','b','c']</li>
+<li>创建数组的两种方式：1.[,,,]2.new Array()如果Array()的括号里有数值，则指定了数组元素的个数;new Arrray('a','b','c')===['a','b','c'];删除数组所有元素：Array.length=0,取数组前n个元素Array.length=n;</li>
 <li style="color:blue">var a={...}.若var b=Object.assign({},a)，此时b的属性和方法与a相同,它们指向不同的引用，a的属性变化不会引起b属性的变化
     ;若var b=a,此时b的属性方法也与a相同，但它们指向相同的引用，a的属性或方法的变化会引起b相应的变化。如果assign({},a,b,...)就是将这些对象合并</li>
 <li>Object.keys({...}),得到某个对象所有键的集合；返回一个数组</li>
@@ -208,6 +208,7 @@
         Array.apply(null, {length:5}).map(function () {
             return 3;
         });</code></pre>
+    &nbsp;&nbsp;&nbsp;&nbsp;另：es6的写法：Array.from({ length: 5 }).map(()=> {return 3})
 </li>
 <p>那些操作会造成内存泄漏？</p>
 <li>setTimeout 的第一个参数使用字符串而非函数的话，会引发内存泄漏。</li>
