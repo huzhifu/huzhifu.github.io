@@ -14,6 +14,8 @@
 <li>基本数据类型：Undefined、Null、Boolean、Number（NaN,Infinity）、String复合（引用类型）Function/Array/Object</li>
 <li style="color:blue">typeof : 返回数据类型的字符串值, 用来区别基本数据类型。instanceof : 判断左边的数据是否是右边类型的(boolean值), 用来区别引用类型</li>
 <li>进制：i=017(八进制)，i=0xA1(十六进制)，i=a.toString(num)(num进制，其中a为任意一个数)</li>
+<li>var a=undefined可以写为var a=void 0;</li>
+<li>位运算符   (1)<< 向左移位,比如1<10就等价于1*2^10=1024又如12可以写为3<<2;  (2)~位取反，如：~5=-5-1=-6;(3)~~5.2=5相当于Math.floor()  </li>
 <li>字面量/直接量(直接表达数据的方式) 例如var a=[];是字面量 var a=new Array()就不是。var o={}是，var o=new Object()就不是</li>
 <li>当数值大于1.79e308为无穷大Infinity,当数值小于-1.79e308为负无穷大-Infinity;"abc"*1=NaN;isNaN(变量)可以判断其是否是NaN</li>
 <li>变量定义了但没赋值就是undefined;console.log(typeof null)输出的是object</li>
@@ -225,6 +227,14 @@
     return num;
     }
 </code></pre>
+<p>另：num.replace(/\B(?=(\d{3})+(?!\d))/g,',')</p>
+<p>另：
+<pre><code>
+    function formatCash(str){
+        return str.split("").reverse().reduce((pre,next,index)=>{return ((index%3)?next:(next+','))+pre})
+    }
+</code></pre>
+</p>
 <h1 style="color:red">事件</h1>
 <p>添加事件</p>
 <pre><code style="font-size: 18px">addEvent : function(element, type, handler) {
