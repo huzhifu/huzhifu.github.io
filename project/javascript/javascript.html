@@ -124,6 +124,8 @@
     2.TypeError 当一个值的类型错误时，抛出该异常
     3.SyntaxError 语法异常</li>
 <li>0.1+0.2问题，得到0.30000000000000004.解决：function fix(num,digits){return num.toFixed(digits)*1}  fix(0.1+0.2,2)</li>
+<li>判断是否为数组对象：obj.constructor===Object; arr.constructor===Array,es6的写法Array.isArray(arr)</li>
+<li>判断一个元素是否在数组中（一个对象是否有这个属性）item in array==true/property in obj==true ;obj.hasOwnProperty('property')</li>
 <h1><a href="luoboAndMenu.html">原生js实现轮播图和二级菜单</a></h1>
 <p>JavaScript的基本规范？</p>
 <li>1.不要在同一行声明多个变量。</li>
@@ -203,14 +205,15 @@
     getAttribute('type')     <span style="color:red">//用来取得属性的值</span>
 </li>
 <p>.call() 和 .apply() 的区别？</p>
-<li style="color: red">fun.call(obj, parameters参数) 将函数作为对象的方法调用;fun.apply(obj, parameters数组) 将函数作为一个对象的方法调用</li>
+<li style="color: red">fun.call(obj, parameters参数) 将函数作为对象的方法调用;fun.apply(obj, parameters数组) 将函数作为一个对象的方法调用 如：Math.min.call(null,3,4,5)=3</li>
 <li>var arr=[3,1];add.call(sub,3,1) == add.apply(sub,arr)</li>
 <li style="color: blue">Array.apply(null, {length:5})将会生成了一个长度为5的数组，每个元素都是undefined;
 <pre><code>      //生成一个[3,3,3,3,3]
         Array.apply(null, {length:5}).map(function () {
             return 3;
         });</code></pre>
-    &nbsp;&nbsp;&nbsp;&nbsp;另：es6的写法：Array.from({ length: 5 }).map(()=> {return 3})
+    &nbsp;&nbsp;&nbsp;&nbsp;另：es6的写法：Array.from({ length: 5 }).map(()=> {return 3}) <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;另：Array(5).fill(3)
 </li>
 <p>那些操作会造成内存泄漏？</p>
 <li>setTimeout 的第一个参数使用字符串而非函数的话，会引发内存泄漏。</li>
