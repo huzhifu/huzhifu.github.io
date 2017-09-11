@@ -57,13 +57,41 @@
     <li>元素的外部尺寸: width+2*padding+2*border</li>
     element.offsetWidth : 元素边框左外到边框右外的长度(注意不包含margin) <br/>
     element.offsetHeight : 元素边框上外到边框下外的长度(注意不包含margin) <br/>
-
+    <li>元素的滚动尺寸:</li>
+    element.scrollWidth,element.scrollHeight :包含滚动内容的元素的大小 <br>
+    element.scrollLeft,element.scrollTop :被隐藏在内容区域左(上)测的像素数 <br>
     <li>窗口的可视尺寸:</li>
     document.documentElement.clientWidth <br/>
     document.documentElement.clientHeight <br/>
+    兼容性比较好的写法 <br>
+    var viewportWidth = window.innerWidth || document.documentElement.clientWidth; <br>
+    var viewportHeight = window.innerHeight || document.documentElement.clientHeight;
     <li>窗口的外部尺寸:</li>
     document.body.offsetWidth <br/>
     document.body.offsetHeight <br/>
+    <li>延伸：</li>
+<pre><code>
+1.是否完整出现在视口
+function isElementInViewPort(el) {
+  var viewportWidth = window.innerWidth || document.documentElement.clinetWidth,
+      viewportHeight = window.innerHeight || document.doucmentElement.clientHeight,
+      rect = el.getBoundingClientRect();
+  return rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= viewportHeight &&
+    rect.right <= viewportWidth;
+};
+2.是否部分出现在视口
+function isElementInViewPort(el) {
+  var viewportWidth = window.innerWidth || document.documentElement.clientWidth,
+      viewportHeight = window.innerHeight || document.documentElement.clientHeight,
+      rect = el.getBoundingClientRect();
+  return rect.bottom > 0 &&
+    rect.bottom < viewportHeight + el.offsetHeight &&
+    rect.right > 0 &&
+    rect.right < viewportWidth + el.offsetWidth;
+};
+</code></pre>
 </ul>
 <h3>*事件流</h3>
 <ul>
