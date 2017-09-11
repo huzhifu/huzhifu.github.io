@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>__dirname，__filename，process.cwd()的区别</h2>
+<li>__dirname：获得当前执行文件所在目录的完整目录名</li>
+<li>__filename：获得当前执行文件的带有完整绝对路径的文件名</li>
+<li>process.cwd()：获得当前执行node命令时候的文件夹目录名 </li>
+<li>另外，可以通过path.resolve('./')来转换为绝对路径。</li>
+<li>./： 使用readFile时候，./与process.cwd()一样，使用require时候，与__dirname一样.require是编译时执行，readFile是运行时执行，所以才会有差异</li>
+</body>
+</html>
