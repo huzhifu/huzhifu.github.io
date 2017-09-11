@@ -89,5 +89,61 @@
 <li>flex <p>.main{display:flex;flex-flow:row wrap;justify-content:space-between;} .item{display:inline-block;} .empty{height:0;visibility:hidden;}</p></li>
 <h2>css预处理器（语言）</h2>
 <li>less和sass共同的都是变量和嵌套，其中变量less是@符，sass是$符</li>
+<li>sass media query的封装
+<pre><code>
+封装：
+@mixin for-phone-only {
+  @media (max-width: 599px) { @content; }
+}
+@mixin for-tablet-portrait-up {
+  @media (min-width: 600px) { @content; }
+}
+@mixin for-tablet-landscape-up {
+  @media (min-width: 900px) { @content; }
+}
+@mixin for-desktop-up {
+  @media (min-width: 1200px) { @content; }
+}
+@mixin for-big-desktop-up {
+  @media (min-width: 1800px) { @content; }
+}
+用法：
+@include for-phone-only {
+  //style for phone only
+}
+</code></pre>
+</li>
+<li>画特定列数的网格
+<pre><code>
+@mixin drawItem($count: 1, $border: 1px solid rgba(0, 0, 0, .08), $itemClass: '.item') {
+  display: flex;
+  flex-wrap: wrap;
+  #{$itemClass} {
+    border-bottom: $border;
+    border-right: $border;
+    width: (100% / $count);
+    box-sizing: border-box;
+    &:nth-child(#{$count}n + 1) {
+      border-left: $border;
+    }
+    &:nth-child(-n + #{$count}) {
+      border-top: $border;
+    }
+  }
+}
+
+.item {
+  height: 30px;
+}
+
+.grid-5 {
+  @include drawItem(5);
+}
+
+.grid-3 {
+  @include drawItem(3);
+}
+</code></pre>
+</li>
 </body>
 </html>
