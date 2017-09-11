@@ -317,6 +317,55 @@
     }
     只有IE和FireFox有, chrome中没有
 </code></pre>
+<p>dom事件代理函数(使用原生js实现一个事件代理，兼容IE)</p>
+<ol>
+    <li>代码
+<pre><code>
+function matchSelector(ele, selector) {
+  if (/^#/.test(selector)) {     //匹配id
+    return '#' + ele.id === selector
+  }
+  if (/^\./.test(selector)) {    //匹配classname
+    return ele.classList.contains(selector.substr(1))   //classList不兼容IE，此处不是重点
+  }
+  return ele.tagName.toLocaleLowerCase() === selector;    //匹配tagname
+}
+/**
+ * @param ele 父元素
+ * @param selector 目标选择器
+ * @param type 事件类型
+ * @param fn 事件响应函数
+ */
+function delegateEvent(ele, selector, type, fn) {
+  function handle (e) {
+    e = e || window.event;
+    let target = e.target || e.srcElement;
+    if (matchSelector(target, selector)) {
+      fn.call(target, e);
+    }
+  }
+  if (ele.addEventListener) {
+    ele.addEventListener(type, handle)
+  } else {
+    ele.attachEvent(type, handle)
+  }
+}
+</code></pre>
+    </li>
+    <li>调用示例
+<pre><code>
+delegateEvent(document.querySelector('ul'), '.foo', 'click', function(e) {
+  console.dir('class');
+});
+delegateEvent(document.querySelector('ul'), '#a', 'click', function(e) {
+  console.log('id');
+});
+delegateEvent(document.querySelector('ul'), 'li', 'click', funcion(e) {
+  console.log('tag name');
+});
+</code></pre>
+    </li>
+</ol>
 <h1 style="color:red">JS的常用类型及方法</h1>
 <p>Array</p>
 <img src="../img/array.jpg" alt=""/>
