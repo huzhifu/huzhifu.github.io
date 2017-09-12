@@ -48,5 +48,8 @@ ul {
 
 #banner-wrap > #point span.active {
     background-color: #fff;
-    width:12px;
+    width: 7px;
+    height: 7px;
+    transform: rotate(45deg);
+    border-radius: 0px;
 }
