@@ -151,9 +151,15 @@
         <ul>
             <li>transform-style: flat; // 默认，子元素将不保留其 3D 位置</li>
             <li>transform-style: preserve-3d; // 子元素将保留其 3D 位置</li>
+            <li>transform-origin:20% 40%; // 设置旋转元素的基点位置</li>
         </ul>
     </li>
-    <li>perspective and perspective-origin 3D视距，透视/景深效果</li>
+    <li>perspective and perspective-origin 3D视距，透视/景深效果
+        <ul>
+            <li>perspective: number|none;为一个元素设置三维透视的距离，仅作用于元素的后代，而不是其元素本身。</li>
+            <li>perspective-origin: x-axis y-axis;定义该视图在 x/y 轴上的位置。默认值：50%</li>
+        </ul>
+    </li>
     <li>CSS3 filter CSS3滤镜</li>
     <li>transparent、radial-gradient 透明与渐变</li>
     <li><a href="./css3-master/html/index.html">效果展示</a></li>
