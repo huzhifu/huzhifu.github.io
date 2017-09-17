@@ -397,5 +397,24 @@ insertSort: function(array) {
     </code></pre>
 </p>
 </li>
+<h2>递归范例</h2>
+<pre><code>
+    var result=arr.filter(function (obj,index,arr) {
+        if(obj.cpid==-1){
+            digui(obj,arr);
+            return obj;
+        }
+    })
+    function digui(parent,arr){
+        parent.child=[];
+        for(var item of arr){
+            if(parent.cid==item.cpid){
+                digui(item,arr);
+                parent.child.push(item);
+            }
+        }
+    }
+    递归缺点：函数调用开销大，递归太多容易造成栈溢出
+</code></pre>
 </body>
 </html>
