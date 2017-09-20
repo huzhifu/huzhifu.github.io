@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .section{
+            text-align: center;
+        }
+    </style>
+    <link href="https://cdn.bootcss.com/fullPage.js/2.9.4/jquery.fullpage.css" rel="stylesheet">
+</head>
+<body>
+<div id="fullpage">
+    <!--给每一个div加上active class就可以定位到某一个页面-->
+    <div class="section">第一部分</div>
+    <div class="section">
+        第二部分
+        <div class="slide">第1章</div>
+        <div class="slide">第2章</div>
+        <div class="slide">第3章</div>
+        <div class="slide">第4章</div>
+    </div>
+    <div class="section">第三部分</div>
+    <div class="section">第四部分</div>
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<script src="https://cdn.bootcss.com/fullPage.js/2.9.4/jquery.fullpage.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#fullpage').fullpage({
+            sectionsColor:['green','greenyellow','blue','pink'],//每一个页面的颜色
+            controlArrows:true,//每一个side的箭头是否显示
+            verticalCentered:true,//每一页的内容是否垂直居中
+            resize:false,//字体是否随窗口的缩放而缩放
+            scrollingSpeed:700,//滚动速度（毫秒计）
+            anchors:['p1','p2','p3','p4'],//锚链接，用户可以快速定位到某一页面
+            lockAnchors:false,//是否锁定锚链接，为true时anchors属性无效
+            easing:'swing',//定义页面滚动的动画方式，需要引入jquery.easings插件
+            css3:false,//可以提高支持css3的浏览器。如果浏览器不支持css3,则会用jquery来替代其滚动效果
+            loopTop:false,//滚动到顶部后 是否连续滚动到底部
+            loopBottom:false,//滚动到底部后 是否连续滚动到顶部
+            loopHorizontal:true,//横向slider幻灯片是否 循环滚动
+            autoScrolling:true,//是否使用插件的滚动方式。为false则会出现浏览器的滚动条，将不会按页滚动
+            scrollBar:false,//是否包含滚动条。如果为true则浏览器的滚动条也会出现，可以按页滚动，滚动条的效果也会有
+            paddingTop:0,//设置每个页面的顶部和底部的padding值，如果需要设置一个固定的顶/底部菜单、导航等，可以设置此项
+            paddingBottom:0,//同上
+            fixedElements:null,//需要配置一个jquery选择器。页面滚动的时候，该选择器的元素固定不动
+            keyboardScrolling:true,//是否需要键盘方向键导航
+            touchSensitivity:5,//移动设备中滑动页面 的敏感性 ，默认为5。最高为100，越大越难滑动
+            continuousVertical:false,//是否循环滚动（无缝的），而loopTop是出现跳动的，不兼容loopTop/Bottom，不能同时设置
+            animateAnchor:false,//锚链接是否可以控制滚动动画，如果false,则通过锚链接定位到某个页面不再有动画效果。
+            recordHistory:true,//是否记录页面滚动历史，如果为false,则不能通过浏览器的前进后退进行导航。如果autoScrolling为false,该选项也会为false
+            menu:false,//绑定菜单，设定相关属性和anchor的值对应后，菜单可以控制滚动。可以设置为菜单的jquery选择器
+            navigation:true,//是否显示导航，如果为true会显示小圆点，作为导航
+            navigationPosition:'left',//或者right  导航小圆点的位置
+            navigationTooltips:['第一页','第二页','第三页','第四页'],//导航小圆点tooltips设置，需要按照顺序设置
+            showActiveTooltip:false,//是否显示当前页导航的tooltip信息
+            slidesNavigation:false,//是否显示横向幻灯片导航
+            slideNavPosition:'bottom',//横向幻灯片导航的位置
+            scrollOverflow:false,//内容超过满屏时，是否显示滚动条。如果需要滚动查看内容，还需要jquery.slimscroll插件
+            sectionSelector:'.section',//默认为.section,页面的选择器
+            slideSelector:'.slide',//默认为slide，slide幻灯片的选择器
+            //        方法
+            //moveSectionUp(),向上滚动一页
+            //moveSectionDown(),向下滚动一页
+            //moveTo(section,slide),滚动到第几个页面（从1开始），第几个幻灯片（从0开始）
+            //moveMoveTo(section,slide),和以上一样，只是没有动画效果
+            //moveSlideRight()/moveSlideLeft(),幻灯片向右/左滚动
+            //setAutoScrolling(boolean) 动态设置autoScrolling
+            //setLockAnchors(boolean)  动态设置lockAnchors
+            //setRecordHistory(boolean) 动态设置recordHistory
+            //setScrollingSpeed(milliseconds) 动态设置scrollingSpeed
+            //setAllowScrolling(boolean,[directions]) 添加或删除鼠标滚轮控制，第一个参数为是否启用，第二个参数为方向，可以用多个用逗号隔开
+            //destroy(type) 销毁fullpage特效，type可以不写或者使用all,如果使用all则样式和html全部销毁
+            //reBuild() 重新更新页面和尺寸，用于通过ajax请求后改变页面结构之后，重建效果
+            //        回调
+            //afterLoad(anchorLink,index) 滚动到某一页面结束后，会触发一次，anchorLink是锚链接名、index是序号从1开始。
+            //onLeave(index,nextIndex,direction) 当离开某一页面时，会触发一次，index是离开页面的序号（从1开始），nextIndex是滚动目标页面的序号，direction判断往上/下滚动(up/down)，return false取消滚动
+            //afterRender() 页面结构生成后的回调/页面初始化完成后的回调
+            //afterResize() 浏览器尺寸改变后的回调函数
+            //afterSlideLoad(anchorLink,index,slideAnchor,slideIndex) 滚动到某一幻灯片的回调，
+            //onSlideLeave(anchorLink,index,slideIndex,direction,nextSlideIndex) 离开某一幻灯片的回调，
+
+
+         });
+    });
+</script>
+</body>
+</html>
