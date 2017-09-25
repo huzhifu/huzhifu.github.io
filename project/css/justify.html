@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        .justify{
+            width: 85px;
+            text-align: justify;
+            display: inline-block;
+        }
+        .justify::after{
+            content: '';
+            display: inline-block;
+            width: 100%;
+        }
+        .content{
+            display: inline-block;
+            position: relative;
+            top:-21px;
+        }
+
+    </style>
+</head>
+<body>
+<div><div class="justify">用户名</div><div class="content">：123</div></div>
+<div><div class="justify">密码</div><div class="content">：有432</div></div>
+<div><div class="justify">确认密码</div><div class="content">：惹我</div></div>
+<div><div class="justify">验证码</div><div class="content">：2345特尔</div></div>
+<div style="width: 85px;text-align-last:justify;display: inline-block">呵呵呵呵</div>: <br>
+<div style="width: 85px;text-align-last:justify;display: inline-block">呵呵呵</div>:<br>
+<div style="width: 85px;text-align-last:justify;display: inline-block">呵呵</div>:<br>
+</body>
+</html>
