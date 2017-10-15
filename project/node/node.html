@@ -11,5 +11,36 @@
 <li>process.cwd()：获得当前执行node命令时候的文件夹目录名 </li>
 <li>另外，可以通过path.resolve('./')来转换为绝对路径。</li>
 <li>./： 使用readFile时候，./与process.cwd()一样，使用require时候，与__dirname一样.require是编译时执行，readFile是运行时执行，所以才会有差异</li>
+<h2>nodejs简介</h2>
+<li>nodejs诞生与2009年，是基于v8引擎，底层是用c++编写的</li>
+<li>nodejs可以做后台和中间层（中台），作用是：1.之前有很成熟的服务器，逻辑早已写好，加个中间层能发挥nodejs快速响应的优势。使得整个
+    业务流速度更快，调节更容易。2.直接做服务器时，简单快捷。适合创业型公司</li>
+<h2>nodejs特点</h2>
+<li>部署简单方便</li>
+<li>事件驱动（响应事件）</li>
+<li>异步编程（代码并行执行，效率高，I/O如果同步就很慢、浪费资源，cpu和内存，内存和硬盘速率比--《异步如：要网络请求，读文件同时进行》）</li>
+<li>高效与性能（由于异步操作，互不影响。单个操作并不比其他好，是通过优化资源调配和I/O操作实现高效）</li>
+<li>单线程</li>
+<li>多进程（可以多跑几个进程，做好通信）</li>
+<h2>nodejs缺点</h2>
+<li>大量采用匿名函数，使得抛出的异常不可读</li>
+<li>try catch限于同步代码，使得异常捕获较为复杂</li>
+<li>单线程：可靠性</li>
+<li>不适合cpu密集型的场景</li>
+<li>回调的代码习惯影响阅读</li>
+<h2>node 命令</h2>
+<li>node -v:node版本；npm -v:node 包管理工具版本；path:查看环境变量配置路径；node安装路径查看命令：where(which适用mac) node；npm安装路径查看：where npm</li>
+<h2>process</h2>
+<li>获得命令行参数：process.argv</li>
+<li>标准输入流：process.stdin</li>
+<li>标准输出流：process.stdout</li>
+<li>运行平台：process.platform</li>
+<h2>node知识杂项</h2>
+<li>node的全局对象是global,process是global的属性；浏览器javascript的全局对象是window，定义的变量是其属性</li>
+<li>global===GLOBAL===root</li>
+<li>setTimeout(fn,0)和process.nextTick(fn)前者的执行效率优于后者</li>
+<li>setImmediate在I/O event's的callback之后执行，在nextTick的callback之后执行，在timer(setTimeout,setInterval)的callback之前执行</li>
+<li>console.log('输出：%s',str)string格式化，%d数字格式化、%j是json格式化。console.info：log别名；console.warn:error别名；console.error:错误；console.trace:调用栈</li>
+<li>console.time(label) 中间代码 console.timeEnd(label)   ：计算中间代码的执行时间</li>
 </body>
 </html>
