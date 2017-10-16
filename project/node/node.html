@@ -97,6 +97,11 @@
 <h2>Base64</h2>
 <li>是基于64个可打印字符来表示二进制数的表示方法。包括字母a-z,A-Z,0-9,+/</li>
 <h2>md5加密</h2>
-<li></li>
+<li>公钥和私钥是成对的，它们互相解密。公钥加密，私钥解密。私钥数字签名，公钥验证。</li>
+<li>var Hash=crypto.createHash('md5');Hash.update(userPass);var pass_new=Hash.digest('hex');</li>
+<li>密码加密验证思路：注册时，进行加密，存入数据库；登录时，输入的密码加密后和从数据库读取的hash串进行对比，判断是否通过</li>
+<li>除了md5,还有sha1/sha256/sha512/ripemd160</li>
+<li>加密在许多领域都会用到，Node 的加密算法是以 OpenSSL 库为基础的，这是因为 OpenSSL 的加密算法经过了充分测试，并且有着良好的实现。</li>
+<li>hash不需要还原，应用于网站密码登录。加密解密需要还原，应用于聊天软件，信息传递</li>
 </body>
 </html>
