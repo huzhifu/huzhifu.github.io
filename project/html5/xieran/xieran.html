@@ -12,7 +12,25 @@
 <a href="float--jsbin.cupexuneyo.1.html">float布局</a>
 <a href="position--jsbin.vofawinewo.1.html">position布局</a>
 <h2>flex布局(支持IE10及以上版本，移动端)</h2>
+
 <li>display:flex;(给布局的父元素)</li>
+<li>flex:flex-grow | flex-shrink | flex-basis(用于子元素，可以指定1个，2个或3个值。)
+<pre><code>  单值语法: 值必须为以下其中之一:
+    一个无单位数(< number>): 它会被当作< flex-grow>的值。
+    一个有效的宽度(width)值: 它会被当作 < flex-basis>的值。
+    关键字none, auto,或initial.
+
+  双值语法:
+    第一个值必须为一个无单位数，并且它会被当作< flex-grow>的值。第二个值必须为以下之一：
+    一个无单位数：它会被当作< flex-shrink>的值。
+    一个有效的宽度值: 它会被当作< flex-basis>的值。
+
+  三值语法:
+    第一个值必须为一个无单位数，并且它会被当作< flex-grow>的值。
+    第二个值必须为一个无单位数，并且它会被当作 < flex-shrink>的值。
+    第三个值必须为一个有效的宽度值， 并且它会被当作< flex-basis>的值。
+</code></pre>
+</li>
 <li>flex-basis:120px;(用于子元素，相当于width，当它和width同时出现时，优先级高于width)</li>
 <li>flex-grow:1;(用于子元素，用来按比例分割父元素剩余的宽度，注意此时如果子元素有自身的宽度需要flex-basis:0)</li>
 <li>flex-shrink:2;(当父元素的空间不够时，子元素该如何收缩和适配父元素的宽度),理解图如下
@@ -23,6 +41,8 @@
 <li>flex-wrap:wrap;(用于父元素。如果flex-direction比作主轴，那么它就是侧轴；侧轴垂直于主轴，元素按主轴方向排列)</li>
 <li><img src="../img/flex-box.png" alt=""><br><img src="../img/flex-item.png" alt=""></li>
 <li>推荐网站：flexboxfroggy.com    flexbox Playground</li>
+<li>推荐博客1：http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html</li>
+<li>推荐博客2：http://www.ruanyifeng.com/blog/2015/07/flex-examples.html</li>
 <h2>字体图标</h2>
 <li>awesome:    http://www.fontawesome.com.cn/faicons/</li>
 <li>例子：< i class="fa fa-star fa-spin">< /i ></li>
