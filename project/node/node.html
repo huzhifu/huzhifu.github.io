@@ -30,6 +30,9 @@
 <li>回调的代码习惯影响阅读</li>
 <h2>node 命令</h2>
 <li>node -v:node版本；npm -v:node 包管理工具版本；path:查看环境变量配置路径；node安装路径查看命令：where(which适用mac) node；npm安装路径查看：where npm</li>
+<h2>npm 命令</h2>
+<li>删除包：npm[uninstall/un] [-g] package_name；创建包：npm init；安装包：npm[install/i] [-g] package_name</li>
+<li>配置模块安装路径<img src="img/npm_cache.jpg" alt=""/></li>
 <h2>process</h2>
 <li>获得命令行参数：process.argv</li>
 <li>标准输入流：process.stdin</li>
@@ -103,5 +106,31 @@
 <li>除了md5,还有sha1/sha256/sha512/ripemd160</li>
 <li>加密在许多领域都会用到，Node 的加密算法是以 OpenSSL 库为基础的，这是因为 OpenSSL 的加密算法经过了充分测试，并且有着良好的实现。</li>
 <li>hash不需要还原，应用于网站密码登录。加密解密需要还原，应用于聊天软件，信息传递</li>
+<h1>代码实战</h1>
+<h3><a href="parseExcel.html">node读取excel</a></h3>
+<h2>module.exports与exports的区别</h2>
+<li>module.exports可以单独的返回一个数据类型，如：数组、字符串、数字等</li>
+<li>module.exports可以直接复制其他类型，如module.exports=[...],exports只能exports.key=[...]</li>
+<li>exports只能返回一个object对象</li>
+<li>module.exports如果重置（赋值了一个其他对象）了，那么module.exports===exports不成立；否则成立</li>
+<div class="container" style="color:green;">
+    <h2>举个例子（exports是module.exports的引用，可以把a看作module.exports，把b看作exports）</h2>
+    <p>a 是一个对象，b 是对 a 的引用，即 a 和 b 指向同一个对象，即 a 和 b 指向同一块内存地址，所以前两个输出一样。当对 b 作修改时，即 a 和 b 指向同一块内存地址的内容发生了改变，所以 a 也会体现出来，所以第三四个输出一样。当对 b 完全覆盖时，b 就指向了一块新的内存地址（并没有对原先的内存块作修改），a 还是指向原来的内存块，即 a 和 b 不再指向同一块内存，也就是说此时 a 和 b 已毫无关系，所以最后两个输出不一样。</p>
+
+    <hr>
+
+    <h2>exports 和 module.exports 的区别</h2>
+    <ol>
+        <li>exports 是指向的 module.exports 的引用</li>
+        <li>module.exports 初始值为一个空对象 {}，所以 exports 初始值也是 {}</li>
+        <li>require() 返回的是 module.exports 而不是 exports</li>
+    </ol>
+    <p>当我们想让模块导出的是一个对象时， exports 和 module.exports 均可使用（但 exports 也不能重新覆盖为一个新的对象），而当我们想导出非对象接口时，就必须也只能覆盖 module.exports 。</p>
+
+    <hr>
+
+    <h2>exports = module.exports = somethings???</h2>
+    <p>module.exports = somethings 是对 module.exports 进行了覆盖，此时 module.exports 和 exports 的关系断裂，module.exports 指向了新的内存块，而 exports 还是指向原来的内存块，为了让 module.exports 和 exports 还是指向同一块内存或者说指向同一个 “对象”，所以我们就 exports = module.exports 。</p>
+</div>
 </body>
 </html>

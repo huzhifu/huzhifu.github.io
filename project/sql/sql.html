@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h1>mysql</h1>
+<h2>mysql命令行</h2>
+<li>进入mysql服务：mysql -uroot -p123456；查询数据库：show databases；应用表：use db_name；查询表：show tables；查询表结构：desc table_name</li>
+<li>查询语句：select * from t_user where id=3333 and name is null order by desc limit(0,10)</li>
+<li>插入语句：insert into t_user values('11','zhangsan','abc123')</li>
+<li>修改语句：update t_user set name='lisi' where name='zhangsan'</li>
+<li>删除语句：delete from t_user where password='123445'</li>
+<li>外查询： select stu_name,tea_name from student,teacher where student.id=teacher.stu_id and stu_name like '张_'</li>
+<li>分组查询：select jod_id ,sum (salary) as summer from employees where salary>5000 group by job_id having summer>30000 order by summer desc</li>
+<li>子查询：select * from employees where salary>(select salary from employees where last_name='Abel')</li>
+<h2>事务</h2>
+<li>概念：一组逻辑操作单元，使数据从一种状态变换到另一种状态。</li>
+</body>
+</html>

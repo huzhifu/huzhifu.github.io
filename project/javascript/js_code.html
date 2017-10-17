@@ -23,8 +23,8 @@
     console.log(new_val);
 </code></pre>
 <p>push：添加元素到数组结尾，unshift添加到开头；pop从数组结尾移除元素，shift从数组开头移除元素;delete arr[index],把数组中的index下标的元素变成undefined，数组长度不变</p>
-<p>slice( 下标为m开始截取到下标为n)截取数组的一部分返回</p>
-<p>splice(从下标为XX开始，删除n个元素，插入元素.,.,.)：splice(index,1)删除下标为index的元素；splice(index,0,num)在index下标的位置添加一个元素num；splice(index,1,num)替换下标为index的元素为num</p>
+<p>slice( 下标为m开始截取到下标为n)截取数组的一部分返回,不改变原数组</p>
+<p>splice会改变原数组(从下标为XX开始，删除n个元素，插入元素.,.,.)：splice(index,1)删除下标为index的元素；splice(index,0,num)在index下标的位置添加一个元素num；splice(index,1,num)替换下标为index的元素为num</p>
 <p>forEach:循环、遍历数组；没有返回值。与for循环类似</p>
 <pre><code>
  array.forEach(function( value, index, array ) {
