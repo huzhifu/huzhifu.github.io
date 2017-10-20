@@ -17,5 +17,30 @@
 <li>子查询：select * from employees where salary>(select salary from employees where last_name='Abel')</li>
 <h2>事务</h2>
 <li>概念：一组逻辑操作单元，使数据从一种状态变换到另一种状态。</li>
+<h1>mongodb</h1>
+<h2>mongodb基本概念</h2>
+<li>是一个非关系型数据库，是一个基于分布式文件存储的数据库，由c++编写，是非关系数据库中最丰富、最像关系数据库的产品</li>
+<li>database（数据库）>collection（表）>document（列）</li>
+<li>mongodb的每一个document都有_id字段，ObjectId是_id的默认类型，是一个24位的字符串（时间戳、机器、PID、计数器）</li>
+<h2>mongodb命令行</h2>
+<li>查询所有数据库show dbs，删除当前数据库：db.dropDatabase(),查看当前使用的数据库：db.getName(),切换数据库：use db_name</li>
+<li>创建一个集合：db.createCollection('name'),得到当前db的所有集合：show collections,删除集合：db.collectionNames.drop()</li>
+<li>导入数据：mongoimport --db db_name --collection coll_name --drop --file file_name</li>
+<li>查询语句：db.jobs.find()</li>
+<li>添加语句：db.collection.insert({...})</li>
+<li>修改语句：db.jobs.update({job_id:XXX},{$set:{salary:100}},{multi:true})</li>
+<li>删除语句：db.jobs.remove({status:0})</li>
+<li>分页做法：<br/>
+    <img src="img/fenye.jpg" alt=""/></li>
+<h2>优点：</h2>
+<li>高性能、易于部署、易于使用、存储方便</li>
+<li>模式自由</li>
+<li>支持动态查询</li>
+<li>支持复制和故障恢复</li>
+<li>支持多种语言</li>
+<li>自动处理碎片、支持云计算层次的拓展性</li>
+<h2>缺点</h2>
+<li>不适用高度事务性的系统，如银行和会计系统</li>
+<li>不适用传统商业智能应用，针对特定问题的BI数据库会对产生高度优化的查询方式。</li>
 </body>
 </html>

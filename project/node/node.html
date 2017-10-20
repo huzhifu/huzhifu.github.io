@@ -33,6 +33,8 @@
 <h2>npm 命令</h2>
 <li>删除包：npm[uninstall/un] [-g] package_name；创建包：npm init；安装包：npm[install/i] [-g] package_name</li>
 <li>配置模块安装路径<img src="img/npm_cache.jpg" alt=""/></li>
+<li>npm i express --save安装express模块，指定--save则此模块将被添加到package.json文件中的dependencies依赖列表中</li>
+<li>npm i express-generator -g全局安装express脚手架，express project_name生成一个express项目</li>
 <h2>process</h2>
 <li>获得命令行参数：process.argv</li>
 <li>标准输入流：process.stdin</li>
@@ -99,7 +101,7 @@
 </li>
 <h2>Base64</h2>
 <li>是基于64个可打印字符来表示二进制数的表示方法。包括字母a-z,A-Z,0-9,+/</li>
-<h2>md5加密</h2>
+<h2>md5加密(为了加密解密，使用md5散列的方式进行映射)</h2>
 <li>公钥和私钥是成对的，它们互相解密。公钥加密，私钥解密。私钥数字签名，公钥验证。</li>
 <li>var Hash=crypto.createHash('md5');Hash.update(userPass);var pass_new=Hash.digest('hex');</li>
 <li>密码加密验证思路：注册时，进行加密，存入数据库；登录时，输入的密码加密后和从数据库读取的hash串进行对比，判断是否通过</li>
@@ -107,7 +109,10 @@
 <li>加密在许多领域都会用到，Node 的加密算法是以 OpenSSL 库为基础的，这是因为 OpenSSL 的加密算法经过了充分测试，并且有着良好的实现。</li>
 <li>hash不需要还原，应用于网站密码登录。加密解密需要还原，应用于聊天软件，信息传递</li>
 <h1>代码实战</h1>
-<h3><a href="parseExcel.html">node读取excel</a></h3>
+<h3><a href="parseExcel.html">node读取excel</a>&nbsp;&nbsp;<a href="parseUrl.html">解析url的包</a>
+    &nbsp;&nbsp;<a href="ejs.html">ejs</a>&nbsp;&nbsp;<a href="upload.html">node上传文件</a>
+    &nbsp;&nbsp;<a href="session.html">node的session应用</a>
+</h3>
 <h2>module.exports与exports的区别</h2>
 <li>module.exports可以单独的返回一个数据类型，如：数组、字符串、数字等</li>
 <li>module.exports可以直接复制其他类型，如module.exports=[...],exports只能exports.key=[...]</li>
@@ -132,5 +137,7 @@
     <h2>exports = module.exports = somethings???</h2>
     <p>module.exports = somethings 是对 module.exports 进行了覆盖，此时 module.exports 和 exports 的关系断裂，module.exports 指向了新的内存块，而 exports 还是指向原来的内存块，为了让 module.exports 和 exports 还是指向同一块内存或者说指向同一个 “对象”，所以我们就 exports = module.exports 。</p>
 </div>
+<h2>RESTFUL概念</h2>
+<img src="img/resultful.jpg" alt=""/>
 </body>
 </html>

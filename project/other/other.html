@@ -18,6 +18,7 @@
 <li>cookie是网站为了标示用户身份而储存在用户本地终端（Client Side）上的数据（通常经过加密）。</li>
 <li>cookie数据始终在同源的http请求中携带（即使不需要），记会在浏览器和服务器间来回传递。</li>
 <li>sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存。</li>
+<li style="color:red;">注意：以上session是浏览器端session，服务器端session:session依赖cookie,服务器会把sessionID传递到浏览器，浏览器用cookie保存sessionID.主要用于维护用户的状态</li>
 </ol>
 </li>
 <li>存储大小:
@@ -31,6 +32,7 @@
 <li>localStorage    存储持久数据，浏览器关闭后数据不丢失除非主动删除数据；</li>
 <li>sessionStorage  数据在当前浏览器窗口关闭后自动删除。</li>
 <li>cookie          设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭</li>
+<li style="color:red;">服务器端session在设置的过期时间之前有效</li>
 </ol>
 </li>
 <h2>2.使用</h2>
