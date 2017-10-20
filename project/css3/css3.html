@@ -59,6 +59,15 @@
 </li>
 <li>其他居中：两个内联元素放一起，span+input如果input元素并没有和span一条水平线上，可以vertical-align:middle</li>
 <li>display:table-cell 其父元素display:table  css3新增的单元格布局,可以像普通的单元格那样布局，主要用来做响应式布局</li>
+<li>^*$~选择器
+    <ul>
+        <li>[href='http://www.baidu.com'] {...}属性与属性值必须完全匹配</li>
+        <li>[href^='http'] {...}选择href属性值以"http"开头的所有元素</li>
+        <li>[href*='baidu'] {...}选择href属性值中包含字串"baidu"的所有元素</li>
+        <li>[href$='com'] {...}选择href属性中以'com'结尾的所有元素</li>
+        <li>[data-likes~='me'][data-likes~='her'] {...}如果需要根据属性值中的词列表的某个词进行选择，则需要使用波浪号（~）</li>
+    </ul>
+</li>
 <li><span class="color:red">计算函数</span>width: calc(100%-20px)</li>
 <a href="exec1.html">二级菜单纯css制作(类似淘宝京东、图片大小自适应)</a> <a href="./jd_mobile/index.html">京东移动端界面</a>
 <a href="liuzhong/jumei-index.html">聚美优品（刘重）</a>  <a href="jumei-chuping/jumei-chuping.html">聚美优品（触屏版）</a>  <a href="jumei/jumei_items.html">聚美优品（其他）</a>
@@ -188,6 +197,29 @@ farthest-corner：
 <li>flex <p>.main{display:flex;flex-flow:row wrap;justify-content:space-between;} .item{display:inline-block;} .empty{height:0;visibility:hidden;}</p></li>
 <h2>css预处理器（语言）</h2>
 <li>less和sass共同的都是变量和嵌套，其中变量less是@符，sass是$符</li>
+<li>less语法
+<pre><code>
+    ----> 注释：分为单行注释（形式// 不会作为结果输出）
+    和多行注释（形式 /**/ 会以原生css多行注释形式输出到编译
+    后的css文件中）
+    ----> 变量：以@作为变量起始标识符，变量名由字母、数
+    字、_、-组成，没有先定义后使用的规定，存在作用域，局部作
+    用域优先级高于全局作用域
+    ----> 嵌套：LESS 允许选择器嵌套
+    ----> 父选择器引用：可以采用&引用完整的父选择器，可
+    以通过追加和预追加的方式加工&,从而生成新的选择器，通过
+    &::after 等方式添加伪元素、伪类样式规则集合
+    ----> 导入指令：LESS 文件可以通过 @import '文件路径
+    '; 的方式引入外部 LESS 文件
+    ----> 继承：有两种语法形式  < selector >:expend
+    (< perentSelector >){代码块} 和 < selector >{&:expend
+        (< parentSelector >);代码块}。继承中父选择器不支持变量形式
+            ----> 混合（Mixin）
+            ----> 运算符：LESS 中单位不一致的运算数进行运算时要
+            注意 （1）运算数和运算符中间必须要空格分隔；（2）以第一
+            个运算数的单位作为最终结果单位
+</code></pre>
+</li>
 <li>sass media query的封装
 <pre><code>
 封装：

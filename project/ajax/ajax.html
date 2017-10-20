@@ -464,5 +464,40 @@ function deepCopy(target) {
 }
 </code></pre>
 </li>
+<h2>H5 Web workers（实现js的分线程执行，在分线程不能更新UI）</h2>
+<pre><code>
+    * 主线程代码
+    //创建worker对象, 加载分线程执行的js文件
+    var worker = new Worker('worker.js');
+    //设置接收分线程返回数据的回调
+    worker.onmessage = function (event) {
+        console.log('主线程接收到数据 '+event.data);
+    }
+    //向分线程发送消息(带数据)
+    worker.postMessage('msg');
+    console.log('主线程发送数据 msg');
+    * 分线程代码
+    var onmessage = function (event) {
+        //取出消息中的数据
+        var data = event.data;
+        //转换为大写
+        var upper = data.toUpperCase();
+        //向主线程发消息(带数据)
+        postMessage(upper);//异步
+    }
+</code></pre>
+<h2>百度地图js API</h2>
+<li>步骤：注册账号>登录>创建应用>得到AK</li>
+<li><img src="img/map1.jpg" alt=""/></li>
+<li>地址解析：
+    <ul>
+        <li>地址转坐标：var myGeo=new BMap.Geocoder();myGeo.getPoint('地址',function(point){map.addOverlay(new Map.Maker(point))})</li>
+        <li>坐标转地址：var myGeo=new BMap.Geocoder();map.addEventListener('click',function(e){myGeo.getLocation(pt,function(rs){var addComp=rs.addressComponents;addComp.provice...})})</li>
+    </ul>
+</li>
+<li>得到当前位置： var geolocation=new BMap.Geolocation();geolocation.getCurrentPostion(function(r){r.point.lng,r.point.lat})</li>
+<li>地址周围十个地理信息：<br/>
+    <img src="img/pois.jpg" alt=""/>
+</li>
 </body>
 </html>

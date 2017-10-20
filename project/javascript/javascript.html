@@ -118,6 +118,26 @@
 <li style="color:blue">var a={...}.若var b=Object.assign({},a)，此时b的属性和方法与a相同,它们指向不同的引用，a的属性变化不会引起b属性的变化
     ;若var b=a,此时b的属性方法也与a相同，但它们指向相同的引用，a的属性或方法的变化会引起b相应的变化。如果assign({},a,b,...)就是将这些对象合并</li>
 <li>Object.keys({...}),得到某个对象所有键的集合；返回一个数组</li>
+<li>let 命令，用来声明变量，只在块级作用域有效，不
+    存在变量提升，不允许重复声明，允许在块级作用域内声明函数
+    ，声明的函数可以提升。const 命令，声明一个常用，一旦声明，常量的值就
+    不能改变</li>
+<li>
+    ES5 中操作数组的常用方法
+<pre><code>
+    ----> forEach()：相当于一个 for 循环，但是中途不能
+    退出，即 return、break等结束循环的语句没有作用。示例：
+    arr.forEach( function(value,index) { } ); 其中 value
+    是指数组中的每一个元素，index 是指每一个元素对应的下标。
+    forEach() 只能用于数组，不能用于伪数组，如果伪数组想使用
+    forEach() 方法，则需要调用 apply() 或者 call() 方法。
+    ----> map()：map() 函数中可以使用 return ，但是
+    return 的作用不是结束循环，而是将数组内容经过映射到新的
+    数组中，return 就是返回新的数组。
+    ----> filter()：过滤，将符合条件的元素找出来。
+</code></pre>
+</li>
+
 <li>slice(-n)与substr(-n)的应用，如要实现'15803716671'变为'158***671'则用
 <pre><code>
     function bian(str,len){
