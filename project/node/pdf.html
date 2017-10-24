@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<pre><code>
+    var fs = require('fs')
+    var path = require('path');
+    var pdfkit = require('pdfkit');
+    var officegen = require('officegen');
+    var settings=require('../../config/settings');
+    createPDF: function (req, res, next) {
+        var text = 'PDF File';
+        var file = fs.createWriteStream(path.join(__dirname, 'pdf', `${new Date().getTime()}.pdf`))
+        var PDF = new pdfkit();
+        PDF.pipe(file);
+        PDF.text(text, 100, 100);
+        PDF.end();
+        return file;
+    },
+    createDOCX:function (req,res,next) {
+        var docx = officegen('docx');
+        docx.on('finalize', function (written) {
+            console.log('Finish to create Word file.\nTotal bytes created: ' + written + '\n');
+        });
+        docx.on('error', function (err) {
+            console.log(err);
+        });
+        var pObj = docx.createP();
+        pObj.addText('3.过敏反应；');
+        var out = fs.createWriteStream(`tmp/app2-${new Date().getTime()}.docx`);// 文件写入
+        out.on('error', function (err) {
+            console.log(err);
+        });
+        out.on('close', function () {
+            console.log('Finished to create the docx file!');
+        });
+        docx.generate(out);
+    },
+</code></pre>
+</body>
+</html>

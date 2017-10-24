@@ -6,6 +6,8 @@
 </head>
 <body>
 <pre><code>
+    var xlsx = require('node-xlsx');
+    var _ = require('lodash');
     parseExcel:function(req,res,next){   //读取excel
         var obj=xlsx.parse('publc/test.xlsx');
         var excelArray=obj[0].data;

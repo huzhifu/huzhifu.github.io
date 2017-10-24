@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<pre><code>
+    var formidable = require('formidable');
+    downhandle:function (req, res, next) {    //下载
+        var fileUrl = req.query.fileUrl;
+        var fileName = req.query.fileName;
+        res.download(fileUrl,fileName,function (err) {
+            console.log(err);
+        });
+    },
+    uploadhandle:function (req,res,next) {    //上传
+        var form = new formidable.IncomingForm();
+        form.encoding = 'utf-8';        //设置编辑
+        form.uploadDir = settings.upload_dir;     //设置上传目录     public/upload/
+        form.keepExtensions = true;     //保留后缀
+        form.maxFieldsSize = 2 * 1024 * 1024;   //文件大小
+        form.parse(req, function (err, fields, files) {
+            /*
+            html:<form id="form" method="post" enctype="multipart/form-data">
+            var post_data = fields;
+            post_data.file_path = files.file.path;*/
+        })
+    },
+</code></pre>
+</body>
+</html>
