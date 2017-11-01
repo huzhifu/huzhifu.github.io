@@ -205,5 +205,47 @@
 0和2，原因：&&和||是逻辑运算的，返回的是boolean值，&和|是位运算的；&& 和|| 是短路的，&和|不是短路的。<br/>
     短路原理：只要“&&”前面是true，无论“&&”后面是true还是false，结果都将返“&&”后面的值;
 </li>
+<li>
+<pre><code>
+    function fun(n,o){
+        console.log(o);
+        return {
+            fun:function(m){//[2]
+                return fun(m,n);//[1]
+            }
+        }
+    }
+
+    var a=fun(0);
+    a.fun(1);
+    a.fun(2);
+    a.fun(3);
+    var b=fun(0).fun(1).fun(2).fun(3);
+    var c=fun(0).fun(1);
+    c.fun(2);
+    c.fun(3);
+    求出程序输出
+    求解
+    function _fun_(n,o){
+        console.log(o);
+        return {
+            fun:function(m){
+                return _fun_(m,n);
+            }
+        }
+    }
+    var a=_fun_(0);//undefined
+    a.fun(1);//0
+    a.fun(2);//0
+    a.fun(3);//0
+
+    var b=_fun_(0).fun(1).fun(2).fun(3);
+    //undefined,0,1,2
+
+    var c=_fun_(0).fun(1);//undefined,0,
+    c.fun(2);//1
+    c.fun(3); //1
+</code></pre>
+</li>
 </body>
 </html>
