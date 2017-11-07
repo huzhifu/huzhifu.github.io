@@ -205,7 +205,7 @@
 0和2，原因：&&和||是逻辑运算的，返回的是boolean值，&和|是位运算的；&& 和|| 是短路的，&和|不是短路的。<br/>
     短路原理：只要“&&”前面是true，无论“&&”后面是true还是false，结果都将返“&&”后面的值;
 </li>
-<li>
+<li>20.求输出结果
 <pre><code>
     function fun(n,o){
         console.log(o);
@@ -247,5 +247,112 @@
     c.fun(3); //1
 </code></pre>
 </li>
+<li>
+21.pjax的理解
+    <pre><code>
+        1.在点击导航链接时发生变化的是网页局部，但浏览器的 url 也跟着变了（跟链接加#!方式不同）
+        2.做到不刷新页面改变 url
+        3.pjax是对ajax + pushState的封装，让你可以很方便的使用pushState技术。同时支持了缓存和本地存储，下次访问的时候直接读取本地数据，无需在次访问。
+    </code></pre>
+</li>
+<li>22.前端接收实时消息的几种方案：
+    <ol>
+        <li>WebSocket</li>
+        <li>FlashSocket </li>
+        <li>http轮询</li>
+    </ol>
+</li>
+<li>23.如果不放入< !DOCTYPE html> h5还会工作吗？
+    <pre><code>
+        它主要作用是声明html的版本< !DOCTYPE html> 这是html5的,不写可能会造成html5的功能不能用,具体会不会出错要看浏览器的容错性建议保持规范的习惯
+    </code></pre>
+</li>
+<li>24.移动端点击事件的坑
+    <ol>
+        <li>click事件的300ms延迟响应,可以用zepto.js的tap事件。tap事件可以理解为在移动端的click事件，但是会带来点击穿透问题</li>
+        <li>touchend去解决穿透问题，但是pc不支持，就使用fastclick.js</li>
+        <li>使用：
+            <pre><code>
+                < script type='application/javascript' src='/path/to/fastclick.js'>< /script>
+                原生：if ('addEventListener' in document) {
+                    document.addEventListener('DOMContentLoaded', function() {
+                    FastClick.attach(document.body);
+                    }, false);
+                }
+                jquery:$(function() {
+                    FastClick.attach(document.body);
+                });
+            </code></pre>
+        </li>
+    </ol>
+</li>
+<li>25.如何用js判断是否支持h5
+    <pre><code>
+        < script>
+            window.onload = function() {
+                if (window.applicationCache) {
+                    alert("你的浏览器支持HTML5");
+                } else {
+                    alert("你的浏览器不支持HTML5");
+                }
+            }
+        < /script>
+    </code></pre>
+</li>
+<li>26.移动端返回前一列表的历史位置：
+    <ol>
+        <li>现场需要保留什么数据:页面的一些显示信息,包括：保留关键字和排序方式等信息、页面滚动时的滚动高度</li>
+        <li>用什么保留现场数据呢：cookie，localstorage</li>
+        <li>怎样恢复现场呢：直接从缓存中读取数据，将相关数据进行恢复即可</li>
+        <li><img src="img/huifu.jpg" alt=""/></li>
+    </ol>
+</li>
+<li>27.sass颜色函数
+    <pre><code>
+        rgb($red,$green,$blue)：根据红、绿、蓝三个值创建一个颜色；
+        rgba($red,$green,$blue,$alpha)：根据红、绿、蓝和透明度值创建一个颜色；
+        red($color)：从一个颜色中获取其中红色值；
+        green($color)：从一个颜色中获取其中绿色值；
+        blue($color)：从一个颜色中获取其中蓝色值；
+        mix($color-1,$color-2,[$weight])：把两种颜色混合在一起。
+    </code></pre>
+</li>
+<li>28.angular的restrict的值：A(attribute),C(class),E（element）,M(该指令是注释) scope的几种修饰符："="指令中属性取值为controller中对应$scope上属性的取值，用于双向数据的绑定
+"@"取值为html中的字面量/直接量，建立local scope property到DOM属性的绑定。这个值总是返回一个字符串，仅仅是单向的
+"&"指令中的取值为controller中对应的$scope上的属性，但这个属性必须为一个函数的回调
+</li>
+<li>29.缓存机制（什么时候清理缓存，浏览器怎么知道要缓存）</li>
+<li>30.求输出结果
+<pre><code>
+function fun(){
+    var array=new Array(10);
+    for (var i = 0; i < array.length; i++) {
+        array[i]= function fun1(){
+        return i;
+        }
+    }
+    return array;
+}
+var fs=fun();
+for(var i=0;i < fs.length;i++){
+    console.log(fs[i]());
+}
+输出10个10
+</code></pre>
+</li>
+<li>31.求输出结果
+<pre><code>
+var max=100;
+function compare(n){
+    console.log(n>max);
+}
+(function(c){
+    var max=10
+    c(15)
+})(compare)
+输出false
+</code></pre>
+</li>
+
 </body>
 </html>

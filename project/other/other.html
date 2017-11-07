@@ -19,6 +19,14 @@
 <li>cookie数据始终在同源的http请求中携带（即使不需要），记会在浏览器和服务器间来回传递。</li>
 <li>sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存。</li>
 <li style="color:red;">注意：以上session是浏览器端session，服务器端session:session依赖cookie,服务器会把sessionID传递到浏览器，浏览器用cookie保存sessionID.主要用于维护用户的状态</li>
+<li style="color:green;">什么是WebSQL
+<pre><code>
+    是Html5数据库API，并以一个独立规范形式出现，它包含三个核心方法：
+        1、openDatabase：这个方法使用现有数据库或创建新数据库创建数据库对象。
+        2、transaction：这个方法允许我们根据情况控制事务提交或回滚。
+        3、executeSql：这个方法用于执行真实的SQL查询。
+</code></pre>
+</li>
 </ol>
 </li>
 <li>存储大小:

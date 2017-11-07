@@ -466,6 +466,11 @@ function deepCopy(target) {
 </li>
 <h2>H5 Web workers（实现js的分线程执行，在分线程不能更新UI）</h2>
 <pre><code>
+    解决的问题：
+       如果脚本所需运行时间太长，程序界面会长时间处于停止响应状态，甚至当等待时间超出一定的限度，浏览器会提示脚本运行时间过长需要中断正在执行的处理。
+       加载一个JavaScript文件，进行大量的复杂计算，而不挂起主进程，并通过postMessage和onMessage进行通信。
+    限制：
+       Web Workers不能直接访问Web页面和DOM API。不能跨域加载JavaScript
     * 主线程代码
     //创建worker对象, 加载分线程执行的js文件
     var worker = new Worker('worker.js');
