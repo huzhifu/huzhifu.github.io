@@ -353,6 +353,49 @@ function compare(n){
 输出false
 </code></pre>
 </li>
-
+<li>32.去除数组中的空字符串元素
+<pre><code>
+    var arr=[1, 3, 5, 9, "", 77, "", 6];
+    var ar=arr.filter(function(item){
+    return item!="";
+    })
+    console.log(ar)
+</code></pre>
+</li>
+<li>33.枚举
+<pre><code>
+    var arr={name:1,value:2,status:true};
+    var ar={};
+    for(var i in arr){
+        ar[ar[i]=arr[i]]=i;
+    }
+    console.log(ar);
+</code></pre>
+</li>
+<li>24.页面优化摘要
+    <ol>
+        <li>减小带宽压力
+            <pre><code>
+                1.压缩css和js,如用jquery.min.js
+                2.图片压缩处理
+                3.服务器开启Gzip压缩功能压缩页面文本
+            </code></pre>
+        </li>
+        <li>降低请求次数
+            <pre><code>
+                1.通过gulp/webpack打包相关js/css文件，合并文件，减少请求次数
+                2.将icon做成矢量字体，减少图片数量
+                3.使用雪碧图
+                4.图片使用懒加载的方式，加速页面显示
+            </code></pre>
+        </li>
+        <li>间接减少服务器请求
+            <pre><code>
+                1.使用HTTP缓存 设置Expires或Cache-Control文件头让浏览器将页面缓存，缓存未到期则只需从缓存中读取数据
+                2.使用CDN,将静态资源部署到CDN上，实现内容分发处理，可以降低服务器压力，加速页面显示速度。CDN会部署到多个节点，请求将自动导向最近节点
+            </code></pre>
+        </li>
+    </ol>
+</li>
 </body>
 </html>
