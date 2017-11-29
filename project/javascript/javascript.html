@@ -156,6 +156,7 @@
 <li>0.1+0.2问题，得到0.30000000000000004.解决：function fix(num,digits){return num.toFixed(digits)*1}  fix(0.1+0.2,2)</li>
 <li>判断是否为数组对象：obj.constructor===Object; arr.constructor===Array,es6的写法Array.isArray(arr)</li>
 <li>判断一个元素是否在数组中（一个对象是否有这个属性）item in array==true/property in obj==true ;obj.hasOwnProperty('property')</li>
+<li>JSON.stringify(obj,['name'],4)//过滤出obj对象的name属性，并以4个空格的距离展示。JSON.stringify(obj,function(key,val){return key=='key1'?undefined:val},4)//去掉属性为key1的部分。 JSON.parse(obj,receiver)//作用同左</li>
 <h1><a href="luoboAndMenu.html">原生js实现轮播图和二级菜单</a></h1>
 <p>JavaScript的基本规范？</p>
 <li>1.不要在同一行声明多个变量。</li>
