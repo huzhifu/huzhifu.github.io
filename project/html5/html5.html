@@ -8,6 +8,27 @@
 <img src="../img/h5.jpg" alt=""/>
 <p>网页基本结构</p>
 <img src="../img/h5_1.jpg" alt=""/>
+<p>布局常见问题：</p>
+<li>
+    display:inline-block出现空隙
+    <ol>font-size:0,其他元素重设font-size</ol>
+    <ol>取消标签闭合</ol>
+    <ol>利用HTML注释标签</ol>
+    <ol>不空行</ol>
+    <ol>使用float</ol>
+</li>
+<li>
+    img标签，和别的元素，上下有空隙
+    <ol>inline 变为 block</ol>
+    <ol>vertical-align: middle</ol>
+    <ol>使用float</ol>
+    <ol>给父元素把文字大小设成0，其他子元素文字重写font-size</ol>
+</li>
+<li>
+    父容器里，有一堆子容器，而子容器溢出换行
+    <ol>如果因为子容器的border设置，使子容器溢出，则主要给子容器设置：box-sizing:border-box</ol>
+    <ol>如果因为子容器的margin设置，使子容器溢出，需要给父容器margin-right(或margin)设负值，负值为刚好让子容器不换行为止</ol>
+</li>
 <p>h5的网页结构</p>
 <a href="selectVSdatalist.html">datalist的用法</a>
 <a href="meta.html">meta标签的用法</a>
