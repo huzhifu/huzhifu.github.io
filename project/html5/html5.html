@@ -29,6 +29,12 @@
     <ol>如果因为子容器的border设置，使子容器溢出，则主要给子容器设置：box-sizing:border-box</ol>
     <ol>如果因为子容器的margin设置，使子容器溢出，需要给父容器margin-right(或margin)设负值，负值为刚好让子容器不换行为止</ol>
 </li>
+<li>
+    不折行文字加省略号：
+    <ol>white-space: nowrap</ol>
+    <ol>overflow: hidden</ol>
+    <ol>text-overflow: ellipsis，其中text-overflow: " [..]"; 这种自定义省略符号的，只支持火狐，不支持谷歌</ol>
+</li>
 <p>h5的网页结构</p>
 <a href="selectVSdatalist.html">datalist的用法</a>
 <a href="meta.html">meta标签的用法</a>
