@@ -71,6 +71,19 @@
     });
     console.log(temp);
 </code></pre>
+    <h3>另外一个典型的例子</h3>
+<pre><code>
+    //匹配  :.之间的字符串，并返回成数组
+    var temp='My name is:Jerry. My age is:12.'
+    function extractStr(){
+      var extractArr=[];
+      temp.replace(/:(\w+)\./g, function(match,$1) {
+        extractArr.push($1)
+      });
+      return extractArr
+    }
+</code></pre>
+    <h3>/?!(xxx)./  表示不匹配xxx字符串</h3>
  <img src="../img/regexp2.jpg" alt=""/>
 </div>
 </body>
