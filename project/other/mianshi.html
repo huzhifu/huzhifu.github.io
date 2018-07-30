@@ -406,5 +406,62 @@ function compare(n){
         </li>
     </ol>
 </li>
+<li>36.一个数组[1,2,3,4,5],写一个方法(不能使用数组的任何方法)实现依次打印1,2,3,4,5
+<pre><code>
+    function fun(arr){
+        var n=0;
+        while(true){
+            console.log(arr[n]);
+            if(n==arr.length-1){
+                break;
+            }
+            n++;
+        }
+    }
+    fun([1,2,3,4,5])
+</code></pre>
+</li>
+<li>37.一个数组[1,0,0,1,1,1,0,0,1,1],写一个方法,求连续是1的最大次数
+<pre><code>
+    var num=0;
+    var target=[];
+    function fun(arr){
+        arr.map((item,index)=>{
+            if(item===1){
+                num++;
+                (arr.length-1===index)&&target.push(num);
+            }else{
+                num&&target.push(num);
+                num=0;
+            }
+        })  
+    }
+    fun([1,0,0,1,1,1,0,0,1,1])
+    Math.max.apply(null,target)
+</code></pre>
+</li>
+<li>38.用递归方法实现斐波那契数列
+<pre><code>
+    var fib = function (n) {
+        if (n < 2) return n
+            return fib(n - 1) + fib(n - 2)
+        }
+</code></pre>
+</li>
+<li>39.var arr = [{id: 1, children: [{id: 2, children: [{id: 3}, {id: 4}]}]}, {id: 5}]将其转成如下格式[{id:1,level:1},{id:2,level:2},...,{id:5,level:1}]
+<pre><code>
+    var level=0
+    var target=[]
+    function fun(arr){
+        var count=++level
+        for(let item of arr){
+            target.push({id:item.id,level:count})
+            item.children&&fun(item.children)
+        }
+    }
+    fun(arr)
+    console.log(target)
+</code></pre>
+</li>
 </body>
 </html>
