@@ -463,5 +463,69 @@ function compare(n){
     console.log(target)
 </code></pre>
 </li>
+<li>40.以下哪个会报错。 a.pop(`1`) a.pop('1') a.pop({...1}) a.pop({1})
+<pre><code>
+    选最后一个
+</code></pre>
+</li>
+<li>41.前端路由与后端路由的区别：
+<pre><code>
+    1.后端路由：?浏览器在地址栏中切换不同的url时，每次都向后台服务器发出请求，服务器响应请求，在后台
+    拼接html文件传给前端显示，java web中的jsp就是如此实现的。常用的后台MVC模式的基本路由处理流程：浏
+    览器输入一个url请求，从中找到Controller和Action的值，将请求传递给Controller处理，Controller获取
+    Model数据对象，并且将Model传递给View,最后View呈现界面。?前端路由：?随着（SPA）单页应用的不断普及
+    ，前后端开发分离，目前项目基本都使用前端路由，在项目使用期间页面不会重新加载。前端路由目前主要有
+    两种方法：
+    1、利用url的hash,就是常用的锚点（#）操作，类似页面中点击某小图标，返回页面顶部
+    2、利用
+    HTML5的History模式，使url看起来类似普通网站，以”/”分割，没有”#”，但页面并没有跳转，不过使用这
+    种模式需要服务器端的支持
+</code></pre>
+</li>
+<li>42.懒加载:
+<pre><code>
+    懒加载原理是：将非首屏的图片
+    src设为一个默认值，然后监听窗口滚动，当图片出现在视窗中时再给他赋予真实的图片地址，这样可以保证首 
+    屏的加载速度然后按需加载图片。
+    window.onscroll =_.throttle(this.watchscroll, 200);
+    watchscroll () {
+        var bodyScrollHeight =    
+    document.body.scrollTop;// body滚动高度
+        var windowHeight = window.innerHeight;// 视窗高度    
+    var imgs = document.getElementsByClassName('lazyloadimg');
+        for (var i =0; i < imgs.length;   
+    i++) {
+        var imgHeight = imgs[i].offsetTop;// 图片距离顶部高度  
+        if (imgHeight  < 
+    windowHeight  + bodyScrollHeight) {
+            imgs[i].src = imgs[i].getAttribute('data-src');
+        img[i].className = img[i].className.replace('lazyloadimg','')
+        }
+        }
+    }
+</code></pre>
+</li>
+<li>43.js关于for循环中的闭包问题？
+<pre><code>      
+    答：预解释+作用域，js分为全局作用域和函数作用域，当循环结束之后，i的值
+    为4，此时取数组里的函数值，函数内没有，就从全局找，此时i为4,所以结果为4.使用闭包之后，等于在原来
+    的基础上，新开辟了一层作用域，而此时i作为形参被赋值为0，1，2，3相当于将当前循环的i给存储了下来。
+    这时取值时，从函数作用域找，就能找到i，就是对应的0,1,2,3也就是说，闭包是一种保护私有变量的机制         
+</code></pre>
+</li>
+<li>44.js事件循环机制：
+<pre><code>
+    js分为同步任务和异步任务，遇到同步任务就在调用栈中执行，异步任务放在任务队列中。
+    调用栈执行完之后再去执行任务队列中的回调函数。先执行macro-task，等到函数调用栈清空之后再执行所有
+    在队列之中的micro-task，等到所有micro-task执行完之后再从macro-task中的一个任务队列开始执行，就这
+    样一直循环。比如settimeout，script就是宏任务；nextTick，Promises就是微任务  
+</code></pre>
+</li>
+<li>45.网页的回顶部效果和上拉加载
+<pre><code>
+    1.页面滚动离开首屏(这时可显示回到顶部的按钮):document.body.scrollTop > window.innerHeight
+    2.页面滚动到底部了(这时可去调接口获取更多内容)：window.scrollY + window.innerHeight > document.body.offsetHeight
+</code></pre>
+</li>
 </body>
 </html>
