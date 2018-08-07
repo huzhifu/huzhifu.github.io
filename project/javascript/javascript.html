@@ -116,7 +116,7 @@
 <li style="color:blue" >console.log(this)如果在html的script的标签中，指的是全局变量window，如果是在node中指的是全局变量global</li>
 <li>创建数组的两种方式：1.[,,,]2.new Array()如果Array()的括号里有数值，则指定了数组元素的个数;new Arrray('a','b','c')===['a','b','c'];删除数组所有元素：Array.length=0,取数组前n个元素Array.length=n;</li>
 <li style="color:blue">var a={...}.若var b=Object.assign({},a)，此时b的属性和方法与a相同,它们指向不同的引用，a的属性变化不会引起b属性的变化
-    ;若var b=a,此时b的属性方法也与a相同，但它们指向相同的引用，a的属性或方法的变化会引起b相应的变化。如果assign({},a,b,...)就是将这些对象合并</li>
+    ;若var b=a,此时b的属性方法也与a相同，但它们指向相同的引用，a的属性或方法的变化会引起b相应的变化。如果assign({},a,b,...)就是将这些对象合并,相当于浅拷贝对象，对于数组的浅拷贝就是arr1=arr.slice(),分析同上</li>
 <li>Object.keys({...}),得到某个对象所有键的集合；返回一个数组</li>
 <li>let 命令，用来声明变量，只在块级作用域有效，不
     存在变量提升，不允许重复声明，允许在块级作用域内声明函数
