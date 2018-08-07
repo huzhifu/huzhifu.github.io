@@ -156,6 +156,8 @@
 <li>0.1+0.2问题，得到0.30000000000000004.解决：function fix(num,digits){return num.toFixed(digits)*1}  fix(0.1+0.2,2)</li>
 <li>判断是否为数组对象：obj.constructor===Object; arr.constructor===Array,es6的写法Array.isArray(arr)</li>
 <li>判断一个对象是否有这个属性property in obj==true ;obj.hasOwnProperty('property'),特别注意：item in array判断元素是否在数组中，是不正确的</li>
+<li>逗号运算符：赋值运算符优先于逗号表达式运行var b = ++a,10;这样会报错，var b = (++a,10);加个小括号 返回值是10   原因：它两边的表达式以从左到右的顺序被执行，并获得右边表达式的值。</li>
+<li>arr.map(item=>item.id).indexOf(333)   arr.findIndex(x => x.id === 33)都可以从object arr中查找object元素所在的索引</li>
 <li>JSON.stringify(obj,['name'],4)//过滤出obj对象的name属性，并以4个空格的距离展示。JSON.stringify(obj,function(key,val){return key=='key1'?undefined:val},4)//去掉属性为key1的部分。 JSON.parse(obj,receiver)//作用同左</li>
 <h1><a href="luoboAndMenu.html">原生js实现轮播图和二级菜单</a></h1>
 <p>JavaScript的基本规范？</p>
