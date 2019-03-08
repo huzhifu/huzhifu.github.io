@@ -38,8 +38,8 @@
 <li>有期时间:
 <ol type="a">
 <li>localStorage    存储持久数据，浏览器关闭后数据不丢失除非主动删除数据；</li>
-<li>sessionStorage  数据在当前浏览器窗口关闭后自动删除。</li>
-<li>cookie          设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭</li>
+<li>sessionStorage  数据在当前页面或者浏览器窗口都会自动删除。</li>
+<li>cookie          设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭，因为在设置过期时间之后，cookie会存在硬盘。如果不设置过期时间，cookie只存在内存，此时关闭当前页面不删除，但是关闭浏览器会删除</li>
 <li style="color:red;">服务器端session在设置的过期时间之前有效</li>
 </ol>
 </li>
