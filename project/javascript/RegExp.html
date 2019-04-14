@@ -83,6 +83,15 @@
       return extractArr
     }
 </code></pre>
+    <h3>另外一个典型的例子</h3>
+<pre><code>
+    //实现一个函数rep,达到 a*a => a*;a*ab*bc*c => a*b*c*;*babc*bc*c => a*babc*bc*的需求
+    function rep(s){
+      return s.replace(/(\w)\*\1/g,'$1*')
+    }
+    //注解： ‘\1’ 匹配的是 所获取的第1个()匹配的引用。例如，’(\d)\1’ 匹配两个连续数字字符。如33aa 中的33，但是34就不匹配，因为\1必须也是3才行。
+‘\2’ 匹配的是 所获取的第2个()匹配的引用。
+</code></pre>
     <h3>/?!(xxx)./  表示不匹配xxx字符串</h3>
  <img src="../img/regexp2.jpg" alt=""/>
 </div>
