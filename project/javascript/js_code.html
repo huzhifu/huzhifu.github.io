@@ -84,6 +84,15 @@
    [...new Set(['a',true,6,'a',8,3,true])]
 </code></pre>
 </li>
+<li>新方法1
+<pre><code>
+var arr = [1,2,2,3,1]
+var outArr=arr.filter((item,index,array)=>{
+        return array.indexOf(item) === index
+})
+console.log(outArr)
+</code></pre>
+</li>
 <li>方法一（自创）
     <pre><code>
     var arr=['a',true,6,'a',8,3,true];
