@@ -181,6 +181,86 @@
         }
     </code></pre>
 </li>
+<li>清除浮动
+    <pre><code>
+     .clearfix{
+       display: inline-block;
+       &:after{
+        content: '';
+        display: block;
+        height: 0;
+        line-height: 0;
+        clear: both;
+        visibility: hidden;
+      }
+    }
+    </code></pre>
+</li>
+<li>2倍和3倍图片
+    <pre><code>
+    @mixin bg-image($url){
+      background-image: url($url + "@2x.png");
+      @media (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3) {
+        background-image: url($url + "@3x.png");
+      }
+    }
+    </code></pre>
+</li>
+<li>sticky footer布局(吸底效果)
+    <pre><code>
+    1.flex
+        body{min-height:100vh;  display:flex;  flex-direction:cloum;}
+        .main{flex:1;}
+    2.其他css
+        .main{min-height:100vh; padding-bottom:50px;}
+        .footer{height:50px; margin-top:50px}
+    </code></pre>
+</li>
+<li>模糊效果
+<pre><code>
+背景图片模糊CSS：filter: blur(10px);
+背景模糊 IOS下： backdrop-filter: blur(10px)
+</code></pre>
+</li>
+<li>CSS高度自适应图片技巧（图片加载时，在view中预留位置）
+<pre><code>
+.img-wrapper{
+  position: raletive;
+  width:100;
+  hieght:0;
+  padding-top:100%  //技巧，当没有设置高度时，padding值相对与宽度进行计算
+}
+img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  hieght: 100%;
+}
+</code></pre>
+</li>
+<li>不换行
+<pre><code>
+.no-wrap{
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+</code></pre>
+</li>
+<li>扩展点击区域
+<pre><code>
+.extend-click
+  position: relative
+  &:before
+    content: ''
+    position: absolute
+    top: -10px
+    left: -10px
+    right: -10px
+    bottom: -10px
+</code></pre>
+</li>
 <h2>背景</h2>
 <h3 style="color: green">
     <span>背景颜色</span>background-color:red;
