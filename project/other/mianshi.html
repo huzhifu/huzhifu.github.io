@@ -450,17 +450,35 @@ function compare(n){
 </li>
 <li>39.var arr = [{id: 1, children: [{id: 2, children: [{id: 3}, {id: 4}]}]}, {id: 5}]将其转成如下格式[{id:1,level:1},{id:2,level:2},...,{id:5,level:1}]
 <pre><code>
-    var level=0
-    var target=[]
-    function fun(arr){
-        var count=++level
-        for(let item of arr){
-            target.push({id:item.id,level:count})
-            item.children&&fun(item.children)
+    //非递归
+    function trans(arr) {
+        let count = 1
+        let tempArr;
+        let targetArr = []
+        while(arr.length) {
+            let item = arr.shift()
+            targetArr.push({ id: item.id, level: count })
+            item.child && (tempArr = [...(tempArr||[]), ...item.child])
+            if(!arr.length && tempArr.length) {
+                count += 1
+                arr = tempArr.slice()
+                tempArr.length = 0
+            }
         }
+        return targetArr
     }
-    fun(arr)
-    console.log(target)
+    //递归
+    function trans(arr,level = 0,targetArr = []) {
+        level ++
+        for(let item of arr) {
+            targetArr.push({id:item.id,level:level})
+            if(item.child) {
+                trans(item.child,level,targetArr)
+            }
+        }
+        return targetArr
+    }
+    console.log(trans(arr))
 </code></pre>
 </li>
 <li>40.以下哪个会报错。 a.pop(`1`) a.pop('1') a.pop({...1}) a.pop({1})
