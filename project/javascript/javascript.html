@@ -161,53 +161,97 @@
 <li>JSON.stringify(obj,['name'],4)//过滤出obj对象的name属性，并以4个空格的距离展示。JSON.stringify(obj,function(key,val){return key=='key1'?undefined:val},4)//去掉属性为key1的部分。 JSON.parse(obj,receiver)//作用同左</li>
 <h2>js小技巧</h2>
 <li>url解析
-    <pre><code>
-        function urlParse(str,obj = {}) {
-			str.replace(/[?&]([^?&]+)=([^?&]+)/g,
-				function(m,s1,s2){
-					obj[s1] = s2
-				}
-			)
-			return obj
-		}
-    </code></pre>
+<pre><code>
+function urlParse(str,obj = {}) {
+  str.replace(/[?&]([^?&]+)=([^?&]+)/g,
+    function(m,s1,s2){
+      obj[s1] = s2
+    }
+  )
+  return obj
+}
+</code></pre>
 </li>
 <li>洗牌算法
-    <pre><code>
-        //取出[min,max]之间的随机数
-		function getRandomInt(min, max) {
-		  return Math.floor(Math.random() * (max - min + 1) + min)
-		  // Math.round(Math.random() * (max - min)) + min
-		}
+<pre><code>
+//取出[min,max]之间的随机数
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min)
+  // Math.round(Math.random() * (max - min)) + min
+}
 
-		export function shuffle(arr) {
-		  let _arr = arr.slice()
-		  for (let i = 0; i < _arr.length; i++) {
-			let j = getRandomInt(0, i)
-			let t = _arr[i]
-			_arr[i] = _arr[j]
-			_arr[j] = t
-		  }
-		  return _arr
-		}
-    </code></pre>
+function shuffle(arr) {
+  let _arr = arr.slice()
+  for (let i = 0; i < _arr.length; i++) {
+	let j = getRandomInt(0, i)
+	let t = _arr[i]
+	_arr[i] = _arr[j]
+	_arr[j] = t
+  }
+  return _arr
+}
+</code></pre>
 </li>
 <li>给某个元素添加class
-    <pre><code>
-        export function hasClass(el, className) {
-		  let reg = new RegExp('(^|\\s)' + className + '(\\s|$)')
-		  return reg.test(el.className)
-		}
+<pre><code>
+function hasClass(el, className) {
+  let reg = new RegExp('(^|\\s)' + className + '(\\s|$)')
+  return reg.test(el.className)
+}
 
-		export function addClass(el, className) {
-		  if (hasClass(el, className)) {
-			return
-		  }
-		  let newClass = el.className.split(' ')
-		  newClass.push(className)
-		  el.className = newClass.join(' ')
-		}
-    </code></pre>
+function addClass(el, className) {
+  if (hasClass(el, className)) {
+     return
+  }
+  let newClass = el.className.split(' ')
+  newClass.push(className)
+  el.className = newClass.join(' ')
+}
+</code></pre>
+</li>
+<li>给某个元素设置/获取 data-xxx属性的值
+<pre><code>
+function getEleData(el, name, val) {
+  const prefix = 'data-'
+  if (val) {
+     return el.setAttribute(prefix + name, val)
+  }
+  return el.getAttribute(prefix + name)
+}    
+</code></pre>
+</li>
+<li>根据浏览器类型，添加不同的样式前缀
+<pre><code>
+function prefixStyle(style) {
+  let elementStyle = document.createElement('div').style
+  //判断浏览器类型
+  let vendor = (() => {
+    let transformNames = {
+	webkit: 'webkitTransform',
+	Moz: 'MozTransform',
+	O: 'OTransform',
+	ms: 'msTransform',
+	standard: 'transform'
+    }
+
+    for (let key in transformNames) {
+	if (elementStyle[transformNames[key]] !== undefined) {
+	  return key
+	}
+    }
+
+    return false
+  })()
+  if (vendor === false) {
+    return false
+  }
+
+  if (vendor === 'standard') {
+    return style
+  }
+  return vendor + style.charAt(0).toUpperCase() + style.substr(1)
+}    
+</code></pre>
 </li>
 <h1><a href="luoboAndMenu.html">原生js实现轮播图和二级菜单</a></h1>
 <p>JavaScript的基本规范？</p>
