@@ -545,5 +545,42 @@ function compare(n){
     2.页面滚动到底部了(这时可去调接口获取更多内容)：window.scrollY + window.innerHeight > document.body.offsetHeight
 </code></pre>
 </li>
+<li>46.编程题
+var arr = [{id: 1},{id: 7},{id: 2, pId: 1},{id: 3},{id: 4, pId: 3},{id: 5, pId: 2},{id: 6, pId: 2},{id: 8, pId: 6}]
+output: [{id: 1,children: [{id: 2,children: [{id: 5},{id: 6,children: [{id: 8}]}]}]},{id: 7},{id: 3,children: [{id: 4}]}]
+<pre><code>
+	//从arr转化为output
+    function compose(arr) {	
+		function recursive(pItem,cArr) {
+			let findArr = cArr.filter(item=>item.pId === pItem.id)
+			if(findArr.length) {
+			  for(let findItem of findArr) {
+				delete findItem.pId
+				recursive(findItem,cArr)
+			  }
+			  pItem.children = findArr
+			}
+		 }
+		arr.filter((item,index,array)=>array.findIndex(cell=>cell.id===item.id)===index) //去重
+		let pArr = arr.filter(item=>!item.pId)
+		let cArr = arr.filter(item=>item.pId)
+		for(let pItem of pArr) {
+			recursive(pItem,cArr)
+		}
+		return pArr
+	 }
+	 compose(arr)
+	 //从output转化为arr
+	 function expand(arr,output = [],pId = null) {
+		for(let item of arr) {
+			item.children && expand(item.children,output,item.id)
+			let target = {id:item.id}
+			pId && (target.pId = pId)
+			output.push(target)
+		}
+		return output
+	 }
+</code></pre>
+</li>
 </body>
 </html>
