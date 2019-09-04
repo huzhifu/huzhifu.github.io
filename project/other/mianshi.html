@@ -448,7 +448,7 @@ function compare(n){
         }
 </code></pre>
 </li>
-<li>39.var arr = [{id: 1, children: [{id: 2, children: [{id: 3}, {id: 4}]}]}, {id: 5}]将其转成如下格式[{id:1,level:1},{id:2,level:2},...,{id:5,level:1}]
+<li>39.var arr = [{id: 1, child: [{id: 2, child: [{id: 3}, {id: 4}]}]}, {id: 5}]将其转成如下格式[{id:1,level:1},{id:2,level:2},...,{id:5,level:1}]
 <pre><code>
     //非递归
     function trans(arr) {
@@ -550,6 +550,7 @@ var arr = [{id: 1},{id: 7},{id: 2, pId: 1},{id: 3},{id: 4, pId: 3},{id: 5, pId: 
 output: [{id: 1,children: [{id: 2,children: [{id: 5},{id: 6,children: [{id: 8}]}]}]},{id: 7},{id: 3,children: [{id: 4}]}]
 <pre><code>
 //从arr转化为output
+/*递归版*/
 function compose(arr) {	
 	function recursive(pItem,cArr) {
 		let findArr = cArr.filter(item=>item.pId === pItem.id)
@@ -569,8 +570,18 @@ function compose(arr) {
 	}
 	return pArr
  }
+/*非递归版*/
+function compose(arr) {
+    for(var item of arr) {
+	if(!item.pId) continue;
+	var find = arr.find(cell=>cell.id === item.pId) 
+	find && (find.children = [...(find.children||[]),item])
+    }
+    return arr.filter(item=>!item.pId)
+}
  compose(arr)
  //从output转化为arr
+ /*递归版*/
  function expand(arr,output = [],pId = null) {
 	for(let item of arr) {
 		item.children && expand(item.children,output,item.id)
@@ -580,6 +591,22 @@ function compose(arr) {
 	}
 	return output
  }
+   /*非递归版*/
+   function expand(arr) {
+        let tempArr;
+        let targetArr = []
+        while(arr.length) {
+            let item = arr.shift()
+            targetArr.push({ id: item.id, pId: item.pId || null })
+            item.children && ((item.children.map(cell=>{cell.pId = item.id})),(tempArr = [...(tempArr||[]), ...item.children]))
+            if(!arr.length && tempArr.length) {
+                arr = tempArr.slice()
+                tempArr.length = 0
+            }
+        }
+        return targetArr
+    }
+   expand(arr)
 </code></pre>
 </li>
 </body>
