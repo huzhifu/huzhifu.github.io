@@ -106,6 +106,85 @@
         hr:hover:before {
             left: calc(95% - 20px);
         }
+        
+        
+        /*其他的一些css效果*/
+        
+        .margin {
+            margin-top: 10px;
+        }
+        /*三道杠*/
+        .icon1 {
+            color: green;
+            box-sizing: border-box;
+            width: 18px;
+            height: 14px;
+            padding: 4px 0;
+            border-top: 2px solid currentColor;
+            border-bottom: 2px solid currentColor;
+             /*注意如果此处背景颜色属性用缩写的话，需要放到其他背景属性的前面，否则会覆盖前面的属性值（此处为background-clip）为默认值*/
+            background: currentColor;
+            background-clip: content-box;
+        }
+        /*双层圆点*/
+        .icon2 {
+            width: 12px;
+            height: 12px;
+            padding: 2px;
+            border: 2px solid currentColor;
+            border-radius: 50%;
+            background-clip: content-box;
+            color: blueviolet;
+        }
+        .icon2.active {
+            background-color: currentColor;
+        }
+        /* 转变动画 */
+        .icon3 {
+            width: 20px;
+            height: 18px;
+            position: relative;
+            cursor: pointer;
+            box-sizing: border-box;
+            color: violet;
+        }
+        .icon3 span {
+            display: block;
+            position: absolute;
+            height: 2px;
+            width: 100%;
+            background: #000;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0deg);
+            transition: .25s ease-in-out;
+            background-color: currentColor;
+        }
+        .icon3 span:first-child {
+            top: 0;
+        }
+        .icon3 span:nth-child(2),.icon3 span:nth-child(3) {
+            top: 8px;
+        }
+        .icon3 span:nth-child(4) {
+            top: 16px;
+        }
+        .icon3.active span:first-child {
+            top: 8px;
+            width: 0;
+            left: 50%;
+        }
+        .icon3.active span:nth-child(2) {
+            transform: rotate(45deg);
+        }
+        .icon3.active span:nth-child(3) {
+            transform: rotate(-45deg);
+        }
+        .icon3.active span:nth-child(4) {
+            top: 8px;
+            width: 0;
+            left: 50%;
+        }
     </style>
 </head>
 <body>
@@ -128,10 +207,29 @@
     <li>Yarn(v0.18.1) // 比起npm更快一些</li>
 </ul>
 <hr>
+<div id="ul3">
+    <h2>一些css小效果</h2>
+    <div class="icon1"></div>
+    <div class="icon2 margin"></div> 
+    <div class="icon3 margin">
+         <span></span>
+         <span></span>
+         <span></span>
+         <span></span>
+    </div>
+</div>
 <script type="text/javascript">
     [].forEach.call(document.querySelectorAll("*"),function (a) {
         a.style.outline="1px solid #"+(~~(Math.random()*(1<<24)).toString(16))
     })
+    function toggleCls(clsName) {
+        const icon = document.querySelector(`.${clsName}`)
+        icon.onclick = function() {
+            this.classList.toggle('active')
+        }
+   }
+   toggleCls('icon2')
+   toggleCls('icon3')
 </script>
 </body>
 </html>
