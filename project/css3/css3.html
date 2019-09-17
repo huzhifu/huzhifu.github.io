@@ -151,13 +151,20 @@ farthest-corner：
     linear-gradient([ [ < angle> | to < side-or-corner> ] ,]? << color> [ < length> | < percentage>>[, << color> [ < length> | < percentage>>]+)(线性渐变) 【1.角度或渐变朝向2.指定颜色3.用长度值指定起止色位置4.用百分比指定起止色位置】<br>
     <div id="bolang"></div>
 </li>
-<h2>动画</h2>
-<li>transition:过渡 例如：.box{background:red}  .box:hover{background:green;transition:all 2s linear(这个是速率，可以用cubic-bezier(0,1.5,1,-0.38)代替)}</li>
-<li>transform:缩放、移动、倾斜、旋转 例如：transform:rotate(45deg)--transform:scale(2)--transform:translate(20px,20px)--transform:skew(45deg,45deg)</li>
-<li>animation:动画</li>
+<h2>动画(过渡动画/关键帧动画)</h2>
+<li>transition(过渡动画/补间动画):过渡 例如：.box{background:red}  .box:hover{background:green;transition:all 2s linear(这个是速率，可以用cubic-bezier(0,1.5,1,-0.38)代替)}</li>
+<li>transform(变换):缩放、移动、倾斜、旋转 例如：transform:rotate(45deg)--transform:scale(2)--transform:translate(20px,20px)--transform:skew(45deg,45deg)</li>
+<li>animation(关键帧动画):动画 
+    animation-direction:reverse(反向播放);
+    animation-fill-mode:forwards;(播放模式：不回到动画之前的效果，backwards相反);
+    animation-iteration-count: infinite;(播放次数,为数字时是几次);
+    animation-play-state:paused;(播放状态,暂停到某个动画状态);
+    animation: keyframeName aniTime linear(各种动画速率);
+    animation-timing-function: steps(1);(将关键帧动画变成逐帧动画);
+</li>
 <a href="exec2.html">幽灵按钮</a>   <a href="exec3.html">会飞的鸟</a>   <a href="exec4.html">跳跳球</a>   <a href="pubuliu.html">瀑布流</a>  <a href="slide-mobile.html">手机手势滑动</a>
 <a href="pubuliu1.html">瀑布流（另）</a>   <a href="fengqin.html">手风琴</a>
-<p><a href="superscript.html">角标与分割动效</a></p>
+<p><a href="superscript.html">角标与分割动效等效果</a></p>
 <h2>居中总结</h2>
 <h3>1.水平居中</h3>
 <li>inline-block+text-align <p>.parent{text-align:center} .child{display:inline-block}</p></li>
