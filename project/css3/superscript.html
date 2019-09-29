@@ -111,7 +111,11 @@
         /*其他的一些css效果*/
         
         .margin {
-            margin-top: 10px;
+            margin-right: 20px;
+        }
+        .icons {
+            display: flex;
+            align-items: center;
         }
         /*三道杠*/
         .icon1 {
@@ -203,7 +207,30 @@
             background-position: 4px -23px;
             border-color: #000;
         }
+        .icon5 .icon-clock{
+            font-size: 24px;
+            display: inline-block;
+        }
+        .icon5 .icon-clock:hover {
+            animation: tada 1s both;
+            cursor: pointer;
+        }
+        @keyframes tada {
+            0%, 100% {
+                transform: scale3d(1,1,1);
+            }
+            10%, 20% {
+                transform: scale3d(.9,.9,.9) rotate3d(0,0,1,-3deg);
+            }
+            30%, 50%, 70%, 90% {
+                transform: scale3d(1.1,1.1,1.1) rotate3d(0,0,1,3deg);
+            }
+            40%, 60%, 80% {
+                transform: scale3d(1.1,1.1,1.1) rotate3d(0,0,1,-3deg);
+            }
+        }
     </style>
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_672422_7lpnobp6hsg.css">
 </head>
 <body>
 <ul id="ul1">
@@ -227,15 +254,20 @@
 <hr>
 <div id="ul3">
     <h2>一些css小效果</h2>
-    <div class="icon1"></div>
-    <div class="icon2 margin"></div> 
-    <div class="icon3 margin">
-         <span></span>
-         <span></span>
-         <span></span>
-         <span></span>
+    <div class="icons">
+        <div class="icon1 margin"></div>
+        <div class="icon2 margin"></div> 
+        <div class="icon3 margin">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="icon4 margin"></div>
+        <div class="icon5 margin">
+            <span class="icon-clock iconfont"></span>
+        </div>
     </div>
-    <div class="icon4 margin"></div>
 </div>
 <script type="text/javascript">
     [].forEach.call(document.querySelectorAll("*"),function (a) {
