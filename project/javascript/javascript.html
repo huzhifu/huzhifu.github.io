@@ -358,6 +358,9 @@ function prefixStyle(style) {
     }
 </code></pre>
 <p>另：num.replace(/\B(?=(\d{3})+(?!\d))/g,',')</p>
+<p>另：num.replace(/(\d)(?=(\d{3})+\b)/g, '$1,')</p>
+<p>另：num.replace(/(?!^)(?=(\d{3})+$)/g, ',')</p>
+<p>另：100000..toLocaleString() //100,000  10000000000..toLocaleString('de-DE') //德国以 . 分割金钱, 转到德国当地格式化方案即可</p>
 <p>另：
 <pre><code>
     function formatCash(str){
